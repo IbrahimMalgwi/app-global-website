@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const slides = [
     {
@@ -18,7 +18,8 @@ const slides = [
         buttons: [
             {
                 text: "Explore Solutions",
-                gradient: "from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700",
+                gradient:
+                    "from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700",
             },
             { text: "Watch Demo", outlined: true, color: "blue" },
         ],
@@ -39,7 +40,8 @@ const slides = [
         buttons: [
             {
                 text: "Discover GlobalCare EHR",
-                gradient: "from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700",
+                gradient:
+                    "from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700",
             },
             { text: "View Case Studies", outlined: true, color: "green" },
         ],
@@ -51,14 +53,16 @@ export default function Hero() {
 
     // Auto-slide every 5 seconds
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % slides.length);
-        }, 5000);
+        const interval = setInterval(
+            () => setCurrent((prev) => (prev + 1) % slides.length),
+            5000
+        );
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-32 overflow-hidden">
+            {/* Background */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="images/futuristic-healthcare-background.png"
@@ -67,6 +71,7 @@ export default function Hero() {
                 />
             </div>
 
+            {/* Hero Content */}
             <div className="container mx-auto px-6 text-center relative z-10">
                 <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
                     <motion.div
