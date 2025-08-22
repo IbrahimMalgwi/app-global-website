@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
-
+import awsLogo from "../assets/images/aws-logo.png";
+import googleCloudLogo from "../assets/images/google-cloud-logo.png";
+import ibmLogo from "../assets/images/ibm-logo.png";
+import microsoftLogo from "../assets/images/microsoft-logo.png";
+import oracleLogo from "../assets/images/oracle-logo.png";
+import salesforceLogo from "../assets/images/salesforce-logo.png";
 export default function Partners() {
     const partners = [
-        { name: "Microsoft", logo: "/images/microsoft-logo.png" },
-        { name: "AWS", logo: "/images/aws-logo.png" },
-        { name: "Google Cloud", logo: "/images/google-cloud-logo.png" },
-        { name: "IBM", logo: "/images/ibm-logo.png" },
-        { name: "Oracle", logo: "/images/oracle-logo.png" },
-        { name: "Salesforce", logo: "/images/salesforce-logo.png" },
+        { name: "Microsoft", logo: microsoftLogo },
+        { name: "AWS", logo: awsLogo },
+        { name: "Google Cloud", logo: googleCloudLogo },
+        { name: "IBM", logo: ibmLogo },
+        { name: "Oracle", logo: oracleLogo },
+        { name: "Salesforce", logo: salesforceLogo },
     ];
 
     return (
