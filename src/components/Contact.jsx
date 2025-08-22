@@ -45,8 +45,8 @@ export default function Contact() {
                         Get In Touch
                     </h2>
                     <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Ready to transform your digital infrastructure? Let&apos;s discuss
-                        how we can help
+                        Ready to transform your digital infrastructure? Let&apos;s discuss how
+                        we can help
                     </p>
                 </motion.div>
 
@@ -120,7 +120,7 @@ export default function Contact() {
                         </div>
                     </motion.div>
 
-                    {/* Contact Info */}
+                    {/* Contact Info & Map */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -140,8 +140,7 @@ export default function Contact() {
                                             Address
                                         </h4>
                                         <p className="text-gray-600 dark:text-gray-300">
-                                            Plot 16688 Oyin Jolayemi Street <br /> Victoria Island
-                                            Lagos
+                                            Plot 1668B Oyin Jolayemi Street <br /> Victoria Island, Lagos
                                         </p>
                                     </div>
                                 </div>
@@ -169,14 +168,19 @@ export default function Contact() {
                                 </div>
                             </div>
                         </div>
-                        {/* Contact Image */}
-                        <div className="relative">
-                            <img
-                                src="images/contact.png"
-                                alt="Office Location"
-                                className="rounded-lg shadow-lg w-full"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-violet-600/20 rounded-lg" />
+
+                        {/* Google Map Embed */}
+                        <div className="relative rounded-lg overflow-hidden shadow-lg w-full h-64 md:h-80 lg:h-96">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.723554465959!2d3.4236904114451043!3d6.429549424219285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52e38ebfced%3A0x4e1ee7813081e3f1!2s1668b%20Oyin%20Jolayemi%20St%2C%20Victoria%20Island%2C%20Lagos%20106104%2C%20Lagos!5e0!3m2!1sen!2sng!4v1755854275405!5m2!1sen!2sng"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-violet-600/10 pointer-events-none" />
                         </div>
                     </motion.div>
                 </div>
