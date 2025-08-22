@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import  NavBar from"./components/NavBar"
 import Hero from "./components/Hero";
 import About from "./components/About"
@@ -10,10 +9,11 @@ import Partners from "./components/Partners";
 import Services from "./components/Services";
 import Team from "./components/Team"
 import FAQ from "./components/FAQ"
+import ThemeLayout from "./components/ThemeLayout";
 
 function App() {
   return (
-      <>
+      <ThemeLayout>
           <NavBar/>
           <Hero />
           <About />
@@ -25,7 +25,7 @@ function App() {
           <FAQ />
           <Contact />
           <Footer />
-      </>
+      </ThemeLayout>
   );
 }
 
