@@ -5,6 +5,7 @@ import team from "../assets/images/team.png";
 const TeamMember = ({ name, role, image, bio, delay, socialLinks }) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 50, rotateY: -30 }}
@@ -271,7 +272,7 @@ export default function Team() {
         {
             name: "Eng. Habib Yunusa",
             role: "Chief Executive Officer",
-            image: {team},
+            image: team,
             bio: "Visionary leader with 15+ years of experience in healthcare technology innovation and digital transformation.",
             socialLinks: {
                 twitter: "#",
@@ -282,7 +283,7 @@ export default function Team() {
         {
             name: "TOYINBO ABDULJELIL",
             role: "Chief Operating Officer",
-            image: {team},
+            image: team,
             bio: "Operations expert specializing in healthcare system optimization and process improvement strategies.",
             socialLinks: {
                 twitter: "#",
@@ -293,7 +294,7 @@ export default function Team() {
         {
             name: "ABDULLAHI YUNUSA",
             role: "Chief Technology Officer",
-            image: {team},
+            image: team,
             bio: "Technology innovator with expertise in AI-driven solutions and secure healthcare data architecture.",
             socialLinks: {
                 twitter: "#",
@@ -304,7 +305,7 @@ export default function Team() {
         {
             name: "UMAR AMINU",
             role: "Business Analyst",
-            image: {team},
+            image: team,
             bio: "Analytical expert focused on creating data-driven solutions for healthcare business challenges.",
             socialLinks: {
                 twitter: "#",

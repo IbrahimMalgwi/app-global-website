@@ -1,6 +1,9 @@
 
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowUpRight } from "lucide-react";
+import AIHealthcareImage from "../assets/images/ai-healthcare-blog.png";
+import EHRInteroperabilityImage from "../assets/images/ehr-interoperability-blog.png";
+import SmartGridImage from "../assets/images/smart-grid-blog.png";
 
 const insights = [
     {
@@ -10,7 +13,7 @@ const insights = [
         title: "The Future of AI in Healthcare: Transforming Patient Care",
         description:
             "Discover how artificial intelligence is revolutionizing healthcare delivery, from predictive analytics to personalized treatment plans. Our latest insights reveal the transformative power of AI-driven medical solutions.",
-        image: "images/ai-healthcare-blog.png",
+        image: AIHealthcareImage
     },
     {
         category: "Digital Health",
@@ -19,7 +22,7 @@ const insights = [
         title: "Interoperability in EHR Systems: Breaking Down Data Silos",
         description:
             "Learn how modern EHR systems are enabling seamless data exchange across healthcare networks. We explore the challenges and solutions in creating truly connected healthcare ecosystems.",
-        image: "images/ehr-interoperability-blog.png",
+        image: EHRInteroperabilityImage,
     },
     {
         category: "Clean Energy",
@@ -28,7 +31,7 @@ const insights = [
         title: "Sustainable Energy Solutions: Smart Grids for Tomorrow",
         description:
             "Explore the latest innovations in smart grid technology and sustainable energy management. Our comprehensive guide covers the future of clean energy infrastructure and connected systems.",
-        image: "images/smart-grid-blog.png",
+        image: SmartGridImage,
     },
 ];
 
