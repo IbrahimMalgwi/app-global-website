@@ -11,13 +11,11 @@ export default function Contact() {
         message: "",
     });
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
+    const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
         // 👉 integrate API/Email service here
@@ -29,6 +27,7 @@ export default function Contact() {
             message: "",
         });
     };
+
 
     return (
         <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -50,19 +49,20 @@ export default function Contact() {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12">
+                <div className="grid lg:grid-cols-2 gap-12 items-stretch">
                     {/* Form */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
+                        className="flex"
                     >
-                        <div className="rounded-lg p-8 shadow-xl bg-white dark:bg-gray-800">
+                        <div className="rounded-lg p-8 shadow-xl bg-white dark:bg-gray-800 flex flex-col justify-between w-full">
                             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
                                 Send us a message
                             </h3>
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6 flex flex-col flex-1">
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <input
                                         name="firstName"
@@ -111,7 +111,7 @@ export default function Contact() {
                                     type="submit"
                                     className="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium
                     bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700
-                    text-white h-10 px-6 py-2 w-full transition-colors"
+                    text-white h-12 px-6 py-2 w-full transition-colors mt-auto"
                                 >
                                     Send Message
                                     <Send className="ml-2 w-4 h-4" />
@@ -126,7 +126,7 @@ export default function Contact() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="space-y-8"
+                        className="flex flex-col justify-between"
                     >
                         <div>
                             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
@@ -136,9 +136,7 @@ export default function Contact() {
                                 <div className="flex items-start gap-4">
                                     <MapPin className="w-6 h-6 text-blue-600 mt-1" />
                                     <div>
-                                        <h4 className="font-semibold text-gray-800 dark:text-white">
-                                            Address
-                                        </h4>
+                                        <h4 className="font-semibold text-gray-800 dark:text-white">Address</h4>
                                         <p className="text-gray-600 dark:text-gray-300">
                                             Plot 1668B Oyin Jolayemi Street <br /> Victoria Island, Lagos
                                         </p>
@@ -147,20 +145,14 @@ export default function Contact() {
                                 <div className="flex items-start gap-4">
                                     <Phone className="w-6 h-6 text-green-600 mt-1" />
                                     <div>
-                                        <h4 className="font-semibold text-gray-800 dark:text-white">
-                                            Phone
-                                        </h4>
-                                        <p className="text-gray-600 dark:text-gray-300">
-                                            +234 806 211 4900
-                                        </p>
+                                        <h4 className="font-semibold text-gray-800 dark:text-white">Phone</h4>
+                                        <p className="text-gray-600 dark:text-gray-300">+234 806 211 4900</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <Mail className="w-6 h-6 text-violet-600 mt-1" />
                                     <div>
-                                        <h4 className="font-semibold text-gray-800 dark:text-white">
-                                            Email
-                                        </h4>
+                                        <h4 className="font-semibold text-gray-800 dark:text-white">Email</h4>
                                         <p className="text-gray-600 dark:text-gray-300">
                                             info@appglobaltechnologies.com
                                         </p>
@@ -170,9 +162,9 @@ export default function Contact() {
                         </div>
 
                         {/* Google Map Embed */}
-                        <div className="relative rounded-lg overflow-hidden shadow-lg w-full h-64 md:h-80 lg:h-96">
+                        <div className="relative rounded-lg overflow-hidden shadow-lg w-full h-64 md:h-80 lg:h-full mt-8">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.723554465959!2d3.4236904114451043!3d6.429549424219285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52e38ebfced%3A0x4e1ee7813081e3f1!2s1668b%20Oyin%20Jolayemi%20St%2C%20Victoria%20Island%2C%20Lagos%20106104%2C%20Lagos!5e0!3m2!1sen!2sng!4v1755854275405!5m2!1sen!2sng"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.723554465959!2d3.4236904114451043!3d6.429549424219285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52e38ebfced%3A0x4e1ee7813081e3f1!2s1668b%20Oyin%20Jolayemi%20St%2C%20Victoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1755854275405!5m2!1sen!2sng"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
