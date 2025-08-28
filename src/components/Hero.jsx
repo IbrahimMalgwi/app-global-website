@@ -1,134 +1,117 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import backgroundVideo from "../assets/videos/appglobal-background.mp4"; // ✅ background video
+import fallbackImage from "../assets/images/hero-fallback.jpg"; // ✅ fallback image
 
-const slides = [
+// ✅ Import logos locally
+import appGlobalTechLogo from "../assets/images/appglobal-tech.jpeg";
+import appGlobalPayLogo from "../assets/images/appglobal-pay.jpeg";
+import appGlobalShellLogo from "../assets/images/appglobal-shell.jpeg";
+
+// Company info
+const companies = [
     {
-        title: (
-            <>
-        <span className="bg-gradient-to-r from-blue-600 via-violet-600 to-green-600 bg-clip-text text-transparent">
-          Building Tomorrow&apos;s
-        </span>
-                <br />
-                <span className="bg-gradient-to-r from-green-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-          Digital Solutions
-        </span>
-            </>
-        ),
-        subtitle: "Today.",
-        buttons: [
-            {
-                text: "Explore Solutions",
-                gradient:
-                    "from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700",
-            },
-            { text: "Watch Demo", outlined: true, color: "blue" },
-        ],
+        name: "AppGlobal Technologies",
+        logo: appGlobalTechLogo,
+        description: "Leading provider of enterprise software and healthcare solutions.",
+        link: "https://appglobaltechnologies.com",
     },
     {
-        title: (
-            <>
-        <span className="bg-gradient-to-r from-green-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-          Transforming Healthcare
-        </span>
-                <br />
-                <span className="bg-gradient-to-r from-violet-600 via-green-600 to-blue-600 bg-clip-text text-transparent">
-          With AI Innovation
-        </span>
-            </>
-        ),
-        subtitle: "Advanced EHR systems powered by artificial intelligence",
-        buttons: [
-            {
-                text: "Discover GlobalCare EHR",
-                gradient:
-                    "from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700",
-            },
-            { text: "View Case Studies", outlined: true, color: "green" },
-        ],
+        name: "AppGlobal Pay",
+        logo: appGlobalPayLogo,
+        description: "Innovative payment solutions enabling seamless global transactions.",
+        link: "https://appglobalpay.com",
+    },
+    {
+        name: "AppGlobalShell",
+        logo: appGlobalShellLogo,
+        description: "Powering digital infrastructure, cloud, and energy services.",
+        link: "https://appglobalshell.com",
     },
 ];
 
 export default function Hero() {
-    const [current, setCurrent] = useState(0);
-
-    // Auto-slide every 5 seconds
-    useEffect(() => {
-        const interval = setInterval(
-            () => setCurrent((prev) => (prev + 1) % slides.length),
-            5000
-        );
-        return () => clearInterval(interval);
-    }, []);
+    const [hoveredCompany, setHoveredCompany] = useState(null);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center pt-32 overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="images/futuristic-healthcare-background.png"
-                    alt="Hero Background"
-                    className="w-full h-full object-cover opacity-10"
-                />
-            </div>
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+            {/* Background Video */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={fallbackImage} // ✅ fallback while loading
+                className="absolute inset-0 w-full h-full object-cover opacity-70"
+            >
+                <source src={backgroundVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
 
-            {/* Hero Content */}
-            <div className="container mx-auto px-6 text-center relative z-10">
-                <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
-                    <motion.div
-                        className="flex"
-                        animate={{ x: `-${current * 100}%` }}
-                        transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                    >
-                        {slides.map((slide, i) => (
-                            <div key={i} className="basis-full px-4 flex-shrink-0">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 50 }}
-                                    transition={{ duration: 0.8 }}
-                                    className="space-y-6"
-                                >
-                                    <motion.h1
-                                        initial={{ opacity: 0, scale: 0.5 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.8 }}
-                                        className="text-6xl md:text-8xl font-bold mb-6"
-                                    >
-                                        {slide.title}
-                                    </motion.h1>
+            {/* Overlay gradient for readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-900/60 via-black/60 to-violet-900/60 z-0" />
 
-                                    <motion.p
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.8 }}
-                                        className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 max-w-4xl mx-auto"
-                                    >
-                                        {slide.subtitle}
-                                    </motion.p>
+            {/* Content */}
+            <div className="relative z-10 text-center px-6 max-w-5xl">
+                <AnimatePresence mode="wait">
+                    {hoveredCompany === null ? (
+                        <motion.div
+                            key="welcome"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.6 }}
+                            className="mb-12"
+                        >
+                            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-violet-400 to-green-400 bg-clip-text text-transparent drop-shadow-lg">
+                                Welcome to AppGlobal Group
+                            </h1>
+                            <p className="text-lg md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                                We are a diversified group of companies driving innovation across{" "}
+                                <span className="font-semibold">technology</span>,{" "}
+                                <span className="font-semibold">finance</span>, and{" "}
+                                <span className="font-semibold">infrastructure</span>.
+                            </p>
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="company-info"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.6 }}
+                            className="mb-12"
+                        >
+                            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">
+                                {companies[hoveredCompany].name}
+                            </h2>
+                            <p className="text-md md:text-xl text-gray-200 max-w-2xl mx-auto">
+                                {companies[hoveredCompany].description}
+                            </p>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.8, delay: 0.2 }}
-                                        className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-                                    >
-                                        {slide.buttons.map((btn, j) => (
-                                            <button
-                                                key={j}
-                                                className={`inline-flex items-center justify-center gap-2 font-medium h-11 rounded-md px-8 py-4 text-lg transition-colors ${
-                                                    btn.outlined
-                                                        ? `border-2 border-${btn.color}-600 text-${btn.color}-600 hover:bg-${btn.color}-50 dark:border-${btn.color}-400 dark:text-${btn.color}-400 dark:hover:bg-${btn.color}-950`
-                                                        : `bg-gradient-to-r ${btn.gradient} text-white`
-                                                }`}
-                                            >
-                                                {btn.text}
-                                            </button>
-                                        ))}
-                                    </motion.div>
-                                </motion.div>
-                            </div>
-                        ))}
-                    </motion.div>
+                {/* Company Logos */}
+                <div className="flex flex-wrap justify-center gap-10 mt-24">
+                    {companies.map((company, index) => (
+                        <motion.div
+                            key={company.name}
+                            className="cursor-pointer p-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-lg shadow-lg"
+                            onMouseEnter={() => setHoveredCompany(index)}
+                            onMouseLeave={() => setHoveredCompany(null)}
+                            onClick={() => window.open(company.link, "_blank")}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                        >
+                            <img
+                                src={company.logo}
+                                alt={company.name}
+                                className="h-10 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-110"
+                            />
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
