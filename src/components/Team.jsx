@@ -1,203 +1,262 @@
 import { motion } from "framer-motion";
+import { Linkedin, Twitter, Github } from "lucide-react";
 
+// ================= LOCAL IMAGES =================
 import ceoImage from "../assets/images/ceo.jpeg";
-import member1 from "../assets/images/team.png";
-import member2 from "../assets/images/team.png";
-import member3 from "../assets/images/abdul.png";
-import member4 from "../assets/images/umar.png";
-import member5 from "../assets/images/toyinbo.png";
+import member1 from "../assets/images/abdul.png";
+import member2 from "../assets/images/umar.png";
+import member3 from "../assets/images/yusuf.png";
+import member4 from "../assets/images/taiyo.png";
+import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/team.png";
 import member7 from "../assets/images/team.png";
 import member8 from "../assets/images/team.png";
 import member9 from "../assets/images/team.png";
 
-// CEO Section (classic style like Dangote)
-const CEOSection = ({ name, role, image, bio, link }) => (
-    <section
-        className="relative bg-cover bg-center py-20"
-        style={{
-            backgroundImage: "url('/wp-content/uploads/2020/12/gpce_grey2.jpg')",
-            backgroundSize: "cover",
-        }}
-    >
-        <div className="max-w-7xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                {/* Left side - CEO Image */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="flex justify-center"
-                >
-                    <img
-                        src={image}
-                        alt={name}
-                        className="rounded-xl shadow-2xl w-[350px] h-[400px] object-cover"
-                    />
-                </motion.div>
+// ================= CEO DATA =================
+const ceo = {
+    name: "Habib Yunusa",
+    title: "ENGR",
+    role: "Chairman & Chief Executive",
+    image: ceoImage,
+    bio: `Habib Yunusa is the Chief Executive Officer of AppGlobal Technologies. 
+  He has been in the ICT sector for over 15 years with vast knowledge in Computing. 
+  Former faculty at NIIT, Certified Oracle DBA, and an experienced programmer. 
+  He has developed numerous application software and successfully delivered 
+  several ICT projects for both government and private sectors.
+  
+  He attended Informatics Institution, Singapore where he obtained 
+  an International Advanced Diploma in Computing.`,
+    backgroundImage: ceoImage, // we can reuse CEO photo as hero bg or replace with another
+    socials: {
+        linkedin: "https://linkedin.com/in/habib-yunusa",
+        twitter: "https://twitter.com/habibyunusa"
+    }
+};
 
-                {/* Right side - CEO Info */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-white"
-                >
-                    <h1 className="text-3xl md:text-5xl font-bold mb-2">{name}</h1>
-                    <h2 className="text-xl md:text-2xl mb-4">{role}</h2>
-                    <hr className="max-w-md border-white/60 mb-6" />
-                    <p className="text-lg leading-relaxed">{bio}</p>
-                    <br />
-                    <a
-                        href={link}
-                        className="inline-flex items-center px-5 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition"
-                    >
-                        <span className="mr-2">Read More</span>
-                        <i className="fa fa-long-arrow-right"></i>
-                    </a>
-                </motion.div>
-            </div>
-        </div>
-    </section>
-);
+// ================= EXECUTIVE TEAM DATA =================
+const executiveTeam = [
+    {
+        name: "TOYINBO ABDULJELIL",
+        role: "Chief Operating Officer",
+        image: member9,
+        bio: "Expertise in ICT, management policy, networking, web development and data analytics with 5+ years of experience.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "ABDULLAHI YUNUSA",
+        role: "Chief Technology Officer",
+        image: member1,
+        bio: "Over 8 years of experience in database management, programming, and ICT solutions delivery.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "UMAR AMINU",
+        role: "Business Analyst",
+        image: member2,
+        bio: "Experienced Business Analyst with expertise in Database Management and ICT solutions.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "SAMUEL AYODELE BELLO",
+        role: "Business Support Lead",
+        image: member4,
+        bio: "8+ years of project management in software application deployment, Agile & AI prompt engineering.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "MOMODU ISAH MOHAMMED",
+        role: "Business Support Lead",
+        image: member5,
+        bio: "18 years of ICT experience in telecoms networking, power and fiber optics.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "IBRAHIM GANA MALGWI",
+        role: "Software Engineer",
+        image: member6,
+        bio: "Engineer specialized in Java, Python, PL/SQL, Cloud Engineering and DevOps automation.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "OJETOKUN VICTOR",
+        role: "DevSecOps Engineer",
+        image: member7,
+        bio: "Focus on healthcare IT, AWS certified, Kubernetes specialist.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "Yusuff Saliu Adediran",
+        role: "Chief Technology Office",
+        image: member3,
+        bio: "Engineer contributing to strategic innovation and compliance excellence.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "Temitope Fatoba",
+        role: "Head, Business Support",
+        image: member5,
+        bio: "Engineer with growing expertise in enterprise IT solutions and governance.",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "Taiwo Olaogun",
+        role: "Chief Financial Officer (CFO)",
+        image: member4,
+        bio: "Engineer with growing expertise in enterprise IT solutions and governance.",
+        socials: { linkedin: "#" }
+    }
+];
 
-// Team Member Flip Card
-const TeamMember = ({ name, role, image, bio, delay }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay }}
-        viewport={{ once: true }}
-        className="group h-80 relative perspective-1000 cursor-pointer"
-    >
-        <div
-            className="relative w-full h-full transition-transform duration-700 transform-gpu group-hover:rotate-y-180"
-            style={{ transformStyle: "preserve-3d" }}
-        >
-            {/* Front */}
-            <div className="absolute inset-0 [backface-visibility:hidden] rounded-xl shadow-xl overflow-hidden flex flex-col items-center justify-center bg-gradient-to-br from-white via-blue-50 to-violet-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800">
-                <img
-                    src={image}
-                    alt={name}
-                    className="w-24 h-24 rounded-full object-cover shadow-lg mb-4 border-4 border-white dark:border-gray-600"
-                />
-                <h3 className="text-lg font-bold text-gray-800 dark:text-white">
-                    {name}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300">{role}</p>
-            </div>
-
-            {/* Back */}
-            <div className="absolute inset-0 rotate-y-180 [backface-visibility:hidden] rounded-xl shadow-xl flex flex-col justify-center items-center p-6 bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white">
-                <h3 className="text-lg font-bold mb-2">{name}</h3>
-                <p className="text-sm leading-relaxed text-blue-100">{bio}</p>
-            </div>
-        </div>
-    </motion.div>
-);
-
-export default function Team() {
-    const ceo = {
-        name: "Eng. Habib Yunusa",
-        role: "Chief Executive Officer",
-        image: ceoImage,
-        bio: "Eng. Habib Yunusa is the visionary leader with 15+ years of experience in healthcare technology innovation and digital transformation.",
-        link: "#",
-    };
-
-    const teamMembers = [
-        {
-            name: "TOYINBO ABDULJELIL",
-            role: "Chief Operating Officer",
-            image: member5,
-            bio: "Operations expert specializing in healthcare system optimization and process improvement strategies.",
-        },
-        {
-            name: "ABDULLAHI YUNUSA",
-            role: "Chief Technology Officer",
-            image: member3,
-            bio: "Technology innovator with expertise in AI-driven solutions and secure healthcare data architecture.",
-        },
-        {
-            name: "UMAR AMINU",
-            role: "Business Analyst",
-            image: member4,
-            bio: "Analytical expert focused on creating data-driven solutions for healthcare business challenges.",
-        },
-        {
-            name: "Member 5",
-            role: "Finance Lead",
-            image: member1,
-            bio: "Finance strategist ensuring financial health and growth of the organization.",
-        },
-        {
-            name: "Member 6",
-            role: "HR Manager",
-            image: member2,
-            bio: "People-focused leader with expertise in talent management and employee wellbeing.",
-        },
-        {
-            name: "Member 7",
-            role: "Project Manager",
-            image: member6,
-            bio: "Experienced project manager delivering healthcare tech projects on time and within scope.",
-        },
-        {
-            name: "Member 8",
-            role: "Senior Developer",
-            image: member7,
-            bio: "Full-stack engineer with expertise in scalable health applications.",
-        },
-        {
-            name: "Member 9",
-            role: "UI/UX Designer",
-            image: member8,
-            bio: "Creative designer focusing on intuitive healthcare user experiences.",
-        },
-        {
-            name: "Member 10",
-            role: "QA Lead",
-            image: member9,
-            bio: "Ensures product reliability and patient-safety through rigorous testing.",
-        },
-    ];
-
+// ================= TEAM MEMBER CARD =================
+const TeamMemberCard = ({ member, delay }) => {
     return (
-        <section>
-            {/* CEO Section */}
-            <CEOSection {...ceo} />
+        <motion.div
+            initial={{ opacity: 0, y: 50, rotateY: -30 }}
+            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+            transition={{ duration: 0.8, delay }}
+            viewport={{ once: true }}
+            className="group h-80 relative perspective-1000"
+        >
+            {/* Flip container */}
+            <motion.div
+                className="relative w-full h-full transition-all duration-700 transform-gpu"
+                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ rotateY: 180 }}
+            >
+                {/* Front side */}
+                <div
+                    className="absolute inset-0"
+                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                    <div className="flex flex-col justify-center items-center h-full bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg p-6">
+                        <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow"
+                        />
+                        <h3 className="text-lg font-bold text-gray-800 dark:text-white">{member.name}</h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{member.role}</p>
+                    </div>
+                </div>
+
+                {/* Back side */}
+                <div
+                    className="absolute inset-0"
+                    style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                    <div className="flex flex-col justify-between h-full bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white rounded-xl shadow-lg p-6">
+                        {/* Scrollable Bio */}
+                        <div className="overflow-y-auto pr-2 custom-scrollbar flex-1">
+                            <p className="text-sm leading-relaxed">{member.bio}</p>
+                        </div>
+                        {/* Social Links */}
+                        <div className="flex justify-center space-x-4 mt-4">
+                            {member.socials?.twitter && (
+                                <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                    <Twitter className="w-4 h-4" />
+                                </a>
+                            )}
+                            {member.socials?.linkedin && (
+                                <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                    <Linkedin className="w-4 h-4" />
+                                </a>
+                            )}
+                            {member.socials?.github && (
+                                <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                    <Github className="w-4 h-4" />
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+};
+
+// ================= MAIN TEAM COMPONENT =================
+export default function Team() {
+    return (
+        <>
+            {/* CEO Hero Section */}
+            {/* CEO Section - Image Left, Bio Right */}
+            <section className="relative py-20 md:py-32 bg-gray-900 bg-cover bg-center">
+                <div className="container mx-auto px-6">
+                    <div className="grid md:grid-cols-2 gap-10 items-center">
+
+                        {/* Left: CEO Image */}
+                        <div className="flex justify-center">
+                            <img
+                                src={ceo.image}
+                                alt={ceo.name}
+                                className="rounded-xl shadow-2xl w-full max-w-md object-cover"
+                            />
+                        </div>
+
+                        {/* Right: CEO Bio */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="text-white"
+                        >
+                            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+                                {ceo.name}, {ceo.title}
+                            </h1>
+                            <h2 className="text-xl md:text-2xl text-blue-200 mb-6">
+                                {ceo.role}
+                            </h2>
+                            <hr className="max-w-md h-px bg-white opacity-60 mb-6" />
+                            <p className="text-lg leading-relaxed mb-8">{ceo.bio}</p>
+                            <a
+                                href={ceo.socials.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block text-lg font-medium border border-white px-5 py-2 rounded-lg hover:bg-white hover:text-blue-700 transition"
+                            >
+                                Read More →
+                            </a>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
 
             {/* Executive Leadership */}
-            <section
-                className="py-20 bg-gradient-to-br from-blue-50 to-violet-50 dark:from-gray-900 dark:to-gray-800"
-                id="leadership"
-            >
-                <div className="max-w-7xl mx-auto px-6 text-center">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+            <section className="py-20 bg-gray-50 dark:bg-gray-900">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
                     >
-                        Executive Leadership
-                    </motion.h2>
-                    <hr className="w-20 mx-auto border-blue-500 mb-6" />
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
-                        Our senior executives bring tremendous experience, visionary
-                        thinking and a shared commitment to excellence, creativity, and
-                        innovation to the day-to-day operation of the company.
-                    </p>
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                            Executive Leadership
+                        </h1>
+                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                            Our senior executives bring tremendous experience, visionary thinking and a shared commitment to innovation and excellence.
+                        </p>
+                    </motion.div>
 
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {teamMembers.map((member, i) => (
-                            <TeamMember key={i} {...member} delay={i * 0.1} />
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {executiveTeam.map((member, i) => (
+                            <TeamMemberCard key={i} member={member} delay={i * 0.1} />
                         ))}
                     </div>
                 </div>
             </section>
-        </section>
+
+            {/* Custom Styles */}
+            <style jsx>{`
+        .perspective-1000 { perspective: 1000px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      `}</style>
+        </>
     );
 }
