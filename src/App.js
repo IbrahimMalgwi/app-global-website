@@ -8,7 +8,6 @@ import LatestInsights from "./components/LatestInsights";
 import Partners from "./components/Partners";
 import Services from "./components/Services";
 import Team from "./components/Team"
-import FAQ from "./components/FAQ"
 import ThemeLayout from "./components/ThemeLayout";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Blog />
           <LatestInsights />
           <Partners />
-          {/*<FAQ />*/}
           <Contact />
           <Footer />
       </ThemeLayout>

@@ -10,7 +10,6 @@ import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/team.png";
 import member7 from "../assets/images/team.png";
-import member8 from "../assets/images/team.png";
 import member9 from "../assets/images/team.png";
 
 // ================= CEO DATA =================
@@ -180,8 +179,7 @@ export default function Team() {
     return (
         <>
             {/* CEO Hero Section */}
-            {/* CEO Section - Image Left, Bio Right */}
-            <section className="relative py-20 md:py-32 bg-gray-900 bg-cover bg-center">
+            <section id="team"  className="relative py-20 md:py-32 bg-gray-900 bg-cover bg-center">
                 <div className="container mx-auto px-6">
                     <div className="grid md:grid-cols-2 gap-10 items-center">
 
