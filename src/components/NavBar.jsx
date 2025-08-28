@@ -83,7 +83,6 @@ export default function Navbar() {
                                 "blog",
                                 "team",
                                 "partners",
-                                "faq",
                                 "contact",
                             ].map((link) => (
                                 <a

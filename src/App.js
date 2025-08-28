@@ -22,7 +22,7 @@ function App() {
           <Blog />
           <LatestInsights />
           <Partners />
-          <FAQ />
+          {/*<FAQ />*/}
           <Contact />
           <Footer />
       </ThemeLayout>
