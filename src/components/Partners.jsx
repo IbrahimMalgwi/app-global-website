@@ -5,6 +5,14 @@ import ibmLogo from "../assets/images/ibm-logo.png";
 import microsoftLogo from "../assets/images/microsoft-logo.png";
 import oracleLogo from "../assets/images/oracle-logo.png";
 import salesforceLogo from "../assets/images/salesforce-logo.png";
+import ebute from "../assets/images/ebute.png";
+import ikorodu from "../assets/images/ikorodu.png";
+import inewi from "../assets/images/inewi.png";
+import national from "../assets/images/national.png";
+import eksuth from "../assets/images/eksuth.png";
+import  fmcgusau from "../assets/images/fmcgusau.png";
+import yaba from "../assets/images/fnph.png";
+
 export default function Partners() {
     const partners = [
         { name: "Microsoft", logo: microsoftLogo },
@@ -13,6 +21,13 @@ export default function Partners() {
         { name: "IBM", logo: ibmLogo },
         { name: "Oracle", logo: oracleLogo },
         { name: "Salesforce", logo: salesforceLogo },
+        { name: "Ebute", logo: ebute },
+        { name: "Ikorodu", logo: ikorodu },
+        { name: "Inewi", logo: inewi },
+        { name: "National", logo: national },
+        { name: "Eksuth", logo: eksuth },
+        { name: "FMC Gusau", logo: fmcgusau },
+        { name: "Yaba", logo: yaba },
     ];
 
     return (
