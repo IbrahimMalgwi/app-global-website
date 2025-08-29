@@ -22,20 +22,6 @@ const services = [
         ],
     },
     {
-        title: "GlobalCare LIS",
-        subtitle: "Precision in Every Test, Power in Every Result.",
-        icon: <Brain className="w-8 h-8 text-white" />,
-        iconBg: "from-violet-500 to-blue-500",
-        features: ["Diagnostic Excellence", "Faster Results", "Smart Workflows"],
-    },
-    {
-        title: "GlobalCare Telemedicine",
-        subtitle: "Connecting You to World-Class Doctors anytime, wherever you are",
-        icon: <Globe className="w-8 h-8 text-white" />,
-        iconBg: "from-green-500 to-blue-500",
-        features: ["24/7 Access", "Global Doctors", "Instant Consultations"],
-    },
-    {
         title: "AppGlobal Pay",
         subtitle: "One Platform, Endless Payment Possibilities.",
         icon: <CreditCard className="w-8 h-8 text-white" />,
@@ -52,18 +38,7 @@ const services = [
         icon: <Leaf className="w-8 h-8 text-white" />,
         iconBg: "from-green-500 to-violet-500",
         features: ["Smart Infrastructure", "Clean Energy", "Connected Systems"],
-    },
-    {
-        title: "GlobalCare Pharmacy",
-        subtitle: "Smart Medication Management. Seamless Prescription Processing.",
-        icon: <Shield className="w-8 h-8 text-white" />,
-        iconBg: "from-green-500 to-blue-500",
-        features: [
-            "Digital Prescriptions",
-            "Inventory Management",
-            "Patient Safety Alerts",
-        ],
-    },
+    }
 ];
 
 export default function Services() {
