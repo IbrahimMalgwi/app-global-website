@@ -17,13 +17,13 @@ const companies = [
         link: "https://appglobaltechnologies.com",
     },
     {
-        name: "AppGlobal Pay",
+        name: "AppGlobal Payment Solutions",
         logo: appGlobalPayLogo,
         description: "Innovative payment solutions enabling seamless global transactions.",
         link: "https://appglobalpay.com",
     },
     {
-        name: "AppGlobalShell",
+        name: "Globalshell Resources Infrastructure ",
         logo: appGlobalShellLogo,
         description: "Powering digital infrastructure, cloud, and energy services.",
         link: "https://appglobalshell.com",
