@@ -10,8 +10,8 @@ import member2 from "../assets/images/umar.png";
 import member3 from "../assets/images/yusuf.png";
 import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
-import member6 from "../assets/images/team.png";
-import member7 from "../assets/images/team.png";
+import member6 from "../assets/images/adeboyin.png";
+import member7 from "../assets/images/ibrahim.jpg";
 import member9 from "../assets/images/team.png";
 
 // ================= CEO DATA =================
@@ -99,7 +99,7 @@ const executiveTeam = [
     {
         name: "IBRAHIM GANA MALGWI",
         role: "Software Engineer",
-        image: member6,
+        image: member7,
         bio: "A Software Engineer with strong expertise in Java, Python, PL/SQL, and Cloud Engineering, with a dynamic career built across the Technology and Enterprise Solutions sectors. He has contributed to key engineering roles at Semicolon Africa and currently at AppGlobal Technologies, where he is involved in designing and deploying scalable software systems.\n" +
             "\n" +
             "He holds a proven track record in developing robust applications, managing cloud infrastructure, and integrating enterprise-level platforms. His focus on performance, security, and innovation supports the company’s mission to deliver cutting-edge digital solutions.",

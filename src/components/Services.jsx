@@ -19,6 +19,10 @@ const services = [
             "AI-Driven Insights",
             "Human-Centered Care",
             "Seamless Connectivity",
+            "Interoperability  Seamless Data Exchange",
+            "Data Security  Protecting Patient Privacy",
+            "Telehealth Integration  Virtual Care Solutions",
+            "One System, Every Network",
         ],
     },
     {
