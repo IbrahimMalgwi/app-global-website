@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import {
     Heart,
-    Brain,
-    Globe,
     CreditCard,
     Leaf,
-    Shield,
     CircleCheckBig,
 } from "lucide-react";
 
