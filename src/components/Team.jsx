@@ -141,30 +141,39 @@ const executiveTeam = [
 
 // ================= TEAM MEMBER CARD =================
 
+
 const TeamMemberCard = ({ member, delay }) => {
     return (
         <AnimatePresence mode="wait">
             <motion.div
-                initial={{ opacity: 0, y: 50, rotateY: -30 }}
+                initial={{ opacity: 0, y: 80, rotateY: -45 }}
                 whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ type: "spring", stiffness: 120, damping: 20, delay }}
-                viewport={{ once: true, amount: 0.3 }}
+                exit={{ opacity: 0, y: 80 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 60, // lower = smoother
+                    damping: 18, // higher = less bounce
+                    delay,
+                }}
+                viewport={{ once: true, amount: 0.2 }}
                 className="group relative w-full min-h-[22rem] perspective-1000"
             >
                 {/* Flip container */}
                 <motion.div
                     className="relative w-full h-full"
                     style={{ transformStyle: "preserve-3d" }}
-                    whileHover={{ rotateY: 180, scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 80, damping: 15 }}
+                    whileHover={{ rotateY: 180, scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{
+                        duration: 1.2,
+                        ease: [0.25, 0.8, 0.25, 1], // cubic bezier ease
+                    }}
                 >
                     {/* Front side */}
                     <div
                         className="absolute inset-0 flex flex-col justify-center items-center rounded-xl shadow-xl
                        bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6
-                       transform-gpu hover:shadow-2xl transition-shadow duration-500"
+                       transform-gpu transition-all duration-700 group-hover:shadow-2xl"
                         style={{
                             backfaceVisibility: "hidden",
                             WebkitBackfaceVisibility: "hidden",
@@ -174,8 +183,8 @@ const TeamMemberCard = ({ member, delay }) => {
                             src={member.image}
                             alt={member.name}
                             className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow-lg"
-                            whileHover={{ rotate: [0, 5, -5, 0] }}
-                            transition={{ duration: 0.6 }}
+                            whileHover={{ rotate: [0, 3, -3, 0], scale: 1.1 }}
+                            transition={{ duration: 1.2, ease: "easeInOut" }}
                         />
                         <h3 className="text-lg font-bold text-gray-800 dark:text-white text-center">
                             {member.name}
@@ -203,7 +212,12 @@ const TeamMemberCard = ({ member, delay }) => {
                         </div>
 
                         {/* Social Links */}
-                        <div className="flex justify-center space-x-4 mt-4">
+                        <motion.div
+                            className="flex justify-center space-x-4 mt-4"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: delay + 0.4, duration: 0.8 }}
+                        >
                             {member.socials?.twitter && (
                                 <a
                                     href={member.socials.twitter}
@@ -237,13 +251,14 @@ const TeamMemberCard = ({ member, delay }) => {
                                     <Github className="w-4 h-4" />
                                 </a>
                             )}
-                        </div>
+                        </motion.div>
                     </div>
                 </motion.div>
             </motion.div>
         </AnimatePresence>
     );
 };
+
 
 
 // ================= MAIN TEAM COMPONENT =================
