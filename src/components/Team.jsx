@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+// import { motion,  } from "framer-motion";
 import { Linkedin, Twitter, Github } from "lucide-react";
 
 // ================= LOCAL IMAGES =================
@@ -138,71 +140,111 @@ const executiveTeam = [
 ];
 
 // ================= TEAM MEMBER CARD =================
+
 const TeamMemberCard = ({ member, delay }) => {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50, rotateY: -30 }}
-            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-            transition={{ duration: 0.8, delay }}
-            viewport={{ once: true }}
-            className="group h-80 relative perspective-1000"
-        >
-            {/* Flip container */}
+        <AnimatePresence mode="wait">
             <motion.div
-                className="relative w-full h-full transition-all duration-700 transform-gpu"
-                style={{ transformStyle: "preserve-3d" }}
-                whileHover={{ rotateY: 180 }}
+                initial={{ opacity: 0, y: 50, rotateY: -30 }}
+                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="group relative w-full min-h-[22rem] perspective-1000"
             >
-                {/* Front side */}
-                <div
-                    className="absolute inset-0"
-                    style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                {/* Flip container */}
+                <motion.div
+                    className="relative w-full h-full"
+                    style={{ transformStyle: "preserve-3d" }}
+                    whileHover={{ rotateY: 180, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ type: "spring", stiffness: 80, damping: 15 }}
                 >
-                    <div className="flex flex-col justify-center items-center h-full bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg p-6">
-                        <img
+                    {/* Front side */}
+                    <div
+                        className="absolute inset-0 flex flex-col justify-center items-center rounded-xl shadow-xl
+                       bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6
+                       transform-gpu hover:shadow-2xl transition-shadow duration-500"
+                        style={{
+                            backfaceVisibility: "hidden",
+                            WebkitBackfaceVisibility: "hidden",
+                        }}
+                    >
+                        <motion.img
                             src={member.image}
                             alt={member.name}
-                            className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow"
+                            className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow-lg"
+                            whileHover={{ rotate: [0, 5, -5, 0] }}
+                            transition={{ duration: 0.6 }}
                         />
-                        <h3 className="text-lg font-bold text-gray-800 dark:text-white">{member.name}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">{member.role}</p>
+                        <h3 className="text-lg font-bold text-gray-800 dark:text-white text-center">
+                            {member.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
+                            {member.role}
+                        </p>
                     </div>
-                </div>
 
-                {/* Back side */}
-                <div
-                    className="absolute inset-0"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
-                >
-                    <div className="flex flex-col justify-between h-full bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white rounded-xl shadow-lg p-6">
-                        {/* Scrollable Bio */}
-                        <div className="overflow-y-auto pr-2 custom-scrollbar flex-1">
+                    {/* Back side */}
+                    <div
+                        className="absolute inset-0 flex flex-col rounded-xl shadow-xl
+                       bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white p-6"
+                        style={{
+                            transform: "rotateY(180deg)",
+                            backfaceVisibility: "hidden",
+                            WebkitBackfaceVisibility: "hidden",
+                        }}
+                    >
+                        {/* Scrollable Bio with fade mask */}
+                        <div className="relative flex-1 overflow-y-auto pr-2 custom-scrollbar">
                             <p className="text-sm leading-relaxed">{member.bio}</p>
+                            <div className="absolute bottom-0 left-0 right-0 h-8
+                              bg-gradient-to-t from-purple-700/90 to-transparent pointer-events-none" />
                         </div>
+
                         {/* Social Links */}
                         <div className="flex justify-center space-x-4 mt-4">
                             {member.socials?.twitter && (
-                                <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                <a
+                                    href={member.socials.twitter}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                                >
                                     <Twitter className="w-4 h-4" />
                                 </a>
                             )}
                             {member.socials?.linkedin && (
-                                <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                <a
+                                    href={member.socials.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                                >
                                     <Linkedin className="w-4 h-4" />
                                 </a>
                             )}
                             {member.socials?.github && (
-                                <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30">
+                                <a
+                                    href={member.socials.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                                >
                                     <Github className="w-4 h-4" />
                                 </a>
                             )}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </motion.div>
-        </motion.div>
+        </AnimatePresence>
     );
 };
+
 
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
