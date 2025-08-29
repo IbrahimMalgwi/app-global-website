@@ -39,70 +39,100 @@ const executiveTeam = [
         name: "TOYINBO ABDULJELIL",
         role: "Chief Operating Officer",
         image: member9,
-        bio: "Expertise in ICT, management policy, networking, web development and data analytics with 5+ years of experience.",
+        bio: "his area of expertise and experience cut across Management policy both Human capital and company project managing. I am knowledgeable in ICT as well, which has been relevant for over 5 years. Area of expertise includes Computer Networking, Maintenance, Web Development and Data Analyst among which are; CSS, HTML, and Software such as; Microsoft Suite, Adobe Suite, Dreamweaver (CS3, CS4 and CS5). Power BI\n" +
+            "\n" +
+            "He holds a HND Public Administration (Nuhu Bamali Polytechnic, Zaria) 2012, Diploma in Computer Networking & Maintenance, Diploma in Web Design & Development and Diploma in Data Science & Data Analytics",
         socials: { linkedin: "#" }
     },
     {
         name: "ABDULLAHI YUNUSA",
         role: "Chief Technology Officer",
         image: member1,
-        bio: "Over 8 years of experience in database management, programming, and ICT solutions delivery.",
+        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.  and his area of expertise is Database Management. He has been delivering ICT solutions to several organizations for over 8 years.\n" +
+            "\n" +
+            "His area of expertise includes Computing and Programming Languages, among which are; Oracle APEX, C++, PHP, CSS, HTML, and Java Script and Software such as; Microsoft Suite, Adobe Suite, Dreamweaver (CS3, CS4 and CS5), and MySQL\n" +
+            "He holds HND in Computer Science (Kaduna Polytechnic), 2018",
         socials: { linkedin: "#" }
     },
     {
         name: "UMAR AMINU",
         role: "Business Analyst",
         image: member2,
-        bio: "Experienced Business Analyst with expertise in Database Management and ICT solutions.",
+        bio: "His area of expertise is Database Management. He has been delivering ICT solutions to several organizations for over 8 years.\n" +
+            "\n" +
+            "He holds a B. Tech in Computer Science from ATBU, Bauchi and PGD in Computer Science from Bayero University Kano.",
         socials: { linkedin: "#" }
     },
     {
         name: "SAMUEL AYODELE BELLO",
         role: "Business Support Lead",
         image: member4,
-        bio: "8+ years of project management in software application deployment, Agile & AI prompt engineering.",
+        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.\n" +
+            "\n" +
+            "His area of expertise and experience in Project Manager for 8 years and has managed several projects on Software Applications Development and Deployment for both government and private sectors. \n" +
+            "With adequate experience in the application of both Waterfall and Agile Project Management methodologies, Business Analysis, Scrum Master, Product Management, Data Analytics, and AI Prompt Engineering.\n" +
+            "He Holds MBA in Project Management (ACU), BSc. Ed. Human Kinetics (UNILORIN), National Diploma in Accounting (NASPOLY)",
         socials: { linkedin: "#" }
     },
     {
         name: "MOMODU ISAH MOHAMMED",
         role: "Business Support Lead",
         image: member5,
-        bio: "18 years of ICT experience in telecoms networking, power and fiber optics.",
+        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.\n" +
+            "His area of expertise includes ICT for over 18 years with core experience on telecoms Networking, power, fiber optics amongst others. He has executed several projects on telecoms & Automation for both Banks, government and private sectors\n" +
+            "He Holds HND. Mechanical Engineering (Power/Plant Option) from Federal Polytechnic Kaduna.\n" +
+            "Oracle Certify OCA&OCP 10g database, Digital marketing Skill, PGD-Mechatronic Engineering",
+        socials: { linkedin: "#" }
+    },
+    {
+        name: "Adetunji Adeboyin Motunrayo ",
+        role: "Chief Financial Officer",
+        image: member6,
+        bio: "she has worked as an financial Manager with over 5 years’ experience.\n" +
+            "\n" +
+            "Her area of expertise includes in the financial sector as an Accountant for over 5 years with core experience in reconciliation of financial statement, Coordinating all forms of taxes both state and federal level, Monthly presentation of financial report, salary payment\n" +
+            "She Holds BSC. Accounting (National Open University of Nigeria)",
         socials: { linkedin: "#" }
     },
     {
         name: "IBRAHIM GANA MALGWI",
         role: "Software Engineer",
         image: member6,
-        bio: "Engineer specialized in Java, Python, PL/SQL, Cloud Engineering and DevOps automation.",
+        bio: "A Software Engineer with strong expertise in Java, Python, PL/SQL, and Cloud Engineering, with a dynamic career built across the Technology and Enterprise Solutions sectors. He has contributed to key engineering roles at Semicolon Africa and currently at AppGlobal Technologies, where he is involved in designing and deploying scalable software systems.\n" +
+            "\n" +
+            "He holds a proven track record in developing robust applications, managing cloud infrastructure, and integrating enterprise-level platforms. His focus on performance, security, and innovation supports the company’s mission to deliver cutting-edge digital solutions.",
         socials: { linkedin: "#" }
     },
     {
         name: "OJETOKUN VICTOR",
         role: "DevSecOps Engineer",
         image: member7,
-        bio: "Focus on healthcare IT, AWS certified, Kubernetes specialist.",
+        bio: "Machine Integration and DevSecOps Engineer with a focus on bridging healthcare and enterprise IT through secure, scalable systems. He holds certifications as an AWS Cloud Practitioner and Kubernetes & Cloud Native Associate, applying his expertise in cloud-native architectures, container orchestration, CI/CD pipelines, and healthcare data interoperability. At App Global Technologies Ltd, he has led the successful deployment and integration of PACS and LIS systems across key medical institutions in Nigeria, enhancing medical imaging and laboratory workflows through secure and automated infrastructure.",
         socials: { linkedin: "#" }
     },
     {
         name: "Yusuff Saliu Adediran",
         role: "Chief Technology Office",
         image: member3,
-        bio: "Engineer contributing to strategic innovation and compliance excellence.",
+        bio: " seasoned technology executive with over 10 years of experience in the fintech industry. Currently serving as the Chief Technology Officer (CTO) in AppGlobal Payment Limited Lagos, Nigeria, he leads cross-functional teams in delivering secure, scalable, and customer-focused digital financial solutions.\n" +
+            "With a solid foundation in Java, PL/SQL, Spring Boot, and REST APIs, Yusuff specializes in building high-performance backend systems and enterprise-grade architectures. His hands-on leadership style bridges technical vision with strategic execution, enabling product innovation and business growth.",
         socials: { linkedin: "#" }
     },
     {
         name: "Temitope Fatoba",
         role: "Head, Business Support",
         image: member5,
-        bio: "Engineer with growing expertise in enterprise IT solutions and governance.",
+        bio: "result-driven, innovative, and detail-oriented professional with over a decade of experience in the financial services industry, working with international and Tier 1 commercial banks in Nigeria. \n" +
+            "Temitope is skilled at building and maintaining strong client relationships, as well as leading cross-functional teams to enhance operational efficiency and client satisfaction. \n" +
+            "Temitope has consistently demonstrated leadership, managing high-performing teams, achieving top regulatory audit ratings, and significantly growing customer bases. His experience spans roles from General Transactions Officer and Clearing Representative to Assistant Branch Manager and Branch Manager, as well as consultancy positions where he provided financial advisory services and conducted operational audits. His career accomplishments reflect his commitment to excellence. \n" +
+            "He holds a Master of Business Administration (MBA) from the Lagos Business School, Pan-Atlantic University, and a Bachelor of Science in Biochemistry from Olabisi Onabanjo University. Additionally, Temitope also has intermediate proficiency in French.",
         socials: { linkedin: "#" }
     },
     {
         name: "Taiwo Olaogun",
         role: "Chief Financial Officer (CFO)",
         image: member4,
-        bio: "Engineer with growing expertise in enterprise IT solutions and governance.",
+        bio: "An Accountant, A Tax consultant and, An Internal control and compliance manager with a distinguish career earned from the industry of Entertainment, Logistics and Construction. She led senior positions in Feminik Logistics Limited and Toro entertainment Company. She holds a bachelor of science degree in Accounting and Finance from the University of Bestower International, Benin; Higher National diploma in Accounting from Yaba college of Technology, and she is a member of The institute of chartered accountants of Nigeria (ICAN), a member of the Corporate Finance Institutite(CFI), and a member of Chartered Institute of Taxation of Nigeria (CITN).",
         socials: { linkedin: "#" }
     }
 ];
