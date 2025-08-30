@@ -7,7 +7,7 @@ import { Linkedin, Twitter, Github } from "lucide-react";
 import ceoImage from "../assets/images/ceo.jpeg";
 import member1 from "../assets/images/abdul.png";
 import member2 from "../assets/images/umar.png";
-import member3 from "../assets/images/yusuf.png";
+import member3 from "../assets/images/yusuf.jpeg";
 import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/adeboyin.png";
