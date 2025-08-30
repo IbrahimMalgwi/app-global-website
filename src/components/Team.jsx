@@ -1,6 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
-
-// import { motion,  } from "framer-motion";
+import { motion } from "framer-motion";
 import { Linkedin, Twitter, Github } from "lucide-react";
 
 // ================= LOCAL IMAGES =================
@@ -50,7 +48,7 @@ const executiveTeam = [
         name: "ABDULLAHI YUNUSA",
         role: "Chief Technology Officer",
         image: member1,
-        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.  and his area of expertise is Database Management. He has been delivering ICT solutions to several organizations for over 8 years.\n" +
+        bio: "He has worked as an IT Manager with over 5 years' experience in ICT field.  and his area of expertise is Database Management. He has been delivering ICT solutions to several organizations for over 8 years.\n" +
             "\n" +
             "His area of expertise includes Computing and Programming Languages, among which are; Oracle APEX, C++, PHP, CSS, HTML, and Java Script and Software such as; Microsoft Suite, Adobe Suite, Dreamweaver (CS3, CS4 and CS5), and MySQL\n" +
             "He holds HND in Computer Science (Kaduna Polytechnic), 2018",
@@ -69,7 +67,7 @@ const executiveTeam = [
         name: "SAMUEL AYODELE BELLO",
         role: "Business Support Lead",
         image: member4,
-        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.\n" +
+        bio: "He has worked as an IT Manager with over 5 years' experience in ICT field.\n" +
             "\n" +
             "His area of expertise and experience in Project Manager for 8 years and has managed several projects on Software Applications Development and Deployment for both government and private sectors. \n" +
             "With adequate experience in the application of both Waterfall and Agile Project Management methodologies, Business Analysis, Scrum Master, Product Management, Data Analytics, and AI Prompt Engineering.\n" +
@@ -80,7 +78,7 @@ const executiveTeam = [
         name: "MOMODU ISAH MOHAMMED",
         role: "Business Support Lead",
         image: member5,
-        bio: "He has worked as an IT Manager with over 5 years’ experience in ICT field.\n" +
+        bio: "He has worked as an IT Manager with over 5 years' experience in ICT field.\n" +
             "His area of expertise includes ICT for over 18 years with core experience on telecoms Networking, power, fiber optics amongst others. He has executed several projects on telecoms & Automation for both Banks, government and private sectors\n" +
             "He Holds HND. Mechanical Engineering (Power/Plant Option) from Federal Polytechnic Kaduna.\n" +
             "Oracle Certify OCA&OCP 10g database, Digital marketing Skill, PGD-Mechatronic Engineering",
@@ -90,7 +88,7 @@ const executiveTeam = [
         name: "Adetunji Adeboyin Motunrayo ",
         role: "Chief Financial Officer",
         image: member6,
-        bio: "she has worked as an financial Manager with over 5 years’ experience.\n" +
+        bio: "she has worked as an financial Manager with over 5 years' experience.\n" +
             "\n" +
             "Her area of expertise includes in the financial sector as an Accountant for over 5 years with core experience in reconciliation of financial statement, Coordinating all forms of taxes both state and federal level, Monthly presentation of financial report, salary payment\n" +
             "She Holds BSC. Accounting (National Open University of Nigeria)",
@@ -102,7 +100,7 @@ const executiveTeam = [
         image: member7,
         bio: "A Software Engineer with strong expertise in Java, Python, PL/SQL, and Cloud Engineering, with a dynamic career built across the Technology and Enterprise Solutions sectors. He has contributed to key engineering roles at Semicolon Africa and currently at AppGlobal Technologies, where he is involved in designing and deploying scalable software systems.\n" +
             "\n" +
-            "He holds a proven track record in developing robust applications, managing cloud infrastructure, and integrating enterprise-level platforms. His focus on performance, security, and innovation supports the company’s mission to deliver cutting-edge digital solutions.",
+            "He holds a proven track record in developing robust applications, managing cloud infrastructure, and integrating enterprise-level platforms. His focus on performance, security, and innovation supports the company's mission to deliver cutting-edge digital solutions.",
         socials: { linkedin: "#" }
     },
     {
@@ -127,7 +125,7 @@ const executiveTeam = [
         bio: "result-driven, innovative, and detail-oriented professional with over a decade of experience in the financial services industry, working with international and Tier 1 commercial banks in Nigeria. \n" +
             "Temitope is skilled at building and maintaining strong client relationships, as well as leading cross-functional teams to enhance operational efficiency and client satisfaction. \n" +
             "Temitope has consistently demonstrated leadership, managing high-performing teams, achieving top regulatory audit ratings, and significantly growing customer bases. His experience spans roles from General Transactions Officer and Clearing Representative to Assistant Branch Manager and Branch Manager, as well as consultancy positions where he provided financial advisory services and conducted operational audits. His career accomplishments reflect his commitment to excellence. \n" +
-            "He holds a Master of Business Administration (MBA) from the Lagos Business School, Pan-Atlantic University, and a Bachelor of Science in Biochemistry from Olabisi Onabanjo University. Additionally, Temitope also has intermediate proficiency in French.",
+            "He holds a Master of Business Administration (MBA) from the Lagos Business School, Pan-Atlantic University, and a Bachelor of Science in Biochemistry from Olabisi Onabanjo University. Additionally, Temitope also has intermediate proficiency in French.",
         socials: { linkedin: "#" }
     },
     {
@@ -140,126 +138,118 @@ const executiveTeam = [
 ];
 
 // ================= TEAM MEMBER CARD =================
-
-
 const TeamMemberCard = ({ member, delay }) => {
     return (
-        <AnimatePresence mode="wait">
+        <motion.div
+            initial={{ opacity: 0, y: 80, rotateY: -15 }}
+            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+            transition={{
+                type: "spring",
+                stiffness: 60,
+                damping: 18,
+                delay,
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="group relative w-full min-h-[22rem] perspective-1000"
+        >
+            {/* Flip container */}
             <motion.div
-                initial={{ opacity: 0, y: 80, rotateY: -45 }}
-                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                exit={{ opacity: 0, y: 80 }}
+                className="relative w-full h-full"
+                style={{ transformStyle: "preserve-3d" }}
+                whileHover={{ rotateY: 180 }}
                 transition={{
-                    type: "spring",
-                    stiffness: 60, // lower = smoother
-                    damping: 18, // higher = less bounce
-                    delay,
+                    duration: 0.8,
+                    ease: "easeInOut"
                 }}
-                viewport={{ once: true, amount: 0.2 }}
-                className="group relative w-full min-h-[22rem] perspective-1000"
             >
-                {/* Flip container */}
-                <motion.div
-                    className="relative w-full h-full"
-                    style={{ transformStyle: "preserve-3d" }}
-                    whileHover={{ rotateY: 180, scale: 1.05 }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{
-                        duration: 1.2,
-                        ease: [0.25, 0.8, 0.25, 1], // cubic bezier ease
+                {/* Front side */}
+                <div
+                    className="absolute inset-0 flex flex-col justify-center items-center rounded-xl shadow-xl
+                       bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6
+                       transform-gpu transition-all duration-300 group-hover:shadow-2xl"
+                    style={{
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
                     }}
                 >
-                    {/* Front side */}
-                    <div
-                        className="absolute inset-0 flex flex-col justify-center items-center rounded-xl shadow-xl
-                       bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6
-                       transform-gpu transition-all duration-700 group-hover:shadow-2xl"
-                        style={{
-                            backfaceVisibility: "hidden",
-                            WebkitBackfaceVisibility: "hidden",
-                        }}
-                    >
-                        <motion.img
-                            src={member.image}
-                            alt={member.name}
-                            className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow-lg"
-                            whileHover={{ rotate: [0, 3, -3, 0], scale: 1.1 }}
-                            transition={{ duration: 1.2, ease: "easeInOut" }}
-                        />
-                        <h3 className="text-lg font-bold text-gray-800 dark:text-white text-center">
-                            {member.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
-                            {member.role}
-                        </p>
-                    </div>
+                    <motion.img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow-lg"
+                        whileHover={{ rotate: [0, 3, -3, 0], scale: 1.05 }}
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                    />
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white text-center">
+                        {member.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
+                        {member.role}
+                    </p>
+                </div>
 
-                    {/* Back side */}
-                    <div
-                        className="absolute inset-0 flex flex-col rounded-xl shadow-xl
-                       bg-gradient-to-br from-blue-600 via-violet-600 to-purple-700 text-white p-6"
-                        style={{
-                            transform: "rotateY(180deg)",
-                            backfaceVisibility: "hidden",
-                            WebkitBackfaceVisibility: "hidden",
-                        }}
-                    >
-                        {/* Scrollable Bio with fade mask */}
-                        <div className="relative flex-1 overflow-y-auto pr-2 custom-scrollbar">
-                            <p className="text-sm leading-relaxed">{member.bio}</p>
-                            <div className="absolute bottom-0 left-0 right-0 h-8
+                {/* Back side */}
+                <div
+                    className="absolute inset-0 flex flex-col rounded-xl shadow-xl
+                       bg-gradient-to-bl from-purple-700 via-violet-600 to-blue-600 text-white p-6"
+                    style={{
+                        transform: "rotateY(180deg)",
+                        backfaceVisibility: "hidden",
+                        WebkitBackfaceVisibility: "hidden",
+                    }}
+                >
+                    {/* Scrollable Bio with fade mask */}
+                    <div className="relative flex-1 overflow-y-auto pr-2 custom-scrollbar">
+                        <p className="text-sm leading-relaxed">{member.bio}</p>
+                        <div className="absolute bottom-0 left-0 right-0 h-8
                               bg-gradient-to-t from-purple-700/90 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Social Links */}
-                        <motion.div
-                            className="flex justify-center space-x-4 mt-4"
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: delay + 0.4, duration: 0.8 }}
-                        >
-                            {member.socials?.twitter && (
-                                <a
-                                    href={member.socials.twitter}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
-                             hover:bg-white/30 transition-colors"
-                                >
-                                    <Twitter className="w-4 h-4" />
-                                </a>
-                            )}
-                            {member.socials?.linkedin && (
-                                <a
-                                    href={member.socials.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
-                             hover:bg-white/30 transition-colors"
-                                >
-                                    <Linkedin className="w-4 h-4" />
-                                </a>
-                            )}
-                            {member.socials?.github && (
-                                <a
-                                    href={member.socials.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
-                             hover:bg-white/30 transition-colors"
-                                >
-                                    <Github className="w-4 h-4" />
-                                </a>
-                            )}
-                        </motion.div>
                     </div>
-                </motion.div>
+
+                    {/* Social Links */}
+                    <motion.div
+                        className="flex justify-center space-x-4 mt-4"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: delay + 0.4, duration: 0.8 }}
+                    >
+                        {member.socials?.twitter && (
+                            <a
+                                href={member.socials.twitter}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                            >
+                                <Twitter className="w-4 h-4" />
+                            </a>
+                        )}
+                        {member.socials?.linkedin && (
+                            <a
+                                href={member.socials.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                            >
+                                <Linkedin className="w-4 h-4" />
+                            </a>
+                        )}
+                        {member.socials?.github && (
+                            <a
+                                href={member.socials.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center
+                             hover:bg-white/30 transition-colors"
+                            >
+                                <Github className="w-4 h-4" />
+                            </a>
+                        )}
+                    </motion.div>
+                </div>
             </motion.div>
-        </AnimatePresence>
+        </motion.div>
     );
 };
-
-
 
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
