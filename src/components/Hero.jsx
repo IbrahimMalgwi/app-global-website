@@ -109,10 +109,9 @@ export default function Hero() {
                 </AnimatePresence>
 
                 {/* Logos with floating animation */}
-                {/* Logos with floating animation */}
                 <div
-                    className="flex flex-wrap justify-center gap-14 mt-44"
-                    onMouseLeave={() => setHoveredCompany(null)}   // 👈 resets on leaving container
+                    className="flex flex-wrap justify-center gap-10 mt-32 md:mt-44"
+                    onMouseLeave={() => setHoveredCompany(null)} // reset when leaving container
                 >
                     {companies.map((company, index) => (
                         <motion.div
@@ -126,9 +125,9 @@ export default function Hero() {
                             onClick={() => window.open(company.link, "_blank")}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{
-                                opacity: 1,
-                                y: [0, -6, 0, 6, 0],
-                                rotate: [0, 2, 0, -2, 0],
+                                opacity: 1, // ✅ always visible
+                                y: [0, -6, 0, 6, 0], // floating
+                                rotate: [0, 2, 0, -2, 0], // tilt
                             }}
                             transition={{
                                 duration: 6,
@@ -137,27 +136,21 @@ export default function Hero() {
                                 delay: index * 0.5,
                             }}
                             whileHover={{
-                                scale: 1.2,
+                                scale: 1.15,
                                 rotate: 5,
                                 boxShadow: "0px 0px 40px rgba(255,255,255,0.8)",
                             }}
                             whileTap={{ scale: 0.95, rotate: -2 }}
                         >
-                            <motion.img
+                            <img
                                 src={company.logo}
                                 alt={company.name}
-                                className="h-16 w-auto object-contain mx-auto"
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{
-                                    duration: 4,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: index * 0.6,
-                                }}
+                                className="h-10 md:h-14 lg:h-16 w-auto object-contain mx-auto" // ✅ responsive sizes
                             />
                         </motion.div>
                     ))}
                 </div>
+
 
             </div>
         </section>
