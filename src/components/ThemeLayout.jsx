@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function ThemeLayout({ children }: { children: React.ReactNode }) {
+export default function ThemeLayout({ children }) {
+    // Base particle positions
     const particles = [
         { left: "90.96%", top: "73.75%" },
         { left: "14.26%", top: "3.66%" },
@@ -25,6 +26,14 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
         { left: "60.86%", top: "31.76%" },
     ];
 
+    // Possible color variations
+    const colors = [
+        "from-blue-400 to-violet-400",
+        "from-teal-400 to-blue-400",
+        "from-purple-400 to-pink-400",
+        "from-green-400 to-teal-400",
+    ];
+
     return (
         <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
             {/* Gradient background */}
@@ -34,59 +43,37 @@ export default function ThemeLayout({ children }: { children: React.ReactNode })
 
             {/* Floating Particles */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
-                {particles.map((dot, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-violet-400 rounded-full opacity-30"
-                        style={{ left: dot.left, top: dot.top }}
-                        animate={{
-                            y: [0, -10, 0],
-                            opacity: [0.2, 0.5, 0.2],
-                        }}
-                        transition={{
-                            duration: 6,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: i * 0.3,
-                        }}
-                    />
-                ))}
-            </div>
+                {particles.map((dot, i) => {
+                    // Randomize size (small, medium, large)
+                    const size = `${Math.floor(Math.random() * 6) + 3}px`; // 3px – 8px
+                    // Random color
+                    const color = colors[Math.floor(Math.random() * colors.length)];
 
-            {/* Floating Action Buttons */}
-            <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
-                <button
-                    aria-label="Chat with support"
-                    className="w-14 h-14 rounded-full bg-green-500 hover:bg-green-600 shadow-lg flex items-center justify-center"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                    >
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2..." />
-                    </svg>
-                </button>
-
-                <button
-                    aria-label="Open dashboard"
-                    className="w-14 h-14 rounded-full bg-violet-500 hover:bg-violet-600 shadow-lg flex items-center justify-center"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                    >
-                        <rect width="16" height="12" x="4" y="8" rx="2" />
-                        <path d="M12 8V4H8" />
-                    </svg>
-                </button>
+                    return (
+                        <motion.div
+                            key={i}
+                            className={`absolute rounded-full opacity-40 bg-gradient-to-r ${color}`}
+                            style={{
+                                left: dot.left,
+                                top: dot.top,
+                                width: size,
+                                height: size,
+                            }}
+                            animate={{
+                                y: [0, -15, 10, 0],  // float up/down
+                                x: [0, 8, -8, 0],    // gentle side sway
+                                scale: [1, 1.4, 1],  // pulsing
+                                opacity: [0.2, 0.7, 0.3, 0.6], // twinkle
+                            }}
+                            transition={{
+                                duration: 6 + Math.random() * 6, // 6–12s per loop
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: i * 0.3,
+                            }}
+                        />
+                    );
+                })}
             </div>
 
             {/* Page content */}
