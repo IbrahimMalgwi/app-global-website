@@ -36,7 +36,7 @@ export default function Hero() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [hoveredCompany, setHoveredCompany] = useState(null);
 
-    // ⏳ Auto-scroll tagline (stops when hovering)
+    // ⏳ Auto-scroll tagline
     useEffect(() => {
         if (hoveredCompany !== null) return;
         const interval = setInterval(() => {
@@ -67,7 +67,6 @@ export default function Hero() {
             <div className="relative z-10 text-center px-6 max-w-5xl">
                 <AnimatePresence mode="wait">
                     {hoveredCompany === null ? (
-                        // 👇 Default Welcome Section
                         <motion.div
                             key="welcome"
                             initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -91,7 +90,6 @@ export default function Hero() {
                             </motion.p>
                         </motion.div>
                     ) : (
-                        // 👇 On Hover - Company Info Section
                         <motion.div
                             key="hovered"
                             initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -110,40 +108,57 @@ export default function Hero() {
                     )}
                 </AnimatePresence>
 
-                {/* Logos */}
-                <div className="flex flex-wrap justify-center gap-14 mt-44">
+                {/* Logos with floating animation */}
+                {/* Logos with floating animation */}
+                <div
+                    className="flex flex-wrap justify-center gap-14 mt-44"
+                    onMouseLeave={() => setHoveredCompany(null)}   // 👈 resets on leaving container
+                >
                     {companies.map((company, index) => (
                         <motion.div
                             key={company.name}
-                            className="cursor-pointer p-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-lg shadow-lg"
+                            className={`cursor-pointer p-4 rounded-xl backdrop-blur-lg shadow-lg transition-all ${
+                                hoveredCompany === index
+                                    ? "bg-white/20 ring-2 ring-blue-400"
+                                    : "bg-white/10 hover:bg-white/20"
+                            }`}
                             onMouseEnter={() => setHoveredCompany(index)}
-                            onMouseLeave={() => setHoveredCompany(null)}
                             onClick={() => window.open(company.link, "_blank")}
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            animate={{
+                                opacity: 1,
+                                y: [0, -6, 0, 6, 0],
+                                rotate: [0, 2, 0, -2, 0],
+                            }}
+                            transition={{
+                                duration: 6,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: index * 0.5,
+                            }}
                             whileHover={{
-                                scale: 1.15,
+                                scale: 1.2,
                                 rotate: 5,
-                                boxShadow: "0px 0px 30px rgba(255,255,255,0.6)",
+                                boxShadow: "0px 0px 40px rgba(255,255,255,0.8)",
                             }}
                             whileTap={{ scale: 0.95, rotate: -2 }}
                         >
                             <motion.img
                                 src={company.logo}
                                 alt={company.name}
-                                className="h-14 w-auto object-contain mx-auto"
-                                animate={{ opacity: [0.9, 1, 0.9] }}
+                                className="h-16 w-auto object-contain mx-auto"
+                                animate={{ scale: [1, 1.05, 1] }}
                                 transition={{
-                                    duration: 2,
+                                    duration: 4,
                                     repeat: Infinity,
                                     ease: "easeInOut",
-                                    delay: index * 0.3,
+                                    delay: index * 0.6,
                                 }}
                             />
                         </motion.div>
                     ))}
                 </div>
+
             </div>
         </section>
     );
