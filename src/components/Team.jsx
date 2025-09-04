@@ -11,6 +11,7 @@ import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/adeboyin.png";
 import member7 from "../assets/images/ibrahim.jpg";
+import member8 from "../assets/images/ibrahim.jpg"; // ✅ new unique image
 import member9 from "../assets/images/team.png";
 
 // ================= CEO DATA =================
@@ -29,7 +30,7 @@ const ceo = {
   an International Advanced Diploma in Computing.`,
     socials: {
         linkedin: "https://linkedin.com/in/habib-yunusa",
-    }
+    },
 };
 
 // ================= EXECUTIVE TEAM DATA =================
@@ -39,78 +40,78 @@ const executiveTeam = [
         role: "Chief Operating Officer",
         image: member9,
         bio: "Expertise in Management policy, Human capital, and project management. 5+ years in ICT including Networking, Web Development, and Data Analytics.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "ABDULLAHI YUNUSA",
         role: "Chief Technology Officer",
         image: member1,
         bio: "IT Manager with 5+ years experience. Expertise in Database Management and various programming languages.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "UMAR AMINU",
         role: "Business Analyst",
         image: member2,
         bio: "Database Management expert with 8+ years delivering ICT solutions to organizations.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "SAMUEL AYODELE BELLO",
-        role: "Business Support Lead",
+        role: "Project Manager",
         image: member4,
         bio: "IT Manager with 5+ years experience. Project Manager for 8 years managing software development projects.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "MOMODU ISAH MOHAMMED",
-        role: "Business Support Lead",
+        role: "Telecoms Lead",
         image: member5,
-        bio: "IT Manager with 5+ years experience. 18+ years in telecoms Networking, power, and fiber optics.",
-        socials: { linkedin: "#" }
+        bio: "18+ years in telecoms Networking, power, and fiber optics. Strong background in IT systems and infrastructure.",
+        socials: { linkedin: "#" },
     },
     {
-        name: "Adetunji Adeboyin Motunrayo",
+        name: "ADETUNJI ADEBOYIN MOTUNRAYO",
         role: "Chief Financial Officer",
         image: member6,
         bio: "Financial Manager with 5+ years experience. Expertise in accounting, tax coordination, and financial reporting.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "IBRAHIM GANA MALGWI",
         role: "Software Engineer",
         image: member7,
         bio: "Software Engineer with expertise in Java, Python, PL/SQL, and Cloud Engineering.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
         name: "OJETOKUN VICTOR",
         role: "DevSecOps Engineer",
-        image: member7, // Note: Duplicate image with IBRAHIM GANA MALGWI
+        image: member8, // ✅ fixed duplicate
         bio: "Machine Integration and DevSecOps Engineer with focus on healthcare and enterprise IT systems.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
-        name: "Yusuff Saliu Adediran",
-        role: "Chief Technology Officer",
+        name: "YUSUFF SALIU ADEDIRAN",
+        role: "Chief Technology Strategist",
         image: member3,
         bio: "Seasoned technology executive with 10+ years in fintech industry. Expertise in Java, PL/SQL, and REST APIs.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
-        name: "Temitope Fatoba",
+        name: "TEMITOPE FATOBA",
         role: "Head, Business Support",
-        image: member5, // Note: Duplicate image with MOMODU ISAH MOHAMMED
+        image: member5,
         bio: "Financial services professional with 10+ years experience in international and commercial banks.",
-        socials: { linkedin: "#" }
+        socials: { linkedin: "#" },
     },
     {
-        name: "Taiwo Olaogun",
-        role: "Chief Financial Officer",
-        image: member4, // Note: Duplicate image with SAMUEL AYODELE BELLO
+        name: "TAIWO OLAOGUN",
+        role: "Finance & Internal Controls",
+        image: member4,
         bio: "Accountant, Tax consultant, and Internal control manager with experience across multiple industries.",
-        socials: { linkedin: "#" }
-    }
+        socials: { linkedin: "#" },
+    },
 ];
 
 // ================= TEAM MEMBER CARD WITH FLIP =================
@@ -168,26 +169,26 @@ const TeamMemberCard = ({ member, delay }) => {
     );
 };
 
-
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
     const [showFullBio, setShowFullBio] = useState(false);
-    const shortBio = ceo.bio.split('\n\n')[0]; // First paragraph only
+    const shortBio = ceo.bio.split("\n\n")[0]; // First paragraph only
 
-    // Memoize team members to prevent unnecessary re-renders
-    const teamMembers = useMemo(() =>
+    const teamMembers = useMemo(
+        () =>
             executiveTeam.map((member, i) => (
                 <TeamMemberCard key={i} member={member} delay={i * 0.1} />
             )),
-        []);
+        []
+    );
 
     return (
         <>
-            {/* CEO Hero Section with Dark Background */}
+            {/* CEO Hero Section */}
             <section id="team" className="relative py-20 md:py-32 bg-gray-900">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        {/* Left: CEO Image - Larger */}
+                        {/* CEO Image */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -202,7 +203,7 @@ export default function Team() {
                             />
                         </motion.div>
 
-                        {/* Right: CEO Bio */}
+                        {/* CEO Bio */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -219,15 +220,19 @@ export default function Team() {
                             <hr className="max-w-md h-px bg-white/40 mb-8" />
 
                             <div className="space-y-4 mb-8">
-                                {showFullBio ? (
-                                    ceo.bio.split('\n\n').map((paragraph, index) => (
-                                        <p key={index} className="text-base md:text-lg leading-relaxed">
-                                            {paragraph}
+                                {showFullBio
+                                    ? ceo.bio
+                                        .split("\n\n")
+                                        .map((p, i) => (
+                                            <p key={i} className="text-base md:text-lg leading-relaxed">
+                                                {p}
+                                            </p>
+                                        ))
+                                    : (
+                                        <p className="text-base md:text-lg leading-relaxed">
+                                            {shortBio}
                                         </p>
-                                    ))
-                                ) : (
-                                    <p className="text-base md:text-lg leading-relaxed">{shortBio}</p>
-                                )}
+                                    )}
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 items-start">
@@ -276,35 +281,6 @@ export default function Team() {
                     </div>
                 </div>
             </section>
-
-            {/* Custom Styles */}
-            <style jsx global>{`
-                .perspective-1000 {
-                    perspective: 1000px;
-                }
-                .preserve-3d {
-                    transform-style: preserve-3d;
-                }
-                .backface-hidden {
-                    backface-visibility: hidden;
-                    -webkit-backface-visibility: hidden;
-                }
-                .flip-side {
-                    transform: rotateY(180deg);
-                }
-                
-                /* Mobile responsiveness improvements */
-                @media (max-width: 640px) {
-                    .container {
-                        padding-left: 1rem;
-                        padding-right: 1rem;
-                    }
-                    
-                    .h-80 {
-                        height: 20rem;
-                    }
-                }
-            `}</style>
         </>
     );
 }

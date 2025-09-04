@@ -30,5 +30,28 @@ export default {
         },
     },
     darkMode: "class",
-    plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/typography"),
+        require("@tailwindcss/forms"),
+
+        // ✅ Custom utilities plugin
+        function ({ addUtilities }) {
+            const newUtilities = {
+                ".perspective-1000": {
+                    perspective: "1000px",
+                },
+                ".preserve-3d": {
+                    "transform-style": "preserve-3d",
+                },
+                ".backface-hidden": {
+                    "backface-visibility": "hidden",
+                    "-webkit-backface-visibility": "hidden",
+                },
+                ".flip-side": {
+                    transform: "rotateY(180deg)",
+                },
+            };
+            addUtilities(newUtilities, ["responsive", "hover"]);
+        },
+    ],
 };
