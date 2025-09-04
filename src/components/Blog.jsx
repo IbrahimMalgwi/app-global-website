@@ -2,71 +2,70 @@ import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { useState } from "react";
 
-export default function Blog() {
+export default function Newsletter() {
     const [email, setEmail] = useState("");
+    const [isSubscribed, setIsSubscribed] = useState(false);
 
     const handleSubscribe = (e: React.FormEvent) => {
         e.preventDefault();
-        // 👉 Add your newsletter API integration here
         console.log("Subscribed with:", email);
+        setIsSubscribed(true);
         setEmail("");
+
+        setTimeout(() => setIsSubscribed(false), 3000);
     };
 
     return (
-        <section className="py-20 bg-gradient-to-br from-blue-600 to-violet-600 relative overflow-hidden">
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/10"></div>
-
-            <div className="container mx-auto px-6 relative z-10">
+        <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+            <div className="container mx-auto px-4">
                 {/* Heading */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
-                >
-                    <h2 className="text-5xl font-bold mb-6 text-white">Stay Updated</h2>
-                    <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-                        Subscribe to our newsletter for the latest updates on digital
-                        healthcare, fintech innovations, and sustainable energy solutions
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Stay Updated
+                    </h2>
+                    <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+                        Get the latest news on digital healthcare, fintech innovations, and sustainable energy solutions
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Newsletter Form */}
-                <motion.form
-                    onSubmit={handleSubscribe}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="max-w-2xl mx-auto"
-                >
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            placeholder="Enter your email address"
-                            className="flex h-10 w-full rounded-md border px-3 py-2 text-base ring-offset-background
-                file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-                disabled:cursor-not-allowed disabled:opacity-50 md:text-sm flex-1
-                bg-white/10 border-white/20 text-white placeholder:text-blue-200 focus:bg-white/20"
-                        />
-                        <button
-                            type="submit"
-                            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium
-                ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2
-                focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50
-                h-10 py-2 bg-white text-blue-600 hover:bg-blue-50 px-8"
-                        >
-                            Subscribe
-                            <Send className="ml-2 w-4 h-4" />
-                        </button>
-                    </div>
-                </motion.form>
+                <div className="max-w-md mx-auto">
+                    {isSubscribed ? (
+                        <div className="text-center p-6 bg-white/10 rounded-lg backdrop-blur-sm">
+                            <div className="w-12 h-12 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <p className="text-white font-medium">Thank you for subscribing!</p>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubscribe} className="flex gap-3">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                placeholder="Enter your email"
+                                className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-blue-200
+                         focus:outline-none focus:ring-2 focus:ring-white/30"
+                            />
+                            <button
+                                type="submit"
+                                className="px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50
+                         transition-colors duration-200 flex items-center gap-2 whitespace-nowrap"
+                            >
+                                Subscribe
+                                <Send className="w-4 h-4" />
+                            </button>
+                        </form>
+                    )}
+                </div>
+
+                {/* Privacy Note */}
+                <p className="text-blue-200/80 text-sm text-center mt-4">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
             </div>
         </section>
     );
