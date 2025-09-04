@@ -7,7 +7,7 @@ export default function Navbar() {
     const { theme, toggleTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
 
-    const links = ["about", "services", "blog", "team", "partners", "contact"];
+    const links = ["Home","about", "services", "blog", "team", "partners", "contact"];
 
     return (
         <div className="bg-white dark:bg-gray-900 relative overflow-hidden">

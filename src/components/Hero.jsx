@@ -69,7 +69,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <section id="Home"  className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full">
                 <video
