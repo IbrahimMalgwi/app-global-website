@@ -154,7 +154,7 @@ const About = () => {
                             className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-4 shadow-xl border border-gray-100 dark:border-gray-700"
                         >
                             <div className="text-center">
-                                <div className="text-2xl font-bold text-blue-600">10+</div>
+                                <div className="text-2xl font-bold text-blue-600">15+</div>
                                 <div className="text-sm text-gray-600 dark:text-gray-300">Years Experience</div>
                             </div>
                         </motion.div>
