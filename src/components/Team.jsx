@@ -1,6 +1,7 @@
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useTheme } from "../hooks/useTheme";
 
 // ================= LOCAL IMAGES =================
 import ceoImage from "../assets/images/ceo.jpeg";
@@ -11,7 +12,7 @@ import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/adeboyin.png";
 import member7 from "../assets/images/ibrahim.jpg";
-import member8 from "../assets/images/ibrahim.jpg"; // ✅ new unique image
+import member8 from "../assets/images/ibrahim.jpg"; // new unique
 import member9 from "../assets/images/team.png";
 
 // ================= CEO DATA =================
@@ -21,16 +22,14 @@ const ceo = {
     role: "Chairman & Chief Executive",
     image: ceoImage,
     bio: `Habib Yunusa is the Chief Executive Officer of AppGlobal Technologies. 
-  He has been in the ICT sector for over 15 years with vast knowledge in Computing. 
-  Former faculty at NIIT, Certified Oracle DBA, and an experienced programmer. 
-  He has developed numerous application software and successfully delivered 
-  several ICT projects for both government and private sectors.
-  
-  He attended Informatics Institution, Singapore where he obtained 
-  an International Advanced Diploma in Computing.`,
-    socials: {
-        linkedin: "https://linkedin.com/in/habib-yunusa",
-    },
+He has been in the ICT sector for over 15 years with vast knowledge in Computing. 
+Former faculty at NIIT, Certified Oracle DBA, and an experienced programmer. 
+He has developed numerous application software and successfully delivered 
+several ICT projects for both government and private sectors.
+
+He attended Informatics Institution, Singapore where he obtained 
+an International Advanced Diploma in Computing.`,
+    socials: { linkedin: "https://linkedin.com/in/habib-yunusa" },
 };
 
 // ================= EXECUTIVE TEAM DATA =================
@@ -87,7 +86,7 @@ const executiveTeam = [
     {
         name: "OJETOKUN VICTOR",
         role: "DevSecOps Engineer",
-        image: member8, // ✅ fixed duplicate
+        image: member8,
         bio: "Machine Integration and DevSecOps Engineer with focus on healthcare and enterprise IT systems.",
         socials: { linkedin: "#" },
     },
@@ -114,57 +113,85 @@ const executiveTeam = [
     },
 ];
 
-// ================= TEAM MEMBER CARD WITH FLIP =================
+// ================= TEAM MEMBER CARD =================
 const TeamMemberCard = ({ member, delay }) => {
+    const { theme } = useTheme();
+
+    const frontColor = theme === "light" ? "#1e3a8a" : "#1e40af";
+    const backColor = theme === "light" ? "#f3f4f6" : "#1f2937";
+    const textColorBack = theme === "light" ? "#000" : "#fff";
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.5 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="w-full h-80 perspective-1000"
+            className="w-full h-96"
         >
-            <motion.div
-                className="relative w-full h-full preserve-3d"
-                whileHover={{ rotateY: 180 }}
-                transition={{ duration: 0.6 }}
+            <div
+                className="relative w-full h-full group transition-transform duration-500 rounded-xl hover:scale-105 hover:shadow-2xl"
+                style={{ perspective: "1000px" }}
             >
-                {/* Front side */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 backface-hidden">
-                    <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-gray-200"
-                    />
-                    <h3 className="font-semibold text-gray-800 dark:text-white text-center mb-1">
-                        {member.name}
-                    </h3>
-                    <p className="text-sm text-blue-600 dark:text-blue-400 text-center mb-2">
-                        {member.role}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                        Hover to read bio
-                    </p>
-                </div>
-
-                {/* Back side */}
-                <div className="absolute inset-0 flex flex-col p-6 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-xl shadow-lg backface-hidden flip-side">
-                    <div className="flex-1 overflow-y-auto pr-2 mb-4">
-                        <p className="text-sm leading-relaxed">{member.bio}</p>
+                <div
+                    className="relative w-full h-full transition-transform duration-500 rounded-xl"
+                    style={{ transformStyle: "preserve-3d" }}
+                >
+                    {/* Front side */}
+                    <div
+                        className="absolute inset-0 flex flex-col justify-end rounded-xl shadow-lg overflow-hidden p-4"
+                        style={{
+                            backfaceVisibility: "hidden",
+                            background: frontColor,
+                        }}
+                    >
+                        <div className="flex-1 flex items-center justify-center pt-4 px-4">
+                            <img
+                                src={member.image}
+                                alt={member.name}
+                                className="max-w-full max-h-full object-cover rounded-lg"
+                            />
+                        </div>
+                        <div className="mt-4 text-center bg-white bg-opacity-80 p-3 rounded-lg w-full">
+                            <h3 className="font-semibold text-gray-800 text-lg">{member.name}</h3>
+                            <p className="text-sm text-gray-500">{member.role}</p>
+                        </div>
                     </div>
 
-                    {member.socials?.linkedin && (
-                        <a
-                            href={member.socials.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-8 h-8 bg-white/20 rounded-full hover:bg-white/30 transition-colors mx-auto"
-                        >
-                            <Linkedin className="w-4 h-4" />
-                        </a>
-                    )}
+                    {/* Back side */}
+                    <div
+                        className="absolute inset-0 flex flex-col p-6 rounded-xl shadow-lg"
+                        style={{
+                            backfaceVisibility: "hidden",
+                            transform: "rotateY(180deg)",
+                            background: backColor,
+                            color: textColorBack,
+                        }}
+                    >
+                        <div className="flex-1 overflow-y-auto pr-2 mb-4">
+                            <p className="text-sm leading-relaxed">{member.bio}</p>
+                        </div>
+
+                        {member.socials?.linkedin && (
+                            <a
+                                href={member.socials.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 transition-colors mx-auto"
+                            >
+                                <Linkedin className="w-4 h-4 text-black" />
+                            </a>
+                        )}
+                    </div>
                 </div>
-            </motion.div>
+
+                {/* Hover flip effect */}
+                <style jsx>{`
+          .group:hover > div {
+            transform: rotateY(180deg);
+          }
+        `}</style>
+            </div>
         </motion.div>
     );
 };
@@ -172,7 +199,7 @@ const TeamMemberCard = ({ member, delay }) => {
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
     const [showFullBio, setShowFullBio] = useState(false);
-    const shortBio = ceo.bio.split("\n\n")[0]; // First paragraph only
+    const shortBio = ceo.bio.split("\n\n")[0];
 
     const teamMembers = useMemo(
         () =>
@@ -214,24 +241,18 @@ export default function Team() {
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
                                 {ceo.name}, {ceo.title}
                             </h1>
-                            <h2 className="text-xl md:text-2xl text-blue-300 mb-6">
-                                {ceo.role}
-                            </h2>
+                            <h2 className="text-xl md:text-2xl text-blue-300 mb-6">{ceo.role}</h2>
                             <hr className="max-w-md h-px bg-white/40 mb-8" />
 
                             <div className="space-y-4 mb-8">
                                 {showFullBio
-                                    ? ceo.bio
-                                        .split("\n\n")
-                                        .map((p, i) => (
-                                            <p key={i} className="text-base md:text-lg leading-relaxed">
-                                                {p}
-                                            </p>
-                                        ))
-                                    : (
-                                        <p className="text-base md:text-lg leading-relaxed">
-                                            {shortBio}
+                                    ? ceo.bio.split("\n\n").map((p, i) => (
+                                        <p key={i} className="text-base md:text-lg leading-relaxed">
+                                            {p}
                                         </p>
+                                    ))
+                                    : (
+                                        <p className="text-base md:text-lg leading-relaxed">{shortBio}</p>
                                     )}
                             </div>
 
@@ -242,41 +263,19 @@ export default function Team() {
                                 >
                                     {showFullBio ? "Read Less" : "Read More →"}
                                 </button>
-
-                                <a
-                                    href={ceo.socials.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-                                >
-                                    <Linkedin className="w-5 h-5" />
-                                    Connect
-                                </a>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* Executive Leadership */}
-            <section className="py-20 bg-gray-50 dark:bg-gray-900">
+            {/* Executive Team Grid */}
+            <section className="py-20 md:py-32 bg-gray-100 dark:bg-gray-900">
                 <div className="container mx-auto px-4 md:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
-                    >
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-                            Executive Leadership
-                        </h1>
-                        <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            Our senior executives bring tremendous experience, visionary thinking and a shared commitment to innovation and excellence.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                        Executive Team
+                    </h2>
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {teamMembers}
                     </div>
                 </div>
