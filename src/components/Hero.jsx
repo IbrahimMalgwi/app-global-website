@@ -22,7 +22,7 @@ const companies = [
         link: "https://appglobalpay.com",
     },
     {
-        name: "Globalshell Resources Infrastructure",
+        name: "Globalshell Resources",
         logo: appGlobalShellLogo,
         description: "Powering digital infrastructure, cloud, and energy services.",
         link: "https://appglobalshell.com",
