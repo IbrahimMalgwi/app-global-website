@@ -135,11 +135,12 @@ const TeamMemberCard = ({ member, delay }) => {
                 className="relative w-full h-full group transition-transform duration-500 rounded-xl"
                 style={{ perspective: "1000px" }}
             >
-                <motion.div
-                    className="relative w-full h-full rounded-xl"
-                    style={{ transformStyle: "preserve-3d" }}
-                    whileHover={{ rotateY: 180 }}
-                    transition={{ duration: 0.6 }}
+                <div
+                    className="relative w-full h-full transition-transform duration-500 rounded-xl"
+                    style={{
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.6s"
+                    }}
                 >
                     {/* Front side */}
                     <div
@@ -152,12 +153,10 @@ const TeamMemberCard = ({ member, delay }) => {
                         }}
                     >
                         <div className="flex-1 flex items-center justify-center pt-4 px-4">
-                            <motion.img
+                            <img
                                 src={member.image}
                                 alt={member.name}
                                 className="max-w-full max-h-48 object-cover rounded-lg shadow-md"
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 300 }}
                             />
                         </div>
                         <div className="mt-4 text-center p-3 rounded-lg w-full">
@@ -201,7 +200,14 @@ const TeamMemberCard = ({ member, delay }) => {
                             </a>
                         )}
                     </div>
-                </motion.div>
+                </div>
+
+                {/* CSS for flip animation */}
+                <style jsx>{`
+                    .group:hover > div {
+                        transform: rotateY(180deg);
+                    }
+                `}</style>
             </div>
         </motion.div>
     );
