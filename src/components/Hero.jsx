@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import backgroundVideo from "../assets/videos/appglobal-background.mp4";
 import fallbackImage from "../assets/images/hero-fallback.jpg";
 
