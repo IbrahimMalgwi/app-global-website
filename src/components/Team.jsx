@@ -117,9 +117,11 @@ const executiveTeam = [
 const TeamMemberCard = ({ member, delay }) => {
     const { theme } = useTheme();
 
-    const frontColor = theme === "light" ? "#1e3a8a" : "#1e40af";
-    const backColor = theme === "light" ? "#f3f4f6" : "#1f2937";
-    const textColorBack = theme === "light" ? "#000" : "#fff";
+    // Consistent color scheme for both sides
+    const cardColor = theme === "light" ? "#f8fafc" : "#1e293b";
+    const textColor = theme === "light" ? "#1e293b" : "#f1f5f9";
+    const accentColor = theme === "light" ? "#3b82f6" : "#60a5fa";
+    const hoverColor = theme === "light" ? "#e2e8f0" : "#334155";
 
     return (
         <motion.div
@@ -130,31 +132,39 @@ const TeamMemberCard = ({ member, delay }) => {
             className="w-full h-96"
         >
             <div
-                className="relative w-full h-full group transition-transform duration-500 rounded-xl hover:scale-105 hover:shadow-2xl"
+                className="relative w-full h-full group transition-transform duration-500 rounded-xl"
                 style={{ perspective: "1000px" }}
             >
-                <div
-                    className="relative w-full h-full transition-transform duration-500 rounded-xl"
+                <motion.div
+                    className="relative w-full h-full rounded-xl"
                     style={{ transformStyle: "preserve-3d" }}
+                    whileHover={{ rotateY: 180 }}
+                    transition={{ duration: 0.6 }}
                 >
                     {/* Front side */}
                     <div
-                        className="absolute inset-0 flex flex-col justify-end rounded-xl shadow-lg overflow-hidden p-4"
+                        className="absolute inset-0 flex flex-col justify-between rounded-xl shadow-lg overflow-hidden p-4"
                         style={{
                             backfaceVisibility: "hidden",
-                            background: frontColor,
+                            background: cardColor,
+                            color: textColor,
+                            border: `2px solid ${accentColor}20`,
                         }}
                     >
                         <div className="flex-1 flex items-center justify-center pt-4 px-4">
-                            <img
+                            <motion.img
                                 src={member.image}
                                 alt={member.name}
-                                className="max-w-full max-h-full object-cover rounded-lg"
+                                className="max-w-full max-h-48 object-cover rounded-lg shadow-md"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 300 }}
                             />
                         </div>
-                        <div className="mt-4 text-center bg-white bg-opacity-80 p-3 rounded-lg w-full">
-                            <h3 className="font-semibold text-gray-800 text-lg">{member.name}</h3>
-                            <p className="text-sm text-gray-500">{member.role}</p>
+                        <div className="mt-4 text-center p-3 rounded-lg w-full">
+                            <h3 className="font-semibold text-lg" style={{ color: accentColor }}>
+                                {member.name}
+                            </h3>
+                            <p className="text-sm opacity-80">{member.role}</p>
                         </div>
                     </div>
 
@@ -164,10 +174,16 @@ const TeamMemberCard = ({ member, delay }) => {
                         style={{
                             backfaceVisibility: "hidden",
                             transform: "rotateY(180deg)",
-                            background: backColor,
-                            color: textColorBack,
+                            background: cardColor,
+                            color: textColor,
+                            border: `2px solid ${accentColor}20`,
                         }}
                     >
+                        <h3 className="font-semibold text-lg mb-2 text-center" style={{ color: accentColor }}>
+                            {member.name}
+                        </h3>
+                        <p className="text-sm opacity-80 text-center mb-4">{member.role}</p>
+
                         <div className="flex-1 overflow-y-auto pr-2 mb-4">
                             <p className="text-sm leading-relaxed">{member.bio}</p>
                         </div>
@@ -177,20 +193,15 @@ const TeamMemberCard = ({ member, delay }) => {
                                 href={member.socials.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 transition-colors mx-auto"
+                                className="inline-flex items-center justify-center w-10 h-10 rounded-full mx-auto transition-colors"
+                                style={{ backgroundColor: hoverColor }}
+                                aria-label={`Connect with ${member.name} on LinkedIn`}
                             >
-                                <Linkedin className="w-4 h-4 text-black" />
+                                <Linkedin className="w-5 h-5" style={{ color: accentColor }} />
                             </a>
                         )}
                     </div>
-                </div>
-
-                {/* Hover flip effect */}
-                <style jsx>{`
-          .group:hover > div {
-            transform: rotateY(180deg);
-          }
-        `}</style>
+                </motion.div>
             </div>
         </motion.div>
     );
@@ -199,20 +210,26 @@ const TeamMemberCard = ({ member, delay }) => {
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
     const [showFullBio, setShowFullBio] = useState(false);
+    const { theme } = useTheme();
     const shortBio = ceo.bio.split("\n\n")[0];
 
     const teamMembers = useMemo(
         () =>
             executiveTeam.map((member, i) => (
-                <TeamMemberCard key={i} member={member} delay={i * 0.1} />
+                <TeamMemberCard key={`${member.name}-${i}`} member={member} delay={i * 0.1} />
             )),
         []
     );
 
+    // Colors for CEO section
+    const ceoTextColor = theme === "light" ? "#1e293b" : "#f1f5f9";
+    const ceoBgColor = theme === "light" ? "#e2e8f0" : "#0f172a";
+    const ceoAccentColor = theme === "light" ? "#3b82f6" : "#60a5fa";
+
     return (
         <>
             {/* CEO Hero Section */}
-            <section id="team" className="relative py-20 md:py-32 bg-gray-900">
+            <section id="team" className="relative py-20 md:py-32" style={{ background: ceoBgColor }}>
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         {/* CEO Image */}
@@ -236,13 +253,15 @@ export default function Team() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-white"
+                            style={{ color: ceoTextColor }}
                         >
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
                                 {ceo.name}, {ceo.title}
                             </h1>
-                            <h2 className="text-xl md:text-2xl text-blue-300 mb-6">{ceo.role}</h2>
-                            <hr className="max-w-md h-px bg-white/40 mb-8" />
+                            <h2 className="text-xl md:text-2xl mb-6" style={{ color: ceoAccentColor }}>
+                                {ceo.role}
+                            </h2>
+                            <hr className="max-w-md h-px mb-8 opacity-30" />
 
                             <div className="space-y-4 mb-8">
                                 {showFullBio
@@ -259,10 +278,33 @@ export default function Team() {
                             <div className="flex flex-col sm:flex-row gap-4 items-start">
                                 <button
                                     onClick={() => setShowFullBio(!showFullBio)}
-                                    className="text-base md:text-lg font-medium border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition-colors whitespace-nowrap"
+                                    className="text-base md:text-lg font-medium px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
+                                    style={{
+                                        backgroundColor: ceoAccentColor,
+                                        color: "#fff",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.opacity = 0.9;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.opacity = 1;
+                                    }}
                                 >
                                     {showFullBio ? "Read Less" : "Read More →"}
                                 </button>
+
+                                {ceo.socials?.linkedin && (
+                                    <a
+                                        href={ceo.socials.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors"
+                                        style={{ backgroundColor: ceoAccentColor }}
+                                        aria-label="Connect with CEO on LinkedIn"
+                                    >
+                                        <Linkedin className="w-6 h-6 text-white" />
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     </div>
@@ -270,11 +312,18 @@ export default function Team() {
             </section>
 
             {/* Executive Team Grid */}
-            <section className="py-20 md:py-32 bg-gray-100 dark:bg-gray-900">
+            <section className="py-20 md:py-32" style={{ background: theme === "light" ? "#f1f5f9" : "#0f172a" }}>
                 <div className="container mx-auto px-4 md:px-6">
-                    <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="text-3xl md:text-4xl font-bold text-center mb-12"
+                        style={{ color: theme === "light" ? "#1e293b" : "#f1f5f9" }}
+                    >
                         Executive Team
-                    </h2>
+                    </motion.h2>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         {teamMembers}
                     </div>
