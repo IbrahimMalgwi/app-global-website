@@ -111,6 +111,13 @@ const executiveTeam = [
         bio: "Accountant, Tax consultant, and Internal control manager with experience across multiple industries.",
         socials: { linkedin: "#" },
     },
+    {
+        name: "ADEILA JULIET",
+        role: "Software Engineer",
+        image: member4,
+        bio: "Accountant, Tax consultant, and Internal control manager with experience across multiple industries.",
+        socials: { linkedin: "#" },
+    },
 ];
 
 // ================= TEAM MEMBER CARD =================
