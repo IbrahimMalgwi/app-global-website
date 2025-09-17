@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import backgroundVideo from "../assets/videos/appglobal-background.mp4";
 import fallbackImage from "../assets/images/hero-fallback.jpg";
 
@@ -30,16 +29,37 @@ const companies = [
     },
 ];
 
-const slideIn = {
-    initial: { opacity: 0, x: 100 },
-    animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-    exit: { opacity: 0, x: -100, transition: { duration: 0.5, ease: "easeIn" } },
-};
-
 export default function Hero() {
+    const [displayedText, setDisplayedText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isTyping, setIsTyping] = useState(true);
     const [hoveredCompany, setHoveredCompany] = useState(null);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+    useEffect(() => {
+        let charIndex = 0;
+        setDisplayedText('');
+        setIsTyping(true);
+
+        const typingInterval = setInterval(() => {
+            setDisplayedText((prevText) => {
+                const nextChar = companies[currentIndex].description[charIndex];
+                if (nextChar) {
+                    charIndex++;
+                    return prevText + nextChar;
+                } else {
+                    clearInterval(typingInterval);
+                    setIsTyping(false);
+                    setTimeout(() => {
+                        setCurrentIndex((prev) => (prev + 1) % companies.length);
+                    }, 2500);
+                    return prevText;
+                }
+            });
+        }, 50); // Typing speed (adjust for faster/slower typing)
+
+        return () => clearInterval(typingInterval);
+    }, [currentIndex]);
 
     useEffect(() => {
         if (hoveredCompany !== null) return;
@@ -99,76 +119,50 @@ export default function Hero() {
                         Welcome to <span className="text-blue-300 font-light bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">AppGlobal</span>
                     </motion.h1>
 
-                    <motion.p
-                        className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto font-light"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        Transforming industries through innovative technology solutions
-                    </motion.p>
-
-                    <div className="relative h-16 md:h-20 lg:h-24 w-full max-w-3xl mx-auto overflow-hidden mb-8">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentIndex}
-                                variants={slideIn}
-                                initial="initial"
-                                animate="animate"
-                                exit="exit"
-                                className="absolute inset-0 flex items-center justify-center"
-                            >
-                                <p className="text-lg md:text-xl lg:text-2xl text-white font-light drop-shadow-md px-4 leading-relaxed bg-black/20 backdrop-blur-sm rounded-lg py-2">
-                                    {companies[currentIndex].description}
-                                </p>
-                            </motion.div>
-                        </AnimatePresence>
+                    {/* Typing Text with Company Descriptions */}
+                    <div className="w-full max-w-3xl mx-auto mb-8 min-h-[4rem] flex items-center justify-center">
+                        <motion.p
+                            className="text-lg md:text-xl lg:text-2xl text-white/90 font-light drop-shadow-md px-4 text-center"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            {displayedText}
+                            <span
+                                className={`inline-block w-0.5 h-6 md:h-8 bg-white ml-1 ${
+                                    isTyping ? 'animate-pulse' : 'animate-blink'
+                                }`}
+                            />
+                        </motion.p>
                     </div>
-
-                    <motion.div
-                        className="flex justify-center gap-4 mt-8"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, duration: 0.7 }}
-                    >
-                        <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-300 shadow-lg hover:shadow-blue-500/25">
-                            Explore Solutions
-                        </button>
-                        <button className="px-6 py-3 bg-transparent border-2 border-white/30 hover:border-white/60 text-white rounded-lg font-medium transition-all duration-300">
-                            Contact Us
-                        </button>
-                    </motion.div>
                 </div>
 
-                {/* Logos */}
-                <div className="mt-24 md:mt-32 lg:mt-36 w-full">
-                    <motion.p
-                        className="text-white/80 mb-6 text-sm uppercase tracking-widest font-medium"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.2, duration: 0.7 }}
-                    >
-                        Our Companies
-                    </motion.p>
+                {/* Logos with Enhanced Effects */}
+                <div className="mt-16 md:mt-20 lg:mt-24 w-full">
+                    {/*<motion.p*/}
+                    {/*    className="text-white/80 mb-6 text-sm uppercase tracking-widest font-medium"*/}
+                    {/*    initial={{ opacity: 0 }}*/}
+                    {/*    animate={{ opacity: 1 }}*/}
+                    {/*    transition={{ delay: 1.2, duration: 0.7 }}*/}
+                    {/*>*/}
+                    {/*    Our Companies*/}
+                    {/*</motion.p>*/}
 
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center py-6 px-4 backdrop-blur-sm rounded-xl">
                         {companies.map((company, index) => (
                             <motion.div
                                 key={company.name}
-                                className="flex flex-col items-center text-center w-28 sm:w-32 md:w-40"
+                                className="flex flex-col items-center text-center w-10 h-3 relative group cursor-pointer"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
                                 onMouseEnter={() => setHoveredCompany(index)}
                                 onMouseLeave={() => setHoveredCompany(null)}
+                                style={{ transform: 'none' }}
                             >
                                 <motion.button
-                                    className={`flex flex-col items-center p-3 sm:p-4 rounded-2xl backdrop-blur-md border transition-all duration-300 w-full group ${
-                                        hoveredCompany === index
-                                            ? "bg-white/25 border-blue-300 shadow-lg scale-105"
-                                            : "bg-white/10 border-white/20 hover:bg-white/15 shadow-md"
-                                    }`}
-                                    whileHover={{ y: -8 }}
+                                    className="w-full h-full flex items-center justify-center"
+                                    whileHover={{ y: -4 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() =>
                                         window.open(company.link, "_blank", "noopener,noreferrer")
@@ -177,20 +171,11 @@ export default function Hero() {
                                     <img
                                         src={company.logo}
                                         alt={company.name}
-                                        className={`h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 ${
-                                            hoveredCompany === index ? "brightness-110 scale-105" : "brightness-100"
-                                        }`}
+                                        className="w-full h-full object-contain transition-all duration-300 brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
                                     />
-                                    <motion.div
-                                        className={`mt-2 transition-all duration-300 ${
-                                            hoveredCompany === index ? "opacity-100" : "opacity-0"
-                                        }`}
-                                    >
-                                        <ExternalLink className="w-4 h-4 text-blue-300" />
-                                    </motion.div>
                                 </motion.button>
 
-                                <p className="mt-3 text-xs sm:text-sm text-white/80 font-medium leading-tight">
+                                <p className="mt-3 text-xs text-white/80 font-medium leading-tight">
                                     {company.name}
                                 </p>
                             </motion.div>
@@ -227,6 +212,16 @@ export default function Hero() {
                     </motion.div>
                 </div>
             </motion.div>
+
+            <style jsx>{`
+                @keyframes blink {
+                    0%, 50% { opacity: 1; }
+                    51%, 100% { opacity: 0; }
+                }
+                .animate-blink {
+                    animation: blink 1s infinite;
+                }
+            `}</style>
         </section>
     );
 }

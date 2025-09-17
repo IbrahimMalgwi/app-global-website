@@ -9,6 +9,8 @@ import Partners from "./components/Partners";
 import Services from "./components/Services";
 import Team from "./components/Team"
 import ThemeLayout from "./components/ThemeLayout";
+import CoreValues from "./components/CoreValues";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <NavBar/>
           <Hero />
           <About />
+          <CoreValues />
           <Services />
           <Team />
           <Blog />
