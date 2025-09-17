@@ -18,7 +18,7 @@ import member9 from "../assets/images/team.png";
 // ================= CEO DATA =================
 const ceo = {
     name: "Habib Yunusa",
-    title: "ENGR",
+    title: "ENG",
     role: "Chairman & Chief Executive",
     image: ceoImage,
     bio: `Habib Yunusa is the Chief Executive Officer of AppGlobal Technologies. 
@@ -91,7 +91,7 @@ const executiveTeam = [
         socials: { linkedin: "#" },
     },
     {
-        name: "YUSUFF SALIU ADEDIRAN",
+        name: "YUSUFF SALIU NADIRA",
         role: "Chief Technology Strategist",
         image: member3,
         bio: "Seasoned technology executive with 10+ years in fintech industry. Expertise in Java, PL/SQL, and REST APIs.",
