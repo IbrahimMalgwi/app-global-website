@@ -3,60 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Array of core value objects
 const coreValues = [
-    {
-        letter: "A",
-        title: "Accountability",
-        description: "We are honest, transparent, and ethical in all business engagements.",
-    },
-    {
-        letter: "P",
-        title: "Performance",
-        description: "We question the status quo and seek alternative ideas.",
-    },
-    {
-        letter: "P",
-        title: "Productivity",
-        description: "Quality experience for our customers, local community, and our team.",
-    },
-    {
-        letter: "G",
-        title: "Group Work",
-        description: "We drive workforce efficiency by encouraging collaboration, mutual respect, and shared responsibility.",
-    },
-    {
-        letter: "L",
-        title: "Learning",
-        description: "We automate and continuously improve our internal processes to promote efficiency.",
-    },
-    {
-        letter: "O",
-        title: "Outcome",
-        description: "We thrive by finding innovative solutions to problems using available resources.",
-    },
-    {
-        letter: "B",
-        title: "Mentorship",
-        description: "Provide technology and business mentorship to talented youth irrespective of background.",
-    },
-    {
-        letter: "A",
-        title: "Accountability",
-        description: "Provide technology and business mentorship to talented youth irrespective of background.",
-    },
-    {
-        letter: "L",
-        title: "Leadership",
-        description: "Provide technology and business mentorship to talented youth irrespective of background.",
-    },
+    { letter: "A", title: "Accountability", description: "We are honest, transparent, and ethical in all business engagements." },
+    { letter: "P", title: "Performance", description: "We question the status quo and seek alternative ideas." },
+    { letter: "P", title: "Productivity", description: "Quality experience for our customers, local community, and our team." },
+    { letter: "G", title: "Group Work", description: "We drive workforce efficiency by encouraging collaboration, mutual respect, and shared responsibility." },
+    { letter: "L", title: "Learning", description: "We automate and continuously improve our internal processes to promote efficiency." },
+    { letter: "O", title: "Outcome", description: "We thrive by finding innovative solutions to problems using available resources." },
+    { letter: "B", title: "Mentorship", description: "Provide technology and business mentorship to talented youth irrespective of background." },
+    { letter: "A", title: "Accountability", description: "Provide technology and business mentorship to talented youth irrespective of background." },
+    { letter: "L", title: "Leadership", description: "Provide technology and business mentorship to talented youth irrespective of background." },
 ];
 
 const CoreValue = () => {
     const [currentValueIndex, setCurrentValueIndex] = useState(0);
 
-    // Auto-cycle through the core values every 3 seconds
+    // Auto-cycle every 3s
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentValueIndex((prevIndex) => (prevIndex + 1) % coreValues.length);
+            setCurrentValueIndex((prev) => (prev + 1) % coreValues.length);
         }, 3000);
         return () => clearInterval(interval);
     }, []);
@@ -66,14 +30,14 @@ const CoreValue = () => {
     return (
         <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 text-center overflow-hidden relative">
             {/* Background Gradient */}
-            <div className="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 to-purple-50"></div>
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"></div>
 
-            {/* Main Content Container */}
+            {/* Main Content */}
             <div className="relative z-10 w-full max-w-4xl px-4 sm:px-6 lg:px-8">
-                {/* Core Values Section */}
+                {/* Heading */}
                 <section>
                     <motion.h2
-                        className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent"
+                        className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -90,7 +54,7 @@ const CoreValue = () => {
                     </motion.p>
                 </section>
 
-                {/* Dynamic Content */}
+                {/* Dynamic Core Value */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentValue.letter}
@@ -103,7 +67,7 @@ const CoreValue = () => {
                         <motion.div
                             className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl shadow-lg flex items-center justify-center mb-6"
                             style={{
-                                background: "linear-gradient(135deg, #a78bfa 0%, #6d28d9 100%)",
+                                background: "linear-gradient(135deg, #d8b4fe 0%, #ec4899 100%)",
                                 transform: "rotate(45deg)",
                             }}
                             initial={{ scale: 0.8, rotate: 45 }}
@@ -113,8 +77,8 @@ const CoreValue = () => {
                             <div className="absolute inset-0 flex items-center justify-center" style={{ transform: "rotate(-45deg)" }}>
                                 <motion.span
                                     className="text-white text-5xl sm:text-6xl font-bold"
-                                    initial={{ rotate: -90, scale: 0.5, opacity: 0 }} // New initial state for rotation
-                                    animate={{ rotate: 0, scale: 1, opacity: 1 }} // New animate state for rotation
+                                    initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
                                     transition={{ duration: 0.6, delay: 0.3 }}
                                 >
                                     {currentValue.letter}
@@ -131,7 +95,7 @@ const CoreValue = () => {
                             {currentValue.title}
                         </motion.h3>
                         <motion.p
-                            className="text-md sm:text-lg text-gray-500 max-w-sm mb-12"
+                            className="text-md sm:text-lg text-gray-600 max-w-sm mb-12"
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.5 }}
@@ -141,7 +105,7 @@ const CoreValue = () => {
                     </motion.div>
                 </AnimatePresence>
 
-                {/* "BRAINSTORM" text */}
+                {/* Letters row */}
                 <motion.div
                     className="flex justify-center items-center space-x-2"
                     initial={{ opacity: 0, y: 20 }}
@@ -150,9 +114,11 @@ const CoreValue = () => {
                 >
                     {coreValues.map((value, index) => (
                         <motion.div
-                            key={value.letter}
+                            key={value.letter + index}
                             className={`font-extrabold text-3xl sm:text-5xl transition-colors duration-300 ${
-                                index === currentValueIndex ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-700" : "text-gray-300"
+                                index === currentValueIndex
+                                    ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600"
+                                    : "text-gray-300"
                             }`}
                             animate={{ scale: index === currentValueIndex ? 1.1 : 1 }}
                             transition={{ duration: 0.3 }}
@@ -173,15 +139,11 @@ const CoreValue = () => {
                 <p className="text-gray-500 text-sm mb-1">Services</p>
                 <motion.div
                     animate={{ y: [0, 5, 0] }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 mx-auto text-gray-500"
+                        className="h-6 w-6 mx-auto text-purple-500"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"

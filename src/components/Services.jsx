@@ -10,7 +10,7 @@ const services = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600"
             >
                 <path
                     strokeLinecap="round"
@@ -21,7 +21,7 @@ const services = [
         ),
         title: "GlobalCare EHR",
         description:
-            "Smart Records. Better Care. Everywhere.Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
+            "Smart Records. Better Care. Everywhere. Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
     },
     {
         icon: (
@@ -31,7 +31,7 @@ const services = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600"
             >
                 <path
                     strokeLinecap="round"
@@ -42,7 +42,7 @@ const services = [
         ),
         title: "ppGlobal Pay",
         description:
-            "Digital platform for cooperative societies to manage members, track savings, and handle loan operations. Secure Transactions Multiple Currencies Instant Processing"
+            "Digital platform for cooperative societies to manage members, track savings, and handle loan operations. Secure Transactions Multiple Currencies Instant Processing",
     },
     {
         icon: (
@@ -52,7 +52,7 @@ const services = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600"
             >
                 <path
                     strokeLinecap="round"
@@ -73,7 +73,7 @@ const services = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600"
             >
                 <path
                     strokeLinecap="round"
@@ -94,7 +94,7 @@ const services = [
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600"
             >
                 <path
                     strokeLinecap="round"
@@ -127,22 +127,22 @@ const OurServices = () => {
     return (
         <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-12 text-center relative overflow-hidden">
             {/* Background Circles */}
-            <div className="absolute w-40 h-40 rounded-full bg-blue-200 opacity-50 blur-2xl top-16 left-16"></div>
-            <div className="absolute w-40 h-40 rounded-full bg-purple-200 opacity-50 blur-2xl bottom-16 right-16"></div>
-            <div className="absolute w-40 h-40 rounded-full bg-blue-200 opacity-50 blur-2xl top-1/2 left-0 -translate-y-1/2"></div>
-            <div className="absolute w-40 h-40 rounded-full bg-purple-200 opacity-50 blur-2xl bottom-0 left-1/2 -translate-x-1/2"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-indigo-200 opacity-50 blur-2xl top-16 left-16"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-pink-200 opacity-50 blur-2xl bottom-16 right-16"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-purple-200 opacity-50 blur-2xl top-1/2 left-0 -translate-y-1/2"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-indigo-200 opacity-50 blur-2xl bottom-0 left-1/2 -translate-x-1/2"></div>
 
-            {/* Main Content Container */}
+            {/* Main Content */}
             <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+                <h2 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600">
                     Our Services
                 </h2>
                 <p className="text-lg text-gray-600 mb-12">
-                    We offer a comprehensive range of digital services to help your
-                    business thrive.
+                    We offer a comprehensive range of digital services to help your business thrive.
                 </p>
 
                 <div className="relative w-full">
+                    {/* Slider buttons */}
                     <div className="flex justify-between items-center w-full absolute z-20 top-1/2 -translate-y-1/2">
                         <button
                             onClick={prevSlide}
@@ -184,6 +184,7 @@ const OurServices = () => {
                         </button>
                     </div>
 
+                    {/* Services carousel */}
                     <div className="overflow-hidden">
                         <div
                             className="flex transition-transform duration-500 ease-in-out"
@@ -195,13 +196,13 @@ const OurServices = () => {
                                         <div className="relative flex items-center justify-center mb-6">
                                             {service.icon}
                                         </div>
-                                        <h3 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-2">
+                                        <h3 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600 mb-2">
                                             {service.title}
                                         </h3>
                                         <p className="text-sm text-gray-600">
                                             {service.description}
                                         </p>
-                                        <button className="mt-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 font-bold hover:underline">
+                                        <button className="mt-4 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-600 font-bold hover:underline">
                                             Learn More →
                                         </button>
                                     </div>
@@ -219,7 +220,7 @@ const OurServices = () => {
                                 key={index}
                                 className={`w-3 h-3 rounded-full ${
                                     index === Math.floor(currentIndex / 3)
-                                        ? "bg-gradient-to-r from-blue-500 to-purple-600"
+                                        ? "bg-gradient-to-r from-indigo-500 to-pink-600"
                                         : "bg-gray-300"
                                 }`}
                             ></div>
