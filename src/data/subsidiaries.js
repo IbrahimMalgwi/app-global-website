@@ -1,0 +1,51 @@
+// src/data/subsidiaries.js
+export const subsidiaries = [
+    {
+        name: "GlobalCare EMR",
+        subtitle: "Hospital Solutions",
+        logo: "https://placehold.co/40x40/f43f5e/ffffff?text=BS",
+        image: "https://placehold.co/600x400/a3e635/000000?text=Globalcare",
+        description: `AI-Driven Insights: Harness the power of artificial intelligence to deliver meaningful insights. Human-Centered Care: Focus on the patient experience with personalized care solutions. Seamless Connectivity: Ensure smooth integration across various healthcare platforms. Interoperability: Facilitate seamless data exchange between different systems. Data Security: Prioritize patient privacy with top-notch security measures. Telehealth Integration: Offer virtual care solutions to enhance accessibility. One System, Every Network: Unify healthcare services under one comprehensive system.`,
+        website: "#",
+    },
+    {
+        name: "AppGlobal Pay",
+        subtitle: "One Platform, Endless Payment Possibilities.",
+        logo: "https://placehold.co/40x40/60a5fa/ffffff?text=ML",
+        image: "https://placehold.co/600x400/4ade80/000000?text=AppGlobal",
+        description: `Secure Transactions: Guarantee safety with advanced encryption technologies. Multiple Currencies: Enable transactions in various currencies for global reach. Instant Processing: Experience immediate transaction confirmations for convenience. Secure Transactions: Guarantee safety with advanced encryption technologies. Multiple Currencies: Enable transactions in various currencies for global reach. Instant Processing: Experience immediate transaction confirmations for convenience.`,
+        website: "#",
+    },
+    {
+        name: "GlobalShell",
+        subtitle: "Smart Grids. Clean Energy. Connected World",
+        logo: "https://placehold.co/40x40/34d399/ffffff?text=In",
+        image: "https://placehold.co/600x400/22d3ee/000000?text=GlobalShell",
+        description: `Smart Infrastructure: Build resilient and intelligent infrastructure systems. Clean Energy: Promote sustainable energy solutions for a greener future. Connected Systems: Ensure interoperability among various energy networks. Smart Infrastructure: Build resilient and intelligent infrastructure systems. Clean Energy: Promote sustainable energy solutions for a greener future. Connected Systems: Ensure interoperability among various energy networks.`,
+        website: "#",
+    },
+    {
+        name: "GlobalCare EHR",
+        subtitle: "Smart Records. Better Care. Everywhere.",
+        logo: "https://placehold.co/40x40/8b5cf6/ffffff?text=BC",
+        image: "https://placehold.co/600x400/c084fc/000000?text=Globalcare",
+        description: `AI-Driven Insights: Harness the power of artificial intelligence to deliver meaningful insights. Human-Centered Care: Focus on the patient experience with personalized care solutions. Seamless Connectivity: Ensure smooth integration across various healthcare platforms. Interoperability: Facilitate seamless data exchange between different systems. Data Security: Prioritize patient privacy with top-notch security measures. Telehealth Integration: Offer virtual care solutions to enhance accessibility. One System, Every Network: Unify healthcare services under one comprehensive system.`,
+        website: "#",
+    },
+    {
+        name: "AppGlobal Pay",
+        subtitle: "WHERE SHOPPING MEETS CONVENIENCE",
+        logo: "https://placehold.co/40x40/f97316/ffffff?text=KM",
+        image: "https://placehold.co/600x400/fb923c/000000?text=AppGlobal",
+        description: `AI-Driven Insights: Harness the power of artificial intelligence to deliver meaningful insights. Human-Centered Care: Focus on the patient experience with personalized care solutions. Seamless Connectivity: Ensure smooth integration across various healthcare platforms. Interoperability: Facilitate seamless data exchange between different systems. Data Security: Prioritize patient privacy with top-notch security measures. Telehealth Integration: Offer virtual care solutions to enhance accessibility. One System, Every Network: Unify healthcare services under one comprehensive system.`,
+        website: "#",
+    },
+    {
+        name: "Globalshell Resources",
+        subtitle: "Smart Grids. Clean Energy. Connected World",
+        logo: "https://placehold.co/40x40/ef4444/ffffff?text=KT",
+        image: "https://placehold.co/600x400/f87171/000000?text=Globalshell ",
+        description: `Smart Infrastructure: Build resilient and intelligent infrastructure systems. Clean Energy: Promote sustainable energy solutions for a greener future. Connected Systems: Ensure interoperability among various energy networks. Smart Infrastructure: Build resilient and intelligent infrastructure systems. Clean Energy: Promote sustainable energy solutions for a greener future. Connected Systems: Ensure interoperability among various energy networks.`,
+        website: "#",
+    },
+];

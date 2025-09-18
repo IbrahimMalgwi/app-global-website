@@ -171,6 +171,7 @@ export default function Contact() {
                                 allowFullScreen=""
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
+                                title="Google Maps showing App Global Technologies office location at 1668B Oyin Jolayemi Street, Victoria Island, Lagos"
                             ></iframe>
                             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-violet-600/10 pointer-events-none" />
                         </div>

@@ -1,52 +1,55 @@
+// src/components/About.jsx
 import React from "react";
 import aboutImage from "../assets/images/about.jpeg";
+// 1. Import your new theme-based components and utilities
+import { AnimatedBackground } from "./UI/AnimatedBackground";
+import { Card } from "./UI/Card";
+import { GradientCard } from "./UI/GradientCard";
+import { typography } from "../theme/typography";
+import colors from "../theme/colors";
 
 export default function About() {
     return (
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 lg:px-20 py-20 overflow-hidden">
-            {/* Soft Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"></div>
 
-            {/* Decorative Gradient Shapes */}
-            <div className="absolute top-20 -left-16 w-80 h-80 bg-purple-200 opacity-30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-indigo-200 opacity-30 rounded-full blur-3xl animate-pulse delay-300"></div>
-            <div className="absolute bottom-20 -right-20 w-96 h-96 bg-pink-200 opacity-30 rounded-full blur-3xl animate-pulse delay-200"></div>
-            <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-blue-200 opacity-30 rounded-full blur-3xl animate-pulse delay-500"></div>
+            {/* 2. Use the new animated background component */}
+            <AnimatedBackground />
 
             {/* Main Content */}
             <div className="relative z-10 max-w-6xl mx-auto w-full text-center">
-                {/* Centered Heading */}
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-16 text-gray-800">
-                    About <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Us</span>
+                {/* 3. Use typography for the heading */}
+                <h2 className={`${typography.h1} mb-16 ${colors.text.primary}`}>
+                    About <span className={`bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>Us</span>
                 </h2>
 
                 <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-8 mb-16">
-                    {/* Combined Text Card - Rectangular like Mission/Vision */}
-                    <div className="bg-white rounded-3xl shadow-2xl p-10 w-full lg:w-1/2 max-w-2xl transition-transform transform hover:scale-105 duration-300 ease-in-out text-left mb-12 lg:mb-0">
+                    {/* 4. Use the new Card component */}
+                    <Card className="w-full lg:w-1/2 max-w-2xl mb-12 lg:mb-0">
                         <div className="relative flex items-center justify-center mb-8">
                             <div className="absolute w-24 h-24 bg-gradient-to-r from-purple-300 to-indigo-300 rounded-full blur-xl opacity-40"></div>
                         </div>
 
-                        <p className="text-lg lg:text-xl text-gray-600 leading-relaxed mb-6">
+                        {/* 5. Use typography and colors for text */}
+                        <p className={`${typography.body} mb-6`}>
                             We are a{" "}
-                            <span className="font-semibold text-purple-600">
+                            <span className={`font-semibold ${colors.text.accent.purple}`}>
                 multi-faceted business
             </span>{" "}
                             dedicated to providing innovative technology solutions tailored to
                             key sectors in the African economy.
                         </p>
-                        <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+                        <p className={typography.body}>
                             Our approach{" "}
-                            <span className="font-semibold text-pink-600">empowers growth</span>{" "}
+                            <span className={`font-semibold ${colors.text.accent.pink}`}>empowers growth</span>{" "}
                             and drives impactful results for both government and private
                             organizations, delivering solutions that make a real difference.
                         </p>
-                    </div>
+                    </Card>
 
-                    {/* Image Card - Rectangular like Mission/Vision */}
-                    <div className="bg-white rounded-3xl shadow-2xl p-10 w-full lg:w-1/2 max-w-2xl transition-transform transform hover:scale-105 duration-300 ease-in-out">
-                        {/* Image with container */}
-                        <div className="relative z-10 p-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl shadow-lg transform hover:scale-105 transition duration-700">
+                    {/* 6. Another Card for the image */}
+                    <Card className="w-full lg:w-1/2 max-w-2xl">
+                        {/* Image with container - using the gradient from colors.js */}
+                        <div className={`relative z-10 p-2 bg-gradient-to-r ${colors.gradients.secondary} rounded-2xl shadow-lg transform hover:scale-105 transition duration-700`}>
                             <div className="overflow-hidden rounded-xl">
                                 <img
                                     src={aboutImage}
@@ -68,26 +71,29 @@ export default function About() {
                                 </svg>
                             </div>
                         </div>
-                    </div>
+                    </Card>
                 </div>
 
-                {/* Stats Section - Smaller and Centered */}
+                {/* 7. Stats Section using the new GradientCard component */}
                 <div className="flex flex-wrap justify-center gap-6 mt-12 px-4">
-                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-xl shadow-sm text-center min-w-[140px] transform hover:scale-105 transition duration-300 border border-purple-100">
-                        <div className="text-2xl font-bold text-purple-600 mb-1">50+</div>
-                        <div className="text-md font-medium text-gray-700">Projects</div>
-                        <div className="text-xs text-gray-500 mt-1">Completed</div>
-                    </div>
-                    <div className="bg-gradient-to-br from-pink-50 to-indigo-50 p-4 rounded-xl shadow-sm text-center min-w-[140px] transform hover:scale-105 transition duration-300 border border-pink-100">
-                        <div className="text-2xl font-bold text-pink-600 mb-1">15+</div>
-                        <div className="text-md font-medium text-gray-700">Partners</div>
-                        <div className="text-xs text-gray-500 mt-1">Worldwide</div>
-                    </div>
-                    <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-4 rounded-xl shadow-sm text-center min-w-[140px] transform hover:scale-105 transition duration-300 border border-indigo-100">
-                        <div className="text-2xl font-bold text-indigo-600 mb-1">10+</div>
-                        <div className="text-md font-medium text-gray-700">Years</div>
-                        <div className="text-xs text-gray-500 mt-1">Experience</div>
-                    </div>
+                    <GradientCard
+                        color="purple"
+                        number="50+"
+                        title="Projects"
+                        subtitle="Completed"
+                    />
+                    <GradientCard
+                        color="pink"
+                        number="15+"
+                        title="Partners"
+                        subtitle="Worldwide"
+                    />
+                    <GradientCard
+                        color="indigo"
+                        number="10+"
+                        title="Years"
+                        subtitle="Experience"
+                    />
                 </div>
             </div>
         </section>

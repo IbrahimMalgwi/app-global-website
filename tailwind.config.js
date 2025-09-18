@@ -18,7 +18,8 @@ export default {
                 },
             },
             fontFamily: {
-                sans: ["Inter", "sans-serif"],
+                heading: ["Poppins", "sans-serif"], // Headers / Titles
+                body: ["Inter", "sans-serif"],      // Body / Text
             },
             colors: {
                 brand: {
@@ -33,6 +34,7 @@ export default {
     plugins: [
         require("@tailwindcss/typography"),
         require("@tailwindcss/forms"),
+        require('tailwind-scrollbar'),
 
         // ✅ Custom utilities plugin
         function ({ addUtilities }) {
