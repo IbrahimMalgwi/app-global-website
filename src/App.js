@@ -10,6 +10,7 @@ import Services from "./components/Services";
 import Team from "./components/Team"
 import ThemeLayout from "./components/ThemeLayout";
 import CoreValues from "./components/CoreValues";
+import MissionVision from "./components/MissionVision";
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <NavBar/>
           <Hero />
           <About />
+          <MissionVision/>
           <CoreValues />
           <Services />
           <Team />
