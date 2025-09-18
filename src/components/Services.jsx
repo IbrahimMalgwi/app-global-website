@@ -5,7 +5,7 @@ import { ServiceCard } from "./UI/ServiceCard";
 import { AnimatedBackground } from "./UI/AnimatedBackground";
 import { typography } from "../theme/typography";
 import colors from "../theme/colors";
-import {useWindowSize} from "../hooks/useWindowSize";
+import useWindowSize from "../hooks/useWindowSize";
 
 
 // Moved services data outside component for better readability

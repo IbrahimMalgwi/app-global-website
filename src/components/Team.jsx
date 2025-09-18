@@ -12,7 +12,7 @@ import member4 from "../assets/images/taiyo.png";
 import member5 from "../assets/images/fatoba.png";
 import member6 from "../assets/images/adeboyin.png";
 import member7 from "../assets/images/ibrahim.jpg";
-import member8 from "../assets/images/ibrahim.jpg"; // new unique
+import member8 from "../assets/images/ibrahim.jpg";
 import member9 from "../assets/images/team.png";
 
 // ================= CEO DATA =================
@@ -143,10 +143,9 @@ const TeamMemberCard = ({ member, delay }) => {
                 style={{ perspective: "1000px" }}
             >
                 <div
-                    className="relative w-full h-full transition-transform duration-500 rounded-xl"
+                    className="relative w-full h-full transition-transform duration-500 rounded-xl group-hover:[transform:rotateY(180deg)]"
                     style={{
                         transformStyle: "preserve-3d",
-                        transition: "transform 0.6s"
                     }}
                 >
                     {/* Front side */}
@@ -163,7 +162,7 @@ const TeamMemberCard = ({ member, delay }) => {
                             <img
                                 src={member.image}
                                 alt={member.name}
-                                className="max-w-full max-h-48 object-cover rounded-lg shadow-md"
+                                className="w-32 h-32 object-cover rounded-full shadow-md"
                             />
                         </div>
                         <div className="mt-4 text-center p-3 rounded-lg w-full">
@@ -208,13 +207,6 @@ const TeamMemberCard = ({ member, delay }) => {
                         )}
                     </div>
                 </div>
-
-                {/* CSS for flip animation */}
-                <style jsx>{`
-                    .group:hover > div {
-                        transform: rotateY(180deg);
-                    }
-                `}</style>
             </div>
         </motion.div>
     );
