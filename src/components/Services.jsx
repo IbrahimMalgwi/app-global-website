@@ -1,114 +1,234 @@
-import { motion } from "framer-motion";
-import {
-    Heart,
-    CreditCard,
-    Leaf,
-    CircleCheckBig,
-} from "lucide-react";
+// src/components/OurServices.jsx
+import React, { useState } from "react";
 
 const services = [
     {
+        icon: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                />
+            </svg>
+        ),
         title: "GlobalCare EHR",
-        subtitle: "Smart Records. Better Care. Everywhere.",
-        icon: <Heart className="w-8 h-8 text-white" />,
-        iconBg: "from-blue-500 to-green-500",
-        features: [
-            "AI-Driven Insights",
-            "Human-Centered Care",
-            "Seamless Connectivity",
-            "Interoperability  Seamless Data Exchange",
-            "Data Security  Protecting Patient Privacy",
-            "Telehealth Integration  Virtual Care Solutions",
-            "One System, Every Network",
-        ],
+        description:
+            "Smart Records. Better Care. Everywhere.Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
     },
     {
-        title: "AppGlobal Pay",
-        subtitle: "One Platform, Endless Payment Possibilities.",
-        icon: <CreditCard className="w-8 h-8 text-white" />,
-        iconBg: "from-blue-500 to-violet-500",
-        features: [
-            "Secure Transactions",
-            "Multiple Currencies",
-            "Instant Processing",
-        ],
+        icon: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.104c.725.148 1.453-.384 1.453-1.069V15.75m-4.14 6.304v-4.483c0-2.072.486-4.13 1.453-6.046 1.114-2.28 3.53-3.69 6.1-3.586-.18.497-.333 1-.453 1.5-1.996 4.606-2.502 9.049-2.062 13.518-.11.168-.21.328-.3 1.5H2.25z"
+                />
+            </svg>
+        ),
+        title: "ppGlobal Pay",
+        description:
+            "Digital platform for cooperative societies to manage members, track savings, and handle loan operations. Secure Transactions Multiple Currencies Instant Processing"
     },
     {
+        icon: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+            </svg>
+        ),
         title: "Globalshell Resources",
-        subtitle: "Smart Grids. Clean Energy. Connected World",
-        icon: <Leaf className="w-8 h-8 text-white" />,
-        iconBg: "from-green-500 to-violet-500",
-        features: ["Smart Infrastructure", "Clean Energy", "Connected Systems"],
-    }
+        description:
+            "Early warning system that helps farmers mitigate climate risks and protect their agricultural investments.",
+    },
+    {
+        icon: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+            </svg>
+        ),
+        title: "Educational Information Systems",
+        description:
+            "Our School Management Suite of services including Result processing, student demographics, time attendance, health management, payroll, payments, and accounting.",
+    },
+    {
+        icon: (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.104c.725.148 1.453-.384 1.453-1.069V15.75m-4.14 6.304v-4.483c0-2.072.486-4.13 1.453-6.046 1.114-2.28 3.53-3.69 6.1-3.586-.18.497-.333 1-.453 1.5-1.996 4.606-2.502 9.049-2.062 13.518-.11.168-.21.328-.3 1.5H2.25z"
+                />
+            </svg>
+        ),
+        title: "E-commerce Solutions",
+        description:
+            "We connect shoppers all over the country with verified merchants, farmers, and producers of goods and services with special consideration to price, quality, and proximity.",
+    },
 ];
 
-export default function Services() {
+const OurServices = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? services.length - 3 : prevIndex - 1
+        );
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex >= services.length - 3 ? 0 : prevIndex + 1
+        );
+    };
+
     return (
-        <section id="services" className="py-20 relative">
-            <div className="container mx-auto px-6">
-                {/* Section Header */}
-                <motion.div
-                    className="text-center mb-16"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
-                        Our Solutions
-                    </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Comprehensive digital solutions that transform healthcare, finance,
-                        and energy sectors
-                    </p>
-                </motion.div>
+        <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-12 text-center relative overflow-hidden">
+            {/* Background Circles */}
+            <div className="absolute w-40 h-40 rounded-full bg-blue-200 opacity-50 blur-2xl top-16 left-16"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-purple-200 opacity-50 blur-2xl bottom-16 right-16"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-blue-200 opacity-50 blur-2xl top-1/2 left-0 -translate-y-1/2"></div>
+            <div className="absolute w-40 h-40 rounded-full bg-purple-200 opacity-50 blur-2xl bottom-0 left-1/2 -translate-x-1/2"></div>
 
-                {/* Services Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: i * 0.15 }}
-                            viewport={{ once: true }}
-                            className="perspective-1000"
+            {/* Main Content Container */}
+            <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+                    Our Services
+                </h2>
+                <p className="text-lg text-gray-600 mb-12">
+                    We offer a comprehensive range of digital services to help your
+                    business thrive.
+                </p>
+
+                <div className="relative w-full">
+                    <div className="flex justify-between items-center w-full absolute z-20 top-1/2 -translate-y-1/2">
+                        <button
+                            onClick={prevSlide}
+                            className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
                         >
-                            <div className="rounded-lg bg-card text-card-foreground h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
-                                <div className="flex flex-col space-y-1.5 p-6">
-                                    {/* Icon */}
-                                    <div
-                                        className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.iconBg} flex items-center justify-center mb-4`}
-                                    >
-                                        {service.icon}
-                                    </div>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6 text-gray-600"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6 text-gray-600"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                                />
+                            </svg>
+                        </button>
+                    </div>
 
-                                    <div className="tracking-tight text-2xl font-bold text-gray-800 dark:text-white">
-                                        {service.title}
-                                    </div>
-                                    <div className="text-lg text-gray-600 dark:text-gray-300">
-                                        {service.subtitle}
+                    <div className="overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-500 ease-in-out"
+                            style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+                        >
+                            {services.map((service, index) => (
+                                <div key={index} className="flex-shrink-0 w-1/3 p-4">
+                                    <div className="bg-white rounded-3xl shadow-2xl p-8 h-full flex flex-col items-center text-center transition-transform transform hover:scale-105 duration-300 ease-in-out">
+                                        <div className="relative flex items-center justify-center mb-6">
+                                            {service.icon}
+                                        </div>
+                                        <h3 className="text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 mb-2">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-600">
+                                            {service.description}
+                                        </p>
+                                        <button className="mt-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 font-bold hover:underline">
+                                            Learn More →
+                                        </button>
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-                                {/* Features */}
-                                <div className="p-6 pt-0">
-                                    <ul className="space-y-2">
-                                        {service.features.map((feat, j) => (
-                                            <li key={j} className="flex items-center gap-2">
-                                                <CircleCheckBig className="w-5 h-5 text-green-500" />
-                                                <span className="text-gray-700 dark:text-gray-300">
-                          {feat}
-                        </span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                {/* Pagination Dots */}
+                <div className="flex justify-center space-x-2 mt-8">
+                    {Array.from({ length: Math.ceil(services.length / 3) }).map(
+                        (_, index) => (
+                            <div
+                                key={index}
+                                className={`w-3 h-3 rounded-full ${
+                                    index === Math.floor(currentIndex / 3)
+                                        ? "bg-gradient-to-r from-blue-500 to-purple-600"
+                                        : "bg-gray-300"
+                                }`}
+                            ></div>
+                        )
+                    )}
                 </div>
             </div>
-        </section>
+        </div>
     );
-}
+};
+
+export default OurServices;
