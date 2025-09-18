@@ -5,32 +5,32 @@ import { motion, AnimatePresence } from "framer-motion";
 const coreValues = [
     {
         letter: "A",
-        title: "Integrity",
+        title: "Accountability",
         description: "We are honest, transparent, and ethical in all business engagements.",
     },
     {
         letter: "P",
-        title: "Non-Conformity",
+        title: "Performance",
         description: "We question the status quo and seek alternative ideas.",
     },
     {
         letter: "P",
-        title: "Service",
+        title: "Productivity",
         description: "Quality experience for our customers, local community, and our team.",
     },
     {
         letter: "G",
-        title: "Teamwork",
+        title: "Group Work",
         description: "We drive workforce efficiency by encouraging collaboration, mutual respect, and shared responsibility.",
     },
     {
         letter: "L",
-        title: "Operational Excellence",
+        title: "Learning",
         description: "We automate and continuously improve our internal processes to promote efficiency.",
     },
     {
         letter: "O",
-        title: "Resourcefulness",
+        title: "Outcome",
         description: "We thrive by finding innovative solutions to problems using available resources.",
     },
     {
@@ -40,12 +40,12 @@ const coreValues = [
     },
     {
         letter: "A",
-        title: "Mentorship",
+        title: "Accountability",
         description: "Provide technology and business mentorship to talented youth irrespective of background.",
     },
     {
         letter: "L",
-        title: "Mentorship",
+        title: "Leadership",
         description: "Provide technology and business mentorship to talented youth irrespective of background.",
     },
 ];
