@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// 1. Import theme utilities
 import { typography } from "../theme/typography";
 import colors from "../theme/colors";
 
-// 2. Define core values array
 const coreValues = [
     { letter: "A", title: "Accountability", description: "We are honest, transparent, and ethical in all business engagements." },
     { letter: "P", title: "Performance", description: "We question the status quo and seek alternative ideas." },
@@ -20,7 +18,6 @@ const coreValues = [
 const CoreValue = () => {
     const [currentValueIndex, setCurrentValueIndex] = useState(0);
 
-    // Auto-cycle every 3s
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentValueIndex((prev) => (prev + 1) % coreValues.length);
@@ -31,9 +28,8 @@ const CoreValue = () => {
     const currentValue = coreValues[currentValueIndex];
 
     return (
-        // 3. Use ThemeLayout or apply background from theme
         <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 text-center overflow-hidden relative">
-            {/* Background Gradient - Using theme color */}
+            {/* Background Gradient */}
             <div className={`absolute inset-0 z-0 bg-gradient-to-br ${colors.gradients.background}`}></div>
 
             {/* Main Content */}
@@ -41,7 +37,6 @@ const CoreValue = () => {
                 {/* Heading */}
                 <section>
                     <motion.h2
-                        // 4. Use typography and theme gradient for heading
                         className={`${typography.h1} mb-4 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -50,7 +45,6 @@ const CoreValue = () => {
                         Core Values
                     </motion.h2>
                     <motion.p
-                        // 5. Use typography and text color from theme
                         className={`${typography.body} mb-12`}
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -70,14 +64,9 @@ const CoreValue = () => {
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.6 }}
                     >
-                        {/* Rotated gradient box */}
+                        {/* FIXED: Rotated gradient box */}
                         <motion.div
-                            className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl shadow-lg flex items-center justify-center mb-6"
-                            // 6. Use theme gradient for the letter box
-                            style={{
-                                background: `linear-gradient(135deg, ${colors.gradients.primary})`,
-                                transform: "rotate(45deg)",
-                            }}
+                            className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl shadow-lg flex items-center justify-center mb-6 bg-gradient-to-r from-purple-600 to-pink-600"
                             initial={{ scale: 0.8, rotate: 45 }}
                             animate={{ scale: 1, rotate: 45 }}
                             transition={{ duration: 0.6, type: "spring", damping: 10, stiffness: 100 }}
@@ -95,7 +84,6 @@ const CoreValue = () => {
                         </motion.div>
 
                         <motion.h3
-                            // 7. Use typography and text color from theme
                             className={`${typography.h2} mb-2 ${colors.text.primary}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -104,7 +92,6 @@ const CoreValue = () => {
                             {currentValue.title}
                         </motion.h3>
                         <motion.p
-                            // 8. Use typography and text color from theme
                             className={`${typography.body} max-w-sm mb-12 ${colors.text.muted}`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -125,7 +112,6 @@ const CoreValue = () => {
                     {coreValues.map((value, index) => (
                         <motion.div
                             key={value.letter + index}
-                            // 9. Use theme-based conditional styling
                             className={`font-extrabold text-3xl sm:text-5xl transition-colors duration-300 ${
                                 index === currentValueIndex
                                     ? `text-transparent bg-clip-text bg-gradient-to-r ${colors.gradients.primary}`

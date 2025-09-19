@@ -2,6 +2,10 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
+import { ThemedButton } from "../components/UI/ThemedButton";
+import { TeamMemberCard } from "../components/UI/TeamMemberCard";
+import { typography } from "../theme/typography";
+import colors from "../theme/colors";
 
 // ================= LOCAL IMAGES =================
 import ceoImage from "../assets/images/ceo.jpeg";
@@ -120,98 +124,6 @@ const executiveTeam = [
     },
 ];
 
-// ================= TEAM MEMBER CARD =================
-const TeamMemberCard = ({ member, delay }) => {
-    const { theme } = useTheme();
-
-    // Consistent color scheme for both sides
-    const cardColor = theme === "light" ? "#f8fafc" : "#1e293b";
-    const textColor = theme === "light" ? "#1e293b" : "#f1f5f9";
-    const accentColor = theme === "light" ? "#3b82f6" : "#60a5fa";
-    const hoverColor = theme === "light" ? "#e2e8f0" : "#334155";
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay, duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="w-full h-96"
-        >
-            <div
-                className="relative w-full h-full group transition-transform duration-500 rounded-xl"
-                style={{ perspective: "1000px" }}
-            >
-                <div
-                    className="relative w-full h-full transition-transform duration-500 rounded-xl group-hover:[transform:rotateY(180deg)]"
-                    style={{
-                        transformStyle: "preserve-3d",
-                    }}
-                >
-                    {/* Front side */}
-                    <div
-                        className="absolute inset-0 flex flex-col justify-between rounded-xl shadow-lg overflow-hidden p-4"
-                        style={{
-                            backfaceVisibility: "hidden",
-                            background: cardColor,
-                            color: textColor,
-                            border: `2px solid ${accentColor}20`,
-                        }}
-                    >
-                        <div className="flex-1 flex items-center justify-center pt-4 px-4">
-                            <img
-                                src={member.image}
-                                alt={member.name}
-                                className="w-32 h-32 object-cover rounded-full shadow-md"
-                            />
-                        </div>
-                        <div className="mt-4 text-center p-3 rounded-lg w-full">
-                            <h3 className="font-semibold text-lg" style={{ color: accentColor }}>
-                                {member.name}
-                            </h3>
-                            <p className="text-sm opacity-80">{member.role}</p>
-                        </div>
-                    </div>
-
-                    {/* Back side */}
-                    <div
-                        className="absolute inset-0 flex flex-col p-6 rounded-xl shadow-lg"
-                        style={{
-                            backfaceVisibility: "hidden",
-                            transform: "rotateY(180deg)",
-                            background: cardColor,
-                            color: textColor,
-                            border: `2px solid ${accentColor}20`,
-                        }}
-                    >
-                        <h3 className="font-semibold text-lg mb-2 text-center" style={{ color: accentColor }}>
-                            {member.name}
-                        </h3>
-                        <p className="text-sm opacity-80 text-center mb-4">{member.role}</p>
-
-                        <div className="flex-1 overflow-y-auto pr-2 mb-4">
-                            <p className="text-sm leading-relaxed">{member.bio}</p>
-                        </div>
-
-                        {member.socials?.linkedin && (
-                            <a
-                                href={member.socials.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center w-10 h-10 rounded-full mx-auto transition-colors"
-                                style={{ backgroundColor: hoverColor }}
-                                aria-label={`Connect with ${member.name} on LinkedIn`}
-                            >
-                                <Linkedin className="w-5 h-5" style={{ color: accentColor }} />
-                            </a>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </motion.div>
-    );
-};
-
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
     const [showFullBio, setShowFullBio] = useState(false);
@@ -226,15 +138,10 @@ export default function Team() {
         []
     );
 
-    // Colors for CEO section
-    const ceoTextColor = theme === "light" ? "#1e293b" : "#f1f5f9";
-    const ceoBgColor = theme === "light" ? "#e2e8f0" : "#0f172a";
-    const ceoAccentColor = theme === "light" ? "#3b82f6" : "#60a5fa";
-
     return (
         <>
             {/* CEO Hero Section */}
-            <section id="team" className="relative py-20 md:py-32" style={{ background: ceoBgColor }}>
+            <section id="team" className="relative py-20 md:py-32 bg-slate-100 dark:bg-slate-900">
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         {/* CEO Image */}
@@ -258,53 +165,39 @@ export default function Team() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            style={{ color: ceoTextColor }}
+                            className={colors.text.primary}
                         >
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
+                            <h1 className={`${typography.h1} mb-3`}>
                                 {ceo.name}, {ceo.title}
                             </h1>
-                            <h2 className="text-xl md:text-2xl mb-6" style={{ color: ceoAccentColor }}>
+                            <h2 className={`${typography.h2} mb-6 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>
                                 {ceo.role}
                             </h2>
-                            <hr className="max-w-md h-px mb-8 opacity-30" />
+                            <hr className="max-w-md h-px mb-8 bg-slate-300 dark:bg-slate-700 opacity-50" />
 
                             <div className="space-y-4 mb-8">
                                 {showFullBio
                                     ? ceo.bio.split("\n\n").map((p, i) => (
-                                        <p key={i} className="text-base md:text-lg leading-relaxed">
+                                        <p key={i} className={`${typography.body} leading-relaxed`}>
                                             {p}
                                         </p>
                                     ))
                                     : (
-                                        <p className="text-base md:text-lg leading-relaxed">{shortBio}</p>
+                                        <p className={`${typography.body} leading-relaxed`}>{shortBio}</p>
                                     )}
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 items-start">
-                                <button
-                                    onClick={() => setShowFullBio(!showFullBio)}
-                                    className="text-base md:text-lg font-medium px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
-                                    style={{
-                                        backgroundColor: ceoAccentColor,
-                                        color: "#fff",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.target.style.opacity = 0.9;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.opacity = 1;
-                                    }}
-                                >
+                                <ThemedButton onClick={() => setShowFullBio(!showFullBio)}>
                                     {showFullBio ? "Read Less" : "Read More →"}
-                                </button>
+                                </ThemedButton>
 
                                 {ceo.socials?.linkedin && (
                                     <a
                                         href={ceo.socials.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors"
-                                        style={{ backgroundColor: ceoAccentColor }}
+                                        className="inline-flex items-center justify-center w-12 h-12 rounded-full transition-colors bg-gradient-to-r from-indigo-600 to-pink-600 hover:opacity-90"
                                         aria-label="Connect with CEO on LinkedIn"
                                     >
                                         <Linkedin className="w-6 h-6 text-white" />
@@ -317,15 +210,14 @@ export default function Team() {
             </section>
 
             {/* Executive Team Grid */}
-            <section className="py-20 md:py-32" style={{ background: theme === "light" ? "#f1f5f9" : "#0f172a" }}>
+            <section className="py-20 md:py-32 bg-slate-50 dark:bg-slate-950">
                 <div className="container mx-auto px-4 md:px-6">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-4xl font-bold text-center mb-12"
-                        style={{ color: theme === "light" ? "#1e293b" : "#f1f5f9" }}
+                        className={`${typography.h1} text-center mb-12`}
                     >
                         Executive Team
                     </motion.h2>

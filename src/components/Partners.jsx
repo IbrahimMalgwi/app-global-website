@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { typography } from "../theme/typography";
+import colors from "../theme/colors";
 import awsLogo from "../assets/images/aws-logo.png";
 import googleCloudLogo from "../assets/images/google-cloud-logo.png";
 import ibmLogo from "../assets/images/ibm-logo.png";
@@ -10,7 +12,7 @@ import ikorodu from "../assets/images/ikorodu.png";
 import inewi from "../assets/images/inewi.png";
 import national from "../assets/images/national.png";
 import eksuth from "../assets/images/eksuth.png";
-import  fmcgusau from "../assets/images/fmcgusau.png";
+import fmcgusau from "../assets/images/fmcgusau.png";
 import yaba from "../assets/images/fnph.png";
 
 export default function Partners() {
@@ -41,10 +43,10 @@ export default function Partners() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+                    <h2 className={`${typography.h1} mb-6 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>
                         Our Partners &amp; Clients
                     </h2>
-                    <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    <p className={`${typography.body} max-w-3xl mx-auto ${colors.text.muted}`}>
                         Trusted by leading organizations worldwide
                     </p>
                 </motion.div>
