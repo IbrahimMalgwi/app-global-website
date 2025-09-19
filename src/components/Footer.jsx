@@ -1,3 +1,4 @@
+// src/components/Footer.jsx
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { typography } from "../theme/typography";

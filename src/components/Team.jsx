@@ -1,7 +1,8 @@
+//src/components/Team.jsx
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
-import { useTheme } from "../hooks/useTheme";
+// import { useTheme } from "../hooks/useTheme";
 import { ThemedButton } from "../components/UI/ThemedButton";
 import { TeamMemberCard } from "../components/UI/TeamMemberCard";
 import { typography } from "../theme/typography";
@@ -127,7 +128,7 @@ const executiveTeam = [
 // ================= MAIN TEAM COMPONENT =================
 export default function Team() {
     const [showFullBio, setShowFullBio] = useState(false);
-    const { theme } = useTheme();
+    // const { theme } = useTheme();
     const shortBio = ceo.bio.split("\n\n")[0];
 
     const teamMembers = useMemo(

@@ -1,3 +1,4 @@
+// src/components/Contact.jsx
 import { motion } from "framer-motion";
 import { Send, MapPin, Phone, Mail } from "lucide-react";
 import { useState } from "react";

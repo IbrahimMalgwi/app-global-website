@@ -1,4 +1,3 @@
-// src/components/UI/ThemedCard.jsx
 import { useTheme } from '../../hooks/useTheme';
 
 export const ThemedCard = ({

@@ -1,3 +1,4 @@
+//src/components/Partners.jsx
 import { motion } from "framer-motion";
 import { typography } from "../theme/typography";
 import colors from "../theme/colors";

@@ -1,9 +1,11 @@
-// src/hooks/useCarousel.js
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 export const useCarousel = (items, itemsPerView) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
     const totalPages = Math.ceil(items.length / itemsPerView);
+    const autoAdvanceRef = useRef();
 
     const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) =>
@@ -21,10 +23,38 @@ export const useCarousel = (items, itemsPerView) => {
         setCurrentIndex(index * itemsPerView);
     }, [itemsPerView]);
 
-    // Optional: Auto-advance carousel
+    // Touch handling for mobile
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (touchStart - touchEnd > 50) {
+            // Left swipe
+            nextSlide();
+        } else if (touchEnd - touchStart > 50) {
+            // Right swipe
+            prevSlide();
+        }
+    };
+
+    // Auto-advance carousel with cleanup
     useEffect(() => {
-        const timer = setInterval(nextSlide, 5000);
-        return () => clearInterval(timer);
+        if (autoAdvanceRef.current) {
+            clearInterval(autoAdvanceRef.current);
+        }
+
+        autoAdvanceRef.current = setInterval(nextSlide, 5000);
+
+        return () => {
+            if (autoAdvanceRef.current) {
+                clearInterval(autoAdvanceRef.current);
+            }
+        };
     }, [nextSlide]);
 
     return {
@@ -33,6 +63,11 @@ export const useCarousel = (items, itemsPerView) => {
         nextSlide,
         prevSlide,
         goToSlide,
-        itemsPerView
+        itemsPerView,
+        touchHandlers: {
+            onTouchStart: handleTouchStart,
+            onTouchMove: handleTouchMove,
+            onTouchEnd: handleTouchEnd
+        }
     };
 };

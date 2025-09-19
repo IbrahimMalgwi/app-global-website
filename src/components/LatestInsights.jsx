@@ -1,4 +1,4 @@
-
+//src/components/LatestInsights.jsx
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowUpRight } from "lucide-react";
 import AIHealthcareImage from "../assets/images/ai-healthcare-blog.png";

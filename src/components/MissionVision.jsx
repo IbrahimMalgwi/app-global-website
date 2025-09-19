@@ -1,3 +1,4 @@
+//src/components/MissionVision.jsx
 import React from 'react';
 import { AnimatedBackground } from "./UI/AnimatedBackground";
 import { IconCard } from "./UI/IconCard"; // Import the new component
