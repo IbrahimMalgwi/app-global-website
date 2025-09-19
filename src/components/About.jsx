@@ -10,6 +10,7 @@ import colors from "../theme/colors";
 
 export default function About() {
     return (
+        <section id="about">
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center px-6 lg:px-20 py-20 overflow-hidden">
 
             {/* 2. Use the new animated background component */}
@@ -96,6 +97,7 @@ export default function About() {
                     />
                 </div>
             </div>
+        </section>
         </section>
     );
 }

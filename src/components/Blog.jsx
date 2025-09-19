@@ -15,6 +15,7 @@ export default function Newsletter() {
     };
 
     return (
+        <section id="blog">
         <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
             <div className="container mx-auto px-4">
                 {/* Heading */}
@@ -66,6 +67,7 @@ export default function Newsletter() {
                     We respect your privacy. Unsubscribe at any time.
                 </p>
             </div>
+        </section>
         </section>
     );
 }

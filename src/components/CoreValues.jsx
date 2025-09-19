@@ -28,6 +28,7 @@ const CoreValue = () => {
     const currentValue = coreValues[currentValueIndex];
 
     return (
+        <section id="core-values">
         <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 text-center overflow-hidden relative">
             {/* Background Gradient */}
             <div className={`absolute inset-0 z-0 bg-gradient-to-br ${colors.gradients.background}`}></div>
@@ -150,6 +151,7 @@ const CoreValue = () => {
                 </motion.div>
             </motion.div>
         </div>
+        </section>
     );
 };
 

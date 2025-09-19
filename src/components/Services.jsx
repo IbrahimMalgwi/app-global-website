@@ -121,6 +121,7 @@ const OurServices = () => {
     // Use the custom hook for carousel logic
 
     return (
+        <section id="services">
         <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-12 text-center relative overflow-hidden">
 
             {/* Use the themed animated background */}
@@ -210,6 +211,7 @@ const OurServices = () => {
                 </div>
             </div>
         </div>
+        </section>
     );
 };
 

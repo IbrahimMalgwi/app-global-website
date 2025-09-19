@@ -32,7 +32,8 @@ export default function Partners() {
         { name: "Yaba", logo: yaba },
     ];
 
-    return (
+    return(
+    <section id="partners">
         <section id="partners" className="py-20 bg-gray-50 dark:bg-gray-800">
             <div className="container mx-auto px-6">
                 {/* Heading */}
@@ -71,6 +72,7 @@ export default function Partners() {
                     ))}
                 </div>
             </div>
+        </section>
         </section>
     );
 }
