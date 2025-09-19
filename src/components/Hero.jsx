@@ -72,6 +72,7 @@ export default function Hero() {
     const handleVideoLoaded = () => setIsVideoLoaded(true);
 
     return (
+        <section id="home">
         <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
             {/* Background Video */}
             <div className="absolute inset-0 w-full h-full z-0">
@@ -222,6 +223,7 @@ export default function Hero() {
                     animation: blink 1s infinite;
                 }
             `}</style>
+        </section>
         </section>
     );
 }

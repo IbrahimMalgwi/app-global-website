@@ -1,4 +1,4 @@
-//src/components/ThemeLayout.jsx
+// src/components/ThemeLayout.jsx
 import React from "react";
 
 export default function ThemeLayout({ children }) {

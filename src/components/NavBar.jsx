@@ -70,12 +70,12 @@ export default function Navbar() {
                     className="text-2xl font-bold text-purple-600 cursor-pointer dark:text-purple-400"
                     onClick={() => scrollToSection("home")}
                 >
-                    MyCompany
+                    AppGlobal
                 </div>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex space-x-8 items-center">
-                    {["home", "about", "services", "team", "blog", "contact"].map((item) => (
+                    {["home", "about", "services", "team", "partners", "blog", "contact"].map((item) => (
                         <a
                             key={item}
                             href={`#${item}`}
@@ -195,7 +195,7 @@ export default function Navbar() {
             {isMenuOpen && (
                 <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg">
                     <div className="px-6 py-4 space-y-4">
-                        {["home", "about", "services", "team", "blog", "contact"].map((item) => (
+                        {["home", "about", "services", "team", "partners", "blog", "contact"].map((item) => (
                             <a
                                 key={item}
                                 href={`#${item}`}
