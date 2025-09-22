@@ -25,7 +25,7 @@ export const subsidiaries = [
         website: "#",
     },
     {
-        name: "GlobalCare EHR",
+        name: "GlobalCare EHR1",
         subtitle: "Smart Records. Better Care. Everywhere.",
         logo: "https://placehold.co/40x40/8b5cf6/ffffff?text=BC",
         image: "https://placehold.co/600x400/c084fc/000000?text=Globalcare",
@@ -33,7 +33,7 @@ export const subsidiaries = [
         website: "#",
     },
     {
-        name: "AppGlobal Pay",
+        name: "AppGlobal Pay1",
         subtitle: "WHERE SHOPPING MEETS CONVENIENCE",
         logo: "https://placehold.co/40x40/f97316/ffffff?text=KM",
         image: "https://placehold.co/600x400/fb923c/000000?text=AppGlobal",
@@ -41,7 +41,7 @@ export const subsidiaries = [
         website: "#",
     },
     {
-        name: "Globalshell Resources",
+        name: "Globalshell Resources1",
         subtitle: "Smart Grids. Clean Energy. Connected World",
         logo: "https://placehold.co/40x40/ef4444/ffffff?text=KT",
         image: "https://placehold.co/600x400/f87171/000000?text=Globalshell ",

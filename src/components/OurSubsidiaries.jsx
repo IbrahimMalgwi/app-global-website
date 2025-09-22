@@ -14,9 +14,7 @@ const OurSubsidiaries = () => {
 
     return (
         <section id="subsidiaries">
-
             <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 lg:p-12 text-center overflow-hidden">
-
                 {/* Use themed animated background */}
                 <AnimatedBackground />
 
@@ -35,7 +33,7 @@ const OurSubsidiaries = () => {
                         >
                             {subsidiaries.map((subsidiary, index) => (
                                 <SubsidiaryCard
-                                    key={subsidiary.name}
+                                    key={`subsidiary-${subsidiary.name}-${index}`}  // ✅ Unique keys
                                     subsidiary={subsidiary}
                                     isSelected={selectedIndex === index}
                                     onClick={() => setSelectedIndex(index)}
@@ -76,18 +74,18 @@ const OurSubsidiaries = () => {
                         </div>
                     </div>
 
-                    {/* Dots navigation */}
+                    {/* Dots navigation - FIXED */}
                     <div className="flex justify-center mt-8 space-x-2">
-                        {subsidiaries.map((_, index) => (
+                        {subsidiaries.map((subsidiary, index) => (
                             <button
-                                key={index}
+                                key={`dot-${subsidiary.name}-${index}`}  // ✅ Unique keys
                                 onClick={() => setSelectedIndex(index)}
                                 className={`w-3 h-3 rounded-full cursor-pointer transition ${
                                     index === selectedIndex
                                         ? "bg-blue-600 scale-125"
                                         : "bg-gray-300 hover:bg-gray-400"
                                 }`}
-                                aria-label={`View ${subsidiaries[index].name}`}
+                                aria-label={`View ${subsidiary.name}`}
                             />
                         ))}
                     </div>

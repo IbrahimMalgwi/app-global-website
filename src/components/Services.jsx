@@ -7,7 +7,6 @@ import { typography } from "../theme/typography";
 import colors from "../theme/colors";
 import useWindowSize from "../hooks/useWindowSize";
 
-
 // Moved services data outside component for better readability
 const services = [
     {
@@ -87,7 +86,7 @@ const services = [
                 />
             </svg>
         ),
-        title: "GlobalCare EHR",
+        title: "GlobalCare EHR1",
         description: "Smart Records. Better Care. Everywhere. Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
     },
     {
@@ -107,110 +106,110 @@ const services = [
                 />
             </svg>
         ),
-        title: "App Global Pay",
+        title: "App Global Pay1",
         description: "Smart Records. Better Care. Everywhere. Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
     },
-
 ];
 
 const OurServices = () => {
-
     const { width } = useWindowSize();
     const itemsPerView = width >= 1024 ? 3 : width >= 640 ? 2 : 1;
     const { currentIndex, totalPages, nextSlide, prevSlide, goToSlide } = useCarousel(services, itemsPerView);
-    // Use the custom hook for carousel logic
 
     return (
         <section id="services">
-        <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-12 text-center relative overflow-hidden">
+            <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 lg:p-12 text-center relative overflow-hidden">
+                {/* Use the themed animated background */}
+                <AnimatedBackground />
 
-            {/* Use the themed animated background */}
-            <AnimatedBackground />
+                {/* Main Content */}
+                <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+                    {/* Use typography for heading */}
+                    <h2 className={`${typography.h1} mb-4 ${colors.text.primary}`}>
+                        Our <span className={`bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>Services</span>
+                    </h2>
+                    {/* Use typography for subtext */}
+                    <p className={`${typography.body} mb-12`}>
+                        We offer a comprehensive range of digital services to help your business thrive.
+                    </p>
 
-            {/* Main Content */}
-            <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Use typography for heading */}
-                <h2 className={`${typography.h1} mb-4 ${colors.text.primary}`}>
-                    Our <span className={`bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>Services</span>
-                </h2>
-                {/* Use typography for subtext */}
-                <p className={`${typography.body} mb-12`}>
-                    We offer a comprehensive range of digital services to help your business thrive.
-                </p>
-
-                <div className="relative w-full">
-                    {/* Slider buttons */}
-                    <div className="flex justify-between items-center w-full absolute z-20 top-1/2 -translate-y-1/2">
-                        <button
-                            onClick={prevSlide}
-                            className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
-                            aria-label="Previous services"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 text-gray-600"
+                    <div className="relative w-full">
+                        {/* Slider buttons */}
+                        <div className="flex justify-between items-center w-full absolute z-20 top-1/2 -translate-y-1/2">
+                            <button
+                                onClick={prevSlide}
+                                className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
+                                aria-label="Previous services"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                            </svg>
-                        </button>
-                        <button
-                            onClick={nextSlide}
-                            className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
-                            aria-label="Next services"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 text-gray-600"
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6 text-gray-600"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={nextSlide}
+                                className="bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition duration-300"
+                                aria-label="Next services"
                             >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </button>
-                    </div>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6 text-gray-600"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </button>
+                        </div>
 
-                    {/* Services carousel */}
-                    <div className="overflow-hidden">
-                        <div
-                            className="flex transition-transform duration-500 ease-in-out"
-                            style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
-                        >
-                            {services.map((service, index) => (
-                                <div key={index} className="flex-shrink-0 w-1/3 p-4">
-                                    <ServiceCard
-                                        icon={service.icon}
-                                        title={service.title}
-                                        description={service.description}
-                                    />
-                                </div>
-                            ))}
+                        {/* Services carousel */}
+                        <div className="overflow-hidden">
+                            <div
+                                className="flex transition-transform duration-500 ease-in-out"
+                                style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+                            >
+                                {services.map((service, index) => (
+                                    <div
+                                        key={`service-${service.title}-${index}`}  // ✅ Fixed key
+                                        className="flex-shrink-0 w-1/3 p-4"
+                                        style={{ width: `${100 / itemsPerView}%` }}  // ✅ Dynamic width
+                                    >
+                                        <ServiceCard
+                                            icon={service.icon}
+                                            title={service.title}
+                                            description={service.description}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center space-x-2 mt-8">
-                    {Array.from({ length: totalPages }).map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full ${
-                                index === Math.floor(currentIndex / itemsPerView)
-                                    ? "bg-gradient-to-r from-indigo-500 to-pink-600"
-                                    : "bg-gray-300"
-                            }`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
+                    {/* Pagination Dots - FIXED */}
+                    <div className="flex justify-center space-x-2 mt-8">
+                        {Array.from({ length: totalPages }).map((_, index) => (
+                            <button
+                                key={`dot-${index}`}  // ✅ Fixed key with prefix
+                                onClick={() => goToSlide(index)}
+                                className={`w-3 h-3 rounded-full ${
+                                    index === Math.floor(currentIndex / itemsPerView)
+                                        ? "bg-gradient-to-r from-indigo-500 to-pink-600"
+                                        : "bg-gray-300"
+                                }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
         </section>
     );
 };

@@ -6,9 +6,28 @@ export default function Navbar() {
     const [darkMode, setDarkMode] = useState(false);
 
     // Handle scroll to update active section
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const sections = document.querySelectorAll("section");
+    //         let currentSection = "home";
+    //
+    //         sections.forEach((section) => {
+    //             const sectionTop = section.offsetTop - 100;
+    //             if (window.scrollY >= sectionTop) {
+    //                 currentSection = section.id;
+    //             }
+    //         });
+    //
+    //         setActiveSection(currentSection);
+    //     };
+    //
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
+
     useEffect(() => {
         const handleScroll = () => {
-            const sections = document.querySelectorAll("section");
+            const sections = document.querySelectorAll("section, [id]"); // Also look for elements with IDs
             let currentSection = "home";
 
             sections.forEach((section) => {
@@ -24,7 +43,6 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
     // Check for saved theme preference
     useEffect(() => {
         const isDark = localStorage.getItem('theme') === 'dark' ||
@@ -54,6 +72,7 @@ export default function Navbar() {
     };
 
     // Smooth scroll function
+
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
         if (element) {
