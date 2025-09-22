@@ -13,7 +13,8 @@ const OurSubsidiaries = () => {
     const selectedSubsidiary = subsidiaries[selectedIndex];
 
     return (
-        <section id="subsidiaries">  {/* CHANGED FROM id="services" */}
+        <section id="subsidiaries">
+
             <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-6 lg:p-12 text-center overflow-hidden">
 
                 {/* Use themed animated background */}
