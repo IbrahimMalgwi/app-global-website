@@ -1,3 +1,4 @@
+// App.js
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -11,21 +12,29 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ThemeLayout from "./components/ThemeLayout";
+import {useEffect} from "react";
 
 function App() {
+    useEffect(() => {
+        // Disable browser auto scroll on reload
+        if ("scrollRestoration" in window.history) {
+            window.history.scrollRestoration = "manual";
+        }
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <ThemeLayout>
             <NavBar/>
-            <Hero />
-            <About />
-            <MissionVision/>
-            <CoreValues />
-            <Services />
-            <OurSubsidiaries />
-            <Team />
-            <Partners />
-            <Blog />
-            <Contact />
+            <section id="home"><Hero /></section>
+            <section id="about"><About /></section>
+            <section id="mission"><MissionVision/></section>
+            <section id="values"><CoreValues /></section>
+            <section id="services"><Services /></section>
+            <section id="subsidiaries"><OurSubsidiaries /></section>
+            <section id="team"><Team /></section>
+            <section id="partners"><Partners /></section>
+            <section id="blog"><Blog /></section>
+            <section id="contact"><Contact /></section>
             <Footer />
         </ThemeLayout>
     );

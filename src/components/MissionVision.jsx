@@ -20,7 +20,7 @@ const MissionVision = () => {
     );
 
     return (
-        <section id="mission-vision">
+        <section id="mission">
         <section className="min-h-screen w-full flex flex-col items-center justify-center px-6 lg:px-20 py-20 text-center relative overflow-hidden">
             <AnimatedBackground />
             <div className="relative z-10 w-full max-w-7xl mx-auto">

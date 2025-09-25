@@ -1,3 +1,4 @@
+// src/components/OurSubsidiaries.jsx
 import React, { useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSubsidiaryCarousel } from "../hooks/useSubsidiaryCarousel";
