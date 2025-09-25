@@ -3,14 +3,14 @@ import { Menu, X } from "lucide-react";
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState("hero");
+    const [activeSection, setActiveSection] = useState("home");
 
     // Wrap navItems in useMemo to prevent unnecessary re-renders
     const navItems = useMemo(() => [
-        "hero",
+        "home",
         "about",
         "mission",
-        "corevalues",
+        "core-values",
         "services",
         "subsidiaries",
         "team",
