@@ -5,25 +5,6 @@ export default function Navbar() {
     const [activeSection, setActiveSection] = useState("home");
     const [darkMode, setDarkMode] = useState(false);
 
-    // Handle scroll to update active section
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const sections = document.querySelectorAll("section");
-    //         let currentSection = "home";
-    //
-    //         sections.forEach((section) => {
-    //             const sectionTop = section.offsetTop - 100;
-    //             if (window.scrollY >= sectionTop) {
-    //                 currentSection = section.id;
-    //             }
-    //         });
-    //
-    //         setActiveSection(currentSection);
-    //     };
-    //
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => window.removeEventListener("scroll", handleScroll);
-    // }, []);
 
     useEffect(() => {
         const handleScroll = () => {

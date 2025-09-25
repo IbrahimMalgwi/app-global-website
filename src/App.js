@@ -4,7 +4,7 @@ import About from "./components/About";
 import MissionVision from "./components/MissionVision";
 import CoreValues from "./components/CoreValues";
 import Services from "./components/Services";
-// import OurSubsidiaries from "./components/OurSubsidiaries";
+import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
 import Blog from "./components/Blog";
@@ -21,7 +21,7 @@ function App() {
             <MissionVision/>
             <CoreValues />
             <Services />
-            {/*<OurSubsidiaries />*/}
+            <OurSubsidiaries />
             <Team />
             <Partners />
             <Blog />
