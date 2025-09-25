@@ -32,7 +32,7 @@ const MissionVision = () => {
                     {/* Use IconCard for Mission */}
                     <IconCard
                         title="Our Mission"
-                        description="To achieve a global reputation for delivering user-friendly, innovative technology solutions that effectively address the challenges faced by both public and private sectors."
+                        description="To achieve the reputation of a quality, high standard & reliable solution Provider in the ICT industry, with 100% customer satisfaction, at all time."
                         icon={<MissionIcon />}
                         gradient="from-purple-500 to-indigo-600"
                         blurGradient="from-purple-300 to-indigo-300"
@@ -41,7 +41,7 @@ const MissionVision = () => {
                     {/* Use IconCard for Vision */}
                     <IconCard
                         title="Our Vision"
-                        description="To nurture and accelerate innovative ideas into thriving companies while delivering impactful technology solutions for both public and private sectors."
+                        description="To become a leading Technology solution provider in Africa and beyond."
                         icon={<VisionIcon />}
                         gradient="from-pink-500 to-purple-600"
                         blurGradient="from-pink-300 to-purple-300"

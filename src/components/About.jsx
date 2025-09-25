@@ -31,19 +31,11 @@ export default function About() {
                         </div>
 
                         {/* 5. Use typography and colors for text */}
-                        <p className={`${typography.body} mb-6`}>
-                            We are a{" "}
-                            <span className={`font-semibold ${colors.text.accent.purple}`}>
-                multi-faceted business
-            </span>{" "}
-                            dedicated to providing innovative technology solutions tailored to
-                            key sectors in the African economy.
+                        <p className={`${typography.body} mb-6`}><span className={`font-semibold ${colors.text.accent.purple}`}>APPGLOBAL TECHNOLOGIES LIMITED</span>{" "}
+                            is an Information Technology Company with software development and networking as its core business. The company has made rapid and phenomenal growth in diverse spheres of business, services and solutions.
                         </p>
                         <p className={typography.body}>
-                            Our approach{" "}
-                            <span className={`font-semibold ${colors.text.accent.pink}`}>empowers growth</span>{" "}
-                            and drives impactful results for both government and private
-                            organizations, delivering solutions that make a real difference.
+                            We strongly believe in endowing our customers with apex-level services round the clock. We provides consultancy and outsourced goods and services across the globe, from conception to design, to development of technology solutions for business of all types. With a proficient workforce, we use a low-risk Global Delivery Model (GDM) to accelerate deployment.
                         </p>
                     </Card>
 
