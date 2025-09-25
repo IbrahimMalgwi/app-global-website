@@ -96,12 +96,5 @@ export const subsidiaries = [
         description: `Reliable and scalable cloud and web hosting solutions that ensure optimal performance, security, and uptime for your websites and applications.`,
         website: "#",
     },
-    {
-        name: "Networking",
-        subtitle: "Smart Grids. Clean Energy. Connected World",
-        logo: "https://placehold.co/40x40/ef4444/ffffff?text=KT",
-        image: "https://placehold.co/600x400/22d3ee/000000?text=Networking ",
-        description: `Reliable and scalable cloud and web hosting solutions that ensure optimal performance, security, and uptime for your websites and applications.`,
-        website: "#",
-    },
+
 ];
