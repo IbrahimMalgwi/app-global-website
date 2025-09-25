@@ -1,3 +1,4 @@
+// src/components/Hero.jsx
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import backgroundVideo from "../assets/videos/appglobal-background.mp4";

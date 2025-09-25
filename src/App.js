@@ -5,7 +5,7 @@ import About from "./components/About";
 import MissionVision from "./components/MissionVision";
 import CoreValues from "./components/CoreValues";
 import Services from "./components/Services";
-// import OurSubsidiaries from "./components/OurSubsidiaries";
+import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
 import Blog from "./components/Blog";
@@ -20,8 +20,16 @@ function App() {
         if ("scrollRestoration" in window.history) {
             window.history.scrollRestoration = "manual";
         }
+
+        // Ensure we start at the top
         window.scrollTo(0, 0);
+
+        // Prevent any hash-based scrolling
+        if (window.location.hash) {
+            window.location.hash = "";
+        }
     }, []);
+
     return (
         <ThemeLayout>
             <NavBar/>
@@ -30,7 +38,7 @@ function App() {
             <section id="mission"><MissionVision/></section>
             <section id="core-values"><CoreValues /></section>
             <section id="services"><Services /></section>
-            {/*<section id="subsidiaries"><OurSubsidiaries /></section>*/}
+            <section id="subsidiaries"><OurSubsidiaries /></section>
             <section id="team"><Team /></section>
             <section id="partners"><Partners /></section>
             <section id="blog"><Blog /></section>

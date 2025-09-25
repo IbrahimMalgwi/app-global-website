@@ -1,3 +1,4 @@
+// src/components/NavBar.jsx
 import React, { useState, useEffect, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -22,37 +23,78 @@ const NavBar = () => {
         setIsMenuOpen(false); // close mobile menu
         const section = document.getElementById(id);
         if (section) {
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Add a small timeout to ensure the DOM is ready
+            setTimeout(() => {
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest"
+                });
+            }, 100);
         }
     };
 
     // Detect active section on scroll
     useEffect(() => {
         const handleScroll = () => {
-            let current = "hero";
+            const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+            // Find which section is currently in view
+            let current = "home";
+
             navItems.forEach((id) => {
                 const section = document.getElementById(id);
                 if (section) {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= 120 && rect.bottom >= 120) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionBottom = sectionTop + sectionHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                         current = id;
                     }
                 }
             });
+
             setActiveSection(current);
         };
 
-        window.addEventListener("scroll", handleScroll);
+        // Throttle the scroll event for better performance
+        let ticking = false;
+        const throttledScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener("scroll", throttledScroll);
+
+        // Initial check
         handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [navItems]); // Now navItems is stable due to useMemo
+
+        return () => window.removeEventListener("scroll", throttledScroll);
+    }, [navItems]);
+
+    // Prevent auto-scroll on page load
+    useEffect(() => {
+        // Ensure we start at the top
+        window.scrollTo(0, 0);
+
+        // Disable browser's scroll restoration
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+    }, []);
 
     return (
         <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md shadow-md dark:bg-gray-900/80">
             <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
                 {/* Logo */}
                 <div
-                    onClick={() => scrollToSection("hero")}
+                    onClick={() => scrollToSection("home")}
                     className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent cursor-pointer"
                 >
                     MyCompany
@@ -71,7 +113,7 @@ const NavBar = () => {
                             }`}
                         >
                             {item === "mission" ? "Mission & Vision" :
-                                item === "corevalues" ? "Core Values" :
+                                item === "core-values" ? "Core Values" :
                                     item}
                         </button>
                     ))}
@@ -108,7 +150,7 @@ const NavBar = () => {
                                 }`}
                             >
                                 {item === "mission" ? "Mission & Vision" :
-                                    item === "corevalues" ? "Core Values" :
+                                    item === "core-values" ? "Core Values" :
                                         item}
                             </button>
                         ))}
