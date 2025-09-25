@@ -9,7 +9,7 @@ const NavBar = () => {
     const navItems = useMemo(() => [
         "hero",
         "about",
-        "missionvision",
+        "mission",
         "corevalues",
         "services",
         "subsidiaries",
@@ -69,7 +69,7 @@ const NavBar = () => {
                                     : "text-gray-800 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
                             }`}
                         >
-                            {item === "missionvision" ? "Mission & Vision" :
+                            {item === "mission" ? "Mission & Vision" :
                                 item === "corevalues" ? "Core Values" :
                                     item}
                         </button>
@@ -106,7 +106,7 @@ const NavBar = () => {
                                         : "text-gray-800 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
                                 }`}
                             >
-                                {item === "missionvision" ? "Mission & Vision" :
+                                {item === "mission" ? "Mission & Vision" :
                                     item === "corevalues" ? "Core Values" :
                                         item}
                             </button>
