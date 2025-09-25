@@ -5,7 +5,7 @@ import About from "./components/About";
 import MissionVision from "./components/MissionVision";
 import CoreValues from "./components/CoreValues";
 import Services from "./components/Services";
-import OurSubsidiaries from "./components/OurSubsidiaries";
+// import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
 import Blog from "./components/Blog";
@@ -30,7 +30,7 @@ function App() {
             <section id="mission"><MissionVision/></section>
             <section id="values"><CoreValues /></section>
             <section id="services"><Services /></section>
-            <section id="subsidiaries"><OurSubsidiaries /></section>
+            {/*<section id="subsidiaries"><OurSubsidiaries /></section>*/}
             <section id="team"><Team /></section>
             <section id="partners"><Partners /></section>
             <section id="blog"><Blog /></section>

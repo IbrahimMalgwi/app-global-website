@@ -13,6 +13,7 @@ const NavBar = () => {
         "corevalues",
         "services",
         "subsidiaries",
+        "team",
         "contact",
     ], []);
 
