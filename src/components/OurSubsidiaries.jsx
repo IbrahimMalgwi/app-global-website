@@ -18,16 +18,34 @@ const OurSubsidiaries = () => {
     const selectedSubsidiary = subsidiaries[selectedIndex];
     const intervalRef = useRef(null);
 
+    // Manual scroll function that only affects the container, not the page
+    const scrollToItem = useCallback((index) => {
+        if (scrollRef.current) {
+            const container = scrollRef.current;
+            const selectedItem = container.children[index];
+            if (selectedItem) {
+                // Only scroll the container, not the page
+                const itemTop = selectedItem.offsetTop;
+                const containerHeight = container.clientHeight;
+                const itemHeight = selectedItem.offsetHeight;
+
+                container.scrollTop = itemTop - (containerHeight / 2) + (itemHeight / 2);
+            }
+        }
+    }, [scrollRef]);
+
     /** Navigation helpers */
     const goNext = useCallback(() => {
-        setSelectedIndex((prev) => (prev + 1) % subsidiaries.length);
-    }, [setSelectedIndex]);
+        const newIndex = (selectedIndex + 1) % subsidiaries.length;
+        setSelectedIndex(newIndex);
+        scrollToItem(newIndex);
+    }, [selectedIndex, setSelectedIndex, scrollToItem]);
 
     const goPrev = useCallback(() => {
-        setSelectedIndex(
-            (prev) => (prev - 1 + subsidiaries.length) % subsidiaries.length
-        );
-    }, [setSelectedIndex]);
+        const newIndex = (selectedIndex - 1 + subsidiaries.length) % subsidiaries.length;
+        setSelectedIndex(newIndex);
+        scrollToItem(newIndex);
+    }, [selectedIndex, setSelectedIndex, scrollToItem]);
 
     /** Auto-rotate controls */
     const stopAutoRotate = useCallback(() => {
@@ -46,9 +64,23 @@ const OurSubsidiaries = () => {
 
     /** Start auto-rotation on mount */
     useEffect(() => {
-        startAutoRotate();
-        return stopAutoRotate;
+        // Delay auto-rotation to prevent any initial scroll issues
+        const timer = setTimeout(() => {
+            startAutoRotate();
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+            stopAutoRotate();
+        };
     }, [startAutoRotate, stopAutoRotate]);
+
+    // Handle manual item selection with safe scrolling
+    const handleItemClick = useCallback((index) => {
+        setSelectedIndex(index);
+        scrollToItem(index);
+        startAutoRotate();
+    }, [setSelectedIndex, scrollToItem, startAutoRotate]);
 
     return (
         <section
@@ -57,18 +89,15 @@ const OurSubsidiaries = () => {
             onMouseEnter={stopAutoRotate}
             onMouseLeave={startAutoRotate}
         >
-            {/* Themed background */}
             <AnimatedBackground />
 
             <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl px-4 py-12 mx-auto lg:px-8">
-                {/* Heading */}
                 <h2
                     className={`${typography.h1} mb-12 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent text-center`}
                 >
                     Our Subsidiaries
                 </h2>
 
-                {/* Main content */}
                 <div className="flex flex-col items-center justify-between w-full gap-10 lg:flex-row">
                     {/* Subsidiary List */}
                     <div
@@ -80,10 +109,7 @@ const OurSubsidiaries = () => {
                                 key={subsidiary.name}
                                 subsidiary={subsidiary}
                                 isSelected={selectedIndex === index}
-                                onClick={() => {
-                                    setSelectedIndex(index);
-                                    startAutoRotate(); // restart timer when manually clicked
-                                }}
+                                onClick={() => handleItemClick(index)}
                             />
                         ))}
                     </div>
@@ -155,10 +181,7 @@ const OurSubsidiaries = () => {
                     {subsidiaries.map((subsidiary, index) => (
                         <button
                             key={subsidiary.name}
-                            onClick={() => {
-                                setSelectedIndex(index);
-                                startAutoRotate(); // restart timer on dot click
-                            }}
+                            onClick={() => handleItemClick(index)}
                             className={`w-3 h-3 rounded-full cursor-pointer transition-transform duration-300 ${
                                 index === selectedIndex
                                     ? "bg-blue-600 scale-125"

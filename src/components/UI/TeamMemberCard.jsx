@@ -1,12 +1,12 @@
 // src/components/UI/TeamMemberCard.jsx
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
-import { useTheme } from "../../hooks/useTheme";
+// import { useTheme } from "../../hooks/useTheme";
 import { ThemedCard } from "./ThemedCard";
 import colors from "../../theme/colors";
 
 export const TeamMemberCard = ({ member, delay }) => {
-    const { theme } = useTheme();
+    // const { theme } = useTheme();
 
     return (
         <motion.div
