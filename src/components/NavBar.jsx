@@ -121,8 +121,8 @@ const NavBar = () => {
                                     : "text-gray-800 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
                             }`}
                         >
-                            {item === "mission" ? "Mission & Vision" :
-                                item === "core-values" ? "Core Values" :
+                            {item === "mission" ? "Mission" :
+                                item === "core-values" ? "Values" :
                                     item}
                         </button>
                     ))}
