@@ -1,4 +1,5 @@
-import { useTheme } from '../../hooks/useTheme';
+// src/components/UI/ThemedCard.jsx
+import { useTheme } from '../../contexts/ThemeContext'; // Updated import path
 
 export const ThemedCard = ({
                                children,

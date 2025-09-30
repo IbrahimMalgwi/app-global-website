@@ -1,10 +1,15 @@
 // src/components/NavBar.jsx
 import React, { useState, useEffect, useMemo } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext"; // Updated import
+
+// Import your logo image
+import logo from "../assets/images/logo.png";
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
+    const { theme, toggleTheme } = useTheme(); // Use global theme
 
     // Wrap navItems in useMemo to prevent unnecessary re-renders
     const navItems = useMemo(() => [
@@ -95,9 +100,13 @@ const NavBar = () => {
                 {/* Logo */}
                 <div
                     onClick={() => scrollToSection("home")}
-                    className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent cursor-pointer"
+                    className="flex items-center cursor-pointer"
                 >
-                    MyCompany
+                    <img
+                        src={logo}
+                        alt="AppGlobal Logo"
+                        className="h-8 w-auto md:h-10"
+                    />
                 </div>
 
                 {/* Desktop Nav */}
@@ -118,6 +127,15 @@ const NavBar = () => {
                         </button>
                     ))}
 
+                    {/* Dark Mode Toggle - Now uses global theme */}
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+                        aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                    >
+                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+
                     <button
                         onClick={() => scrollToSection("contact")}
                         className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300"
@@ -127,12 +145,23 @@ const NavBar = () => {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
-                >
-                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                <div className="md:hidden flex items-center space-x-2">
+                    {/* Dark Mode Toggle for Mobile */}
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+                        aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                    >
+                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    >
+                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}

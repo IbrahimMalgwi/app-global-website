@@ -1,5 +1,5 @@
 // src/components/UI/ThemedButton.jsx
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../contexts/ThemeContext'; // Updated import path
 import colors from '../../theme/colors';
 
 export const ThemedButton = ({

@@ -12,7 +12,8 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ThemeLayout from "./components/ThemeLayout";
-import {useEffect} from "react";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { useEffect } from "react";
 
 function App() {
     useEffect(() => {
@@ -31,20 +32,22 @@ function App() {
     }, []);
 
     return (
-        <ThemeLayout>
-            <NavBar/>
-            <section id="home"><Hero /></section>
-            <section id="about"><About /></section>
-            <section id="mission"><MissionVision/></section>
-            <section id="core-values"><CoreValues /></section>
-            <section id="services"><Services /></section>
-            <section id="subsidiaries"><OurSubsidiaries /></section>
-            <section id="team"><Team /></section>
-            <section id="partners"><Partners /></section>
-            <section id="blog"><Blog /></section>
-            <section id="contact"><Contact /></section>
-            <Footer />
-        </ThemeLayout>
+        <ThemeProvider>
+            <ThemeLayout>
+                <NavBar/>
+                <section id="home"><Hero /></section>
+                <section id="about"><About /></section>
+                <section id="mission"><MissionVision/></section>
+                <section id="core-values"><CoreValues /></section>
+                <section id="services"><Services /></section>
+                <section id="subsidiaries"><OurSubsidiaries /></section>
+                <section id="team"><Team /></section>
+                <section id="partners"><Partners /></section>
+                <section id="blog"><Blog /></section>
+                <section id="contact"><Contact /></section>
+                <Footer />
+            </ThemeLayout>
+        </ThemeProvider>
     );
 }
 
