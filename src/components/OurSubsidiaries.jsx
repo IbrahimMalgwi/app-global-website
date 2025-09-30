@@ -93,7 +93,7 @@ const OurSubsidiaries = () => {
 
             <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl px-4 py-12 mx-auto lg:px-8">
                 <h2
-                    className={`${typography.h1} mb-12 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent text-center`}
+                    className={`${typography.h1} mb-12 bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent text-center dark:text-white`}
                 >
                     Our Subsidiaries
                 </h2>
@@ -102,7 +102,7 @@ const OurSubsidiaries = () => {
                     {/* Subsidiary List */}
                     <div
                         ref={scrollRef}
-                        className="w-full p-4 overflow-y-auto lg:w-1/3 max-h-[500px] scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                        className="w-full p-4 overflow-y-auto lg:w-1/3 max-h-[500px] scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent dark:scrollbar-track-gray-800 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700"
                     >
                         {subsidiaries.map((subsidiary, index) => (
                             <SubsidiaryCard
@@ -140,7 +140,7 @@ const OurSubsidiaries = () => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                                    className="w-full h-auto max-h-[400px] rounded-xl shadow-lg object-cover"
+                                    className="w-full h-auto max-h-[400px] rounded-xl shadow-lg object-cover border border-gray-200 dark:border-gray-600"
                                 />
                             </AnimatePresence>
                         </div>
@@ -156,17 +156,17 @@ const OurSubsidiaries = () => {
                                     transition={{ duration: 0.5, ease: "easeInOut" }}
                                     className="flex flex-col justify-center h-full"
                                 >
-                                    <h3 className={`${typography.h2} mb-4 ${colors.text.primary}`}>
+                                    <h3 className={`${typography.h2} mb-4 ${colors.text.primary} dark:text-white`}>
                                         {selectedSubsidiary.name}
                                     </h3>
-                                    <p className={`${typography.body} mb-6 leading-relaxed`}>
+                                    <p className={`${typography.body} mb-6 leading-relaxed dark:text-gray-300`}>
                                         {selectedSubsidiary.description}
                                     </p>
                                     <a
                                         href={selectedSubsidiary.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-block px-6 py-3 font-semibold text-white transition duration-300 rounded-full shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
+                                        className="inline-block px-6 py-3 font-semibold text-white transition duration-300 rounded-full shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                                     >
                                         Visit Website →
                                     </a>
@@ -184,8 +184,8 @@ const OurSubsidiaries = () => {
                             onClick={() => handleItemClick(index)}
                             className={`w-3 h-3 rounded-full cursor-pointer transition-transform duration-300 ${
                                 index === selectedIndex
-                                    ? "bg-blue-600 scale-125"
-                                    : "bg-gray-300 hover:bg-gray-400"
+                                    ? "bg-blue-600 dark:bg-blue-500 scale-125"
+                                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
                             }`}
                             aria-label={`View ${subsidiary.name}`}
                         />

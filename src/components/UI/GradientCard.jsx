@@ -1,19 +1,18 @@
 // src/components/UI/GradientCard.jsx
-export const GradientCard = ({ color = 'purple', number, title, subtitle, className = '' }) => {
-    // Map color prop to gradient and text classes
-    const gradientMap = {
-        purple: 'from-purple-50 to-pink-50 border-purple-100 text-purple-600',
-        pink: 'from-pink-50 to-indigo-50 border-pink-100 text-pink-600',
-        indigo: 'from-indigo-50 to-purple-50 border-indigo-100 text-indigo-600',
+export const GradientCard = ({ color, number, title, subtitle }) => {
+    const colorClasses = {
+        purple: 'from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600',
+        pink: 'from-pink-500 to-red-500 dark:from-pink-600 dark:to-red-600',
+        indigo: 'from-indigo-500 to-blue-500 dark:from-indigo-600 dark:to-blue-600'
     };
 
-    const gradientClasses = gradientMap[color] || gradientMap.purple;
-
     return (
-        <div className={`bg-gradient-to-br p-4 rounded-xl shadow-sm text-center min-w-[140px] transform hover:scale-105 transition duration-300 border ${gradientClasses} ${className}`}>
-            <div className="text-2xl font-bold mb-1">{number}</div>
-            <div className="text-md font-medium text-gray-700">{title}</div>
-            <div className="text-xs text-gray-500 mt-1">{subtitle}</div>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className={`text-3xl font-bold bg-gradient-to-r ${colorClasses[color]} bg-clip-text text-transparent`}>
+                {number}
+            </div>
+            <div className="text-lg font-semibold text-gray-800 dark:text-white mt-2">{title}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">{subtitle}</div>
         </div>
     );
 };

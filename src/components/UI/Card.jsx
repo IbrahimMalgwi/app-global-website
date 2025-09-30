@@ -1,10 +1,7 @@
 // src/components/UI/Card.jsx
-export const Card = ({ children, className = '', hoverable = true, ...props }) => {
-    const baseClasses = "bg-white rounded-3xl shadow-2xl p-10 transition-transform duration-300 ease-in-out text-left";
-    const hoverClass = hoverable ? "transform hover:scale-105" : "";
-
+export const Card = ({ children, className = '' }) => {
     return (
-        <div className={`${baseClasses} ${hoverClass} ${className}`} {...props}>
+        <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors duration-300 ${className}`}>
             {children}
         </div>
     );
