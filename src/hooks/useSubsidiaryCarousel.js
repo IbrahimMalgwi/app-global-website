@@ -18,8 +18,8 @@ export const useSubsidiaryCarousel = (items, autoRotateInterval = 6000) => {
         return () => clearTimeout(timer);
     }, [items.length, autoRotateInterval]);
 
-    // COMPLETELY REMOVE the problematic scroll effect
-    // This was causing the page to scroll to subsidiaries section
+    // REMOVED the auto-scroll effect from the hook
+    // The component will handle scrolling manually
 
     return {
         selectedIndex,

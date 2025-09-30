@@ -17,6 +17,7 @@ const OurSubsidiaries = () => {
 
     const selectedSubsidiary = subsidiaries[selectedIndex];
     const intervalRef = useRef(null);
+    const isAutoRotating = useRef(false);
 
     // Manual scroll function that only affects the container, not the page
     const scrollToItem = useCallback((index) => {
@@ -29,21 +30,31 @@ const OurSubsidiaries = () => {
                 const containerHeight = container.clientHeight;
                 const itemHeight = selectedItem.offsetHeight;
 
-                container.scrollTop = itemTop - (containerHeight / 2) + (itemHeight / 2);
+                const scrollPosition = itemTop - (containerHeight / 2) + (itemHeight / 2);
+
+                // Smooth scroll to center the selected item
+                container.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth'
+                });
             }
         }
     }, [scrollRef]);
 
     /** Navigation helpers */
     const goNext = useCallback(() => {
+        isAutoRotating.current = true;
         const newIndex = (selectedIndex + 1) % subsidiaries.length;
         setSelectedIndex(newIndex);
+        // Scroll to the new item immediately
         scrollToItem(newIndex);
     }, [selectedIndex, setSelectedIndex, scrollToItem]);
 
     const goPrev = useCallback(() => {
+        isAutoRotating.current = true;
         const newIndex = (selectedIndex - 1 + subsidiaries.length) % subsidiaries.length;
         setSelectedIndex(newIndex);
+        // Scroll to the new item immediately
         scrollToItem(newIndex);
     }, [selectedIndex, setSelectedIndex, scrollToItem]);
 
@@ -53,6 +64,7 @@ const OurSubsidiaries = () => {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
         }
+        isAutoRotating.current = false;
     }, []);
 
     const startAutoRotate = useCallback(() => {
@@ -61,6 +73,22 @@ const OurSubsidiaries = () => {
             goNext();
         }, AUTO_ROTATE_INTERVAL);
     }, [goNext, stopAutoRotate]);
+
+    // Handle manual item selection with safe scrolling
+    const handleItemClick = useCallback((index) => {
+        isAutoRotating.current = false;
+        setSelectedIndex(index);
+        scrollToItem(index);
+        startAutoRotate();
+    }, [setSelectedIndex, scrollToItem, startAutoRotate]);
+
+    // Sync scroll with selected index changes (including auto-rotation)
+    useEffect(() => {
+        // Only scroll if this is an auto-rotation change
+        if (isAutoRotating.current) {
+            scrollToItem(selectedIndex);
+        }
+    }, [selectedIndex, scrollToItem]);
 
     /** Start auto-rotation on mount */
     useEffect(() => {
@@ -75,12 +103,14 @@ const OurSubsidiaries = () => {
         };
     }, [startAutoRotate, stopAutoRotate]);
 
-    // Handle manual item selection with safe scrolling
-    const handleItemClick = useCallback((index) => {
-        setSelectedIndex(index);
-        scrollToItem(index);
-        startAutoRotate();
-    }, [setSelectedIndex, scrollToItem, startAutoRotate]);
+    // Initialize scroll position to first item
+    useEffect(() => {
+        const initTimer = setTimeout(() => {
+            scrollToItem(0);
+        }, 500);
+
+        return () => clearTimeout(initTimer);
+    }, [scrollToItem]);
 
     return (
         <section
