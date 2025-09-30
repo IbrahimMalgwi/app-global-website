@@ -156,7 +156,7 @@ export default function Hero() {
     return (
         <section id="home" className="min-h-screen">
             <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-                {/* Background Video with enhanced loading and error states */}
+                {/* Background Video - REMOVED OVERLAY AND ADJUSTED OPACITY */}
                 <div className="absolute inset-0 w-full h-full z-0">
                     <video
                         autoPlay
@@ -167,14 +167,14 @@ export default function Hero() {
                         poster={fallbackImage}
                         onLoadedData={handleVideoLoaded}
                         onError={handleVideoError}
-                        className="w-full h-full object-cover opacity-50"
+                        className="w-full h-full object-cover" // Removed opacity-50
                     >
                         <source src={backgroundVideo} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
 
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-1" />
+                    {/* REMOVED GRADIENT OVERLAY */}
+                    {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-1" /> */}
                 </div>
 
                 {/* Video loading state */}
@@ -198,17 +198,17 @@ export default function Hero() {
                         <LazyLoadImage
                             src={fallbackImage}
                             alt="Background"
-                            className="w-full h-full object-cover opacity-50"
+                            className="w-full h-full object-cover" // Removed opacity
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+                        {/* REMOVED OVERLAY FOR FALLBACK IMAGE TOO */}
                     </div>
                 )}
 
                 <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 sm:px-6 max-w-6xl w-full min-h-screen">
-                    {/* Title & Tagline - Centered in the viewport */}
+                    {/* Add subtle background to text for better readability */}
                     <div className="flex-1 flex flex-col justify-center">
                         <motion.h1
-                            className={`${typography.h1} mb-6 text-white drop-shadow-2xl`}
+                            className={`${typography.h1} mb-6 text-white drop-shadow-2xl bg-black/20 backdrop-blur-sm px-6 py-4 rounded-2xl`} // Added background for readability
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: "easeOut" }}
@@ -219,7 +219,7 @@ export default function Hero() {
                         {/* Typing Text with Company Descriptions */}
                         <div className="w-full max-w-3xl mx-auto mb-12 min-h-[4rem] flex items-center justify-center">
                             <motion.p
-                                className={`${typography.body} text-white/90 drop-shadow-md px-4 text-center text-lg md:text-xl`}
+                                className={`${typography.body} text-white/90 drop-shadow-md px-6 py-3 bg-black/20 backdrop-blur-sm rounded-xl text-center text-lg md:text-xl`} // Added background for readability
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.8 }}
@@ -239,7 +239,7 @@ export default function Hero() {
                     {/* Logos with Enhanced Effects - Positioned at the bottom */}
                     <div className="w-full pb-8 md:pb-12">
                         <motion.p
-                            className="text-white/80 mb-4 text-xs uppercase tracking-widest font-medium"
+                            className="text-white/80 mb-4 text-xs uppercase tracking-widest font-medium bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block" // Added background for readability
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.2, duration: 0.7 }}
@@ -248,7 +248,7 @@ export default function Hero() {
                         </motion.p>
 
                         <div
-                            className="grid grid-cols-3 gap-4 md:gap-6 items-center justify-items-center py-4 px-2 backdrop-blur-sm rounded-xl mx-auto max-w-xs"
+                            className="grid grid-cols-3 gap-4 md:gap-6 items-center justify-items-center py-4 px-2 bg-black/30 backdrop-blur-lg rounded-xl mx-auto max-w-xs border border-white/10" // Enhanced background
                             role="group"
                             aria-label="Our companies"
                         >
