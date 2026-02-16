@@ -307,10 +307,10 @@ export default function Footer() {
                         </p>
 
                         <div className="flex gap-6 text-xs text-gray-500 dark:text-gray-600">
-                            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</a>
-                            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Terms</a>
-                            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Cookies</a>
-                            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Sitemap</a>
+                            <a href="/privacy" className="hover:text-purple-600 ...">Privacy</a>
+                            <a href="/terms" className="hover:text-purple-600 ...">Terms</a>
+                            <a href="/cookies" className="hover:text-purple-600 ...">Cookies</a>
+                            <a href="/sitemap" className="hover:text-purple-600 ...">Sitemap</a>
                         </div>
 
                         <p className="text-xs text-gray-500 dark:text-gray-600">
