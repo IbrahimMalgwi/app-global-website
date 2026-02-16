@@ -18,8 +18,8 @@ const NavBar = () => {
     const navItems = useMemo(() => [
         { id: "home", label: "Home" },
         { id: "about", label: "About" },
-        { id: "mission", label: "Mission & Vision" },
-        { id: "core-values", label: "Core Values" },
+        { id: "mission", label: "Mission " },
+        // { id: "core-values", label: "Core Values" },
         { id: "services", label: "Services" },
         { id: "subsidiaries", label: "Subsidiaries" },
         { id: "team", label: "Team" },

@@ -1,6 +1,6 @@
 // src/components/About.jsx
-import React, { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
     Star,
     Award,
@@ -9,7 +9,12 @@ import {
     Rocket,
     Shield,
     Sparkles,
-    ChevronRight
+    ChevronRight,
+    Heart,
+    Target,
+    Zap,
+    BookOpen,
+    Compass
 } from "lucide-react";
 import aboutImage from "../assets/images/about.jpeg";
 
@@ -79,6 +84,92 @@ const VALUES = [
     }
 ];
 
+// ==================== Core Values Constants ====================
+
+const coreValues = [
+    {
+        letter: "A",
+        title: "Accountability",
+        description: "We are honest, transparent, and ethical in all business engagements.",
+        icon: Target,
+        color: "from-purple-500 to-pink-500",
+        bgColor: "bg-purple-100 dark:bg-purple-900/30",
+        textColor: "text-purple-600 dark:text-purple-400"
+    },
+    {
+        letter: "P",
+        title: "Performance",
+        description: "We question the status quo and seek alternative ideas.",
+        icon: Zap,
+        color: "from-blue-500 to-cyan-500",
+        bgColor: "bg-blue-100 dark:bg-blue-900/30",
+        textColor: "text-blue-600 dark:text-blue-400"
+    },
+    {
+        letter: "P",
+        title: "Productivity",
+        description: "Quality experience for our customers, local community, and our team.",
+        icon: Award,
+        color: "from-green-500 to-emerald-500",
+        bgColor: "bg-green-100 dark:bg-green-900/30",
+        textColor: "text-green-600 dark:text-green-400"
+    },
+    {
+        letter: "G",
+        title: "Group Work",
+        description: "We drive workforce efficiency by encouraging collaboration, mutual respect, and shared responsibility.",
+        icon: Users,
+        color: "from-orange-500 to-red-500",
+        bgColor: "bg-orange-100 dark:bg-orange-900/30",
+        textColor: "text-orange-600 dark:text-orange-400"
+    },
+    {
+        letter: "L",
+        title: "Learning",
+        description: "We automate and continuously improve our internal processes to promote efficiency.",
+        icon: BookOpen,
+        color: "from-teal-500 to-cyan-500",
+        bgColor: "bg-teal-100 dark:bg-teal-900/30",
+        textColor: "text-teal-600 dark:text-teal-400"
+    },
+    {
+        letter: "O",
+        title: "Outcome",
+        description: "We thrive by finding innovative solutions to problems using available resources.",
+        icon: Compass,
+        color: "from-indigo-500 to-purple-500",
+        bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
+        textColor: "text-indigo-600 dark:text-indigo-400"
+    },
+    {
+        letter: "B",
+        title: "Mentorship",
+        description: "Provide technology and business mentorship to talented youth irrespective of background.",
+        icon: Heart,
+        color: "from-pink-500 to-rose-500",
+        bgColor: "bg-pink-100 dark:bg-pink-900/30",
+        textColor: "text-pink-600 dark:text-pink-400"
+    },
+    {
+        letter: "A",
+        title: "Adaptability",
+        description: "We embrace change and continuously evolve to meet market demands.",
+        icon: Target,
+        color: "from-cyan-500 to-blue-500",
+        bgColor: "bg-cyan-100 dark:bg-cyan-900/30",
+        textColor: "text-cyan-600 dark:text-cyan-400"
+    },
+    {
+        letter: "L",
+        title: "Leadership",
+        description: "Inspire and guide teams to achieve exceptional results through innovation.",
+        icon: Star,
+        color: "from-amber-500 to-orange-500",
+        bgColor: "bg-amber-100 dark:bg-amber-900/30",
+        textColor: "text-amber-600 dark:text-amber-400"
+    },
+];
+
 // ==================== Sub-components ====================
 
 const ValueCard = ({ value, index }) => {
@@ -118,12 +209,177 @@ const ValueCard = ({ value, index }) => {
     );
 };
 
+// ==================== Core Values Sub-components ====================
+
+const DynamicAppGlobal = ({ currentValue }) => {
+    const appglobal = "APPGLOBAL".split("");
+
+    const getMatchingValueForIndex = (index, letter) => {
+        if (index === 0) return coreValues.find(v => v.letter === "A" && v.title === "Accountability");
+        if (index === 1) return coreValues.find(v => v.letter === "P" && v.title === "Performance");
+        if (index === 2) return coreValues.find(v => v.letter === "P" && v.title === "Productivity");
+        if (index === 3) return coreValues.find(v => v.letter === "G");
+        if (index === 4) return coreValues.find(v => v.letter === "L" && v.title === "Learning");
+        if (index === 5) return coreValues.find(v => v.letter === "O");
+        if (index === 6) return coreValues.find(v => v.letter === "B");
+        if (index === 7) return coreValues.find(v => v.letter === "A" && v.title === "Adaptability");
+        if (index === 8) return coreValues.find(v => v.letter === "L" && v.title === "Leadership");
+        return null;
+    };
+
+    return (
+        <div className="flex justify-center items-center gap-2 sm:gap-3 md:gap-4 mb-12">
+            <AnimatePresence mode="wait">
+                {appglobal.map((letter, index) => {
+                    const matchingValue = getMatchingValueForIndex(index, letter);
+                    const isActive = matchingValue?.letter === currentValue.letter &&
+                        matchingValue?.title === currentValue.title;
+
+                    return (
+                        <motion.div
+                            key={`${letter}-${index}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.05,
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 20
+                            }}
+                            className="relative"
+                        >
+                            {/* Glow effect for active letter */}
+                            {isActive && (
+                                <motion.div
+                                    className={`absolute -inset-3 bg-gradient-to-r ${currentValue.color} rounded-xl blur-xl opacity-40`}
+                                    animate={{
+                                        scale: [1, 1.2, 1],
+                                        opacity: [0.4, 0.6, 0.4],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                />
+                            )}
+
+                            {/* Letter card */}
+                            <motion.div
+                                className={`
+                                    relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 
+                                    rounded-xl flex items-center justify-center
+                                    font-bold text-xl sm:text-2xl md:text-3xl
+                                    shadow-lg
+                                    ${isActive
+                                    ? `bg-gradient-to-r ${matchingValue?.color || currentValue.color} text-white`
+                                    : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-700'
+                                }
+                                `}
+                                animate={isActive ? {
+                                    y: [0, -4, 0],
+                                    scale: [1, 1.05, 1],
+                                } : {}}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                {letter}
+
+                                {/* Small icon for active letter */}
+                                {isActive && matchingValue && (
+                                    <motion.div
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        className="absolute -top-2 -right-2"
+                                    >
+                                        <motion.div
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            <matchingValue.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
+                                        </motion.div>
+                                    </motion.div>
+                                )}
+                            </motion.div>
+
+                            {/* Label for active letter */}
+                            {isActive && matchingValue && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
+                                >
+                                    <span className={`text-xs font-medium bg-gradient-to-r ${matchingValue.color} bg-clip-text text-transparent`}>
+                                        {matchingValue.title}
+                                    </span>
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    );
+                })}
+            </AnimatePresence>
+        </div>
+    );
+};
+
+const LetterCube = ({ value, isActive, onClick }) => {
+    const Icon = value.icon;
+
+    return (
+        <motion.button
+            onClick={onClick}
+            className="relative group"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+        >
+            {/* Glow effect */}
+            <motion.div
+                className={`absolute -inset-2 bg-gradient-to-r ${value.color} rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}
+                animate={isActive ? { opacity: 0.3 } : {}}
+            />
+
+            {/* Letter container */}
+            <motion.div
+                className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300
+          ${isActive
+                    ? `bg-gradient-to-r ${value.color} text-white shadow-lg scale-110`
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500/50'
+                }`}
+                animate={isActive ? { rotate: [0, 5, -5, 0] } : {}}
+                transition={{ duration: 0.5 }}
+            >
+                <span className="text-xl sm:text-2xl font-bold">{value.letter}</span>
+
+                {/* Small icon indicator */}
+                {isActive && (
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="absolute -top-1 -right-1 w-4 h-4 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center"
+                    >
+                        <Icon className="w-2 h-2 text-purple-600 dark:text-purple-400" />
+                    </motion.div>
+                )}
+            </motion.div>
+        </motion.button>
+    );
+};
+
 // ==================== Main Component ====================
 
 const About = () => {
     const sectionRef = useRef(null);
     const imageRef = useRef(null);
     const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+    // Core Values state
+    const [currentValueIndex, setCurrentValueIndex] = useState(0);
+    const [isHovering, setIsHovering] = useState(false);
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -132,6 +388,20 @@ const About = () => {
 
     const imageParallaxY = useTransform(scrollYProgress, [0, 1], [50, -50]);
     const contentOpacity = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 1, 1]);
+
+    // Auto-rotate core values
+    useEffect(() => {
+        if (isHovering) return;
+
+        const interval = setInterval(() => {
+            setCurrentValueIndex((prev) => (prev + 1) % coreValues.length);
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, [isHovering]);
+
+    const currentValue = coreValues[currentValueIndex];
+    const Icon = currentValue.icon;
 
     return (
         <section
@@ -325,22 +595,153 @@ const About = () => {
                     </motion.div>
                 </div>
 
-                {/* Values Section */}
+                {/* Core Values Section - Integrated from CoreValues component */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mb-20"
                 >
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">
-                        Our Core Values
-                    </h3>
+                    {/* Core Values Header */}
+                    {/*<div className="text-center mb-8">*/}
+                    {/*    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">*/}
+                    {/*        Our Core Values:{" "}*/}
+                    {/*        <span className="relative inline-block">*/}
+                    {/*            <span className="relative z-10 text-purple-600 dark:text-purple-400">*/}
+                    {/*                APPGLOBAL*/}
+                    {/*            </span>*/}
+                    {/*        </span>*/}
+                    {/*    </h3>*/}
+                    {/*    <p className="text-gray-600 dark:text-white/60 max-w-2xl mx-auto">*/}
+                    {/*        The principles that guide everything we do*/}
+                    {/*    </p>*/}
+                    {/*</div>*/}
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {VALUES.map((value, index) => (
-                            <ValueCard key={value.title} value={value} index={index} />
-                        ))}
+                    {/* Dynamic APPGLOBAL Display */}
+                    <DynamicAppGlobal currentValue={currentValue} />
+
+                    {/* Dynamic Value Display */}
+                    <div
+                        className="relative mb-16"
+                        onMouseEnter={() => setIsHovering(true)}
+                        onMouseLeave={() => setIsHovering(false)}
+                    >
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentValue.letter}
+                                className="flex flex-col items-center"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -30 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                {/* Animated Icon Container */}
+                                <Card className="mb-8 bg-transparent border-0">
+                                    <motion.div
+                                        className="relative"
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    >
+                                        {/* Outer ring */}
+                                        <div className={`absolute -inset-4 bg-gradient-to-r ${currentValue.color} rounded-full opacity-20 blur-xl`} />
+
+                                        {/* Main icon circle */}
+                                        <motion.div
+                                            className={`relative w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br ${currentValue.color} flex items-center justify-center shadow-2xl`}
+                                            animate={{
+                                                scale: [1, 1.05, 1],
+                                                rotate: [0, 5, -5, 0]
+                                            }}
+                                            transition={{
+                                                duration: 4,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                        >
+                                            {/* Inner glow */}
+                                            <div className="absolute inset-2 bg-white/20 rounded-full blur-sm" />
+
+                                            {/* Icon */}
+                                            <Icon className="w-16 h-16 sm:w-20 sm:h-20 text-white relative z-10" />
+
+                                            {/* Letter badge */}
+                                            <motion.div
+                                                className="absolute -bottom-2 -right-2 w-10 h-10 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center shadow-lg"
+                                                animate={{ rotate: [0, 10, -10, 0] }}
+                                                transition={{ duration: 3, repeat: Infinity }}
+                                            >
+                                                <span className={`text-xl font-bold bg-gradient-to-r ${currentValue.color} bg-clip-text text-transparent`}>
+                                                    {currentValue.letter}
+                                                </span>
+                                            </motion.div>
+                                        </motion.div>
+                                    </motion.div>
+                                </Card>
+
+                                {/* Title */}
+                                <motion.h3
+                                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: 0.2 }}
+                                >
+                                    {currentValue.title}
+                                </motion.h3>
+
+                                {/* Description */}
+                                <motion.p
+                                    className="text-lg sm:text-xl text-gray-600 dark:text-white/70 max-w-2xl text-center leading-relaxed"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4, delay: 0.3 }}
+                                >
+                                    {currentValue.description}
+                                </motion.p>
+
+                                {/* Progress indicator */}
+                                <motion.div
+                                    className="w-48 h-1 bg-gray-200 dark:bg-gray-800 rounded-full mt-8 overflow-hidden"
+                                    initial={{ scaleX: 0 }}
+                                    animate={{ scaleX: 1 }}
+                                    transition={{ duration: 4, repeat: Infinity }}
+                                >
+                                    <motion.div
+                                        className={`h-full bg-gradient-to-r ${currentValue.color}`}
+                                        initial={{ x: '-100%' }}
+                                        animate={{ x: '0%' }}
+                                        transition={{ duration: 4, repeat: Infinity }}
+                                    />
+                                </motion.div>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
+
+                    {/* Letters Navigation */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="flex flex-wrap justify-center items-center gap-3 max-w-3xl mx-auto"
+                    >
+                        {coreValues.map((value, index) => (
+                            <LetterCube
+                                key={value.letter + index}
+                                value={value}
+                                isActive={index === currentValueIndex}
+                                onClick={() => setCurrentValueIndex(index)}
+                            />
+                        ))}
+                    </motion.div>
+
+                    {/* Hint text */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                        className="text-center text-sm text-gray-500 dark:text-white/40 mt-8"
+                    >
+                        Click on any letter to learn more • Watch APPGLOBAL come alive
+                    </motion.p>
                 </motion.div>
 
                 {/* Stats Section */}

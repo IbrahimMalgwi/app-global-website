@@ -38,7 +38,7 @@ function App() {
                 <section id="home"><Hero /></section>
                 <section id="about"><About /></section>
                 <section id="mission"><MissionVision/></section>
-                <section id="core-values"><CoreValues /></section>
+                {/*<section id="core-values"><CoreValues /></section>*/}
                 <section id="services"><Services /></section>
                 <section id="subsidiaries"><OurSubsidiaries /></section>
                 <section id="team"><Team /></section>
