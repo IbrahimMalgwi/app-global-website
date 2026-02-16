@@ -1,7 +1,7 @@
 // src/data/services.js
 import {
     HeartPulse,
-    Smartphone,
+    // Smartphone,
     FlaskConical,
     Image,
     QrCode,
@@ -13,12 +13,12 @@ import {
     Wallet,
     Globe2,
     Stethoscope,
-    Microscope,
-    Scan,
-    ClipboardList,
-    Calculator,
-    Building2,
-    Cpu
+    // Microscope,
+    // Scan,
+    // ClipboardList,
+    // Calculator,
+    // Building2,
+    // Cpu
 } from "lucide-react";
 
 export const services = [

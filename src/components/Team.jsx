@@ -1,7 +1,7 @@
 // src/components/Team.jsx
 import { useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Linkedin, Twitter, Mail, Globe, Sparkles, Award, Users, MapPin, Briefcase, Quote } from "lucide-react";
+import { Linkedin, Twitter, Mail, Globe, Sparkles, Award, Users, Briefcase, Quote } from "lucide-react";
 import { ThemedButton } from "./UI/ThemedButton";
 import { TeamMemberCard } from "./UI/TeamMemberCard";
 import { AnimatedBackground } from "./UI/AnimatedBackground";

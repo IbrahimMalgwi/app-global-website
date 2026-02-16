@@ -1,6 +1,6 @@
 // src/components/Services.jsx
 import React, { useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useCarousel } from "../hooks/useCarousel";
 import { ServiceCard } from "./UI/ServiceCard";
 import { AnimatedBackground } from "./UI/AnimatedBackground";
@@ -33,22 +33,22 @@ const Services = () => {
     const visibleIndex = currentIndex % services.length;
 
     // Animation variants
-    const slideVariants = {
-        enter: (direction) => ({
-            x: direction > 0 ? 1000 : -1000,
-            opacity: 0
-        }),
-        center: {
-            zIndex: 1,
-            x: 0,
-            opacity: 1
-        },
-        exit: (direction) => ({
-            zIndex: 0,
-            x: direction < 0 ? 1000 : -1000,
-            opacity: 0
-        })
-    };
+    // const slideVariants = {
+    //     enter: (direction) => ({
+    //         x: direction > 0 ? 1000 : -1000,
+    //         opacity: 0
+    //     }),
+    //     center: {
+    //         zIndex: 1,
+    //         x: 0,
+    //         opacity: 1
+    //     },
+    //     exit: (direction) => ({
+    //         zIndex: 0,
+    //         x: direction < 0 ? 1000 : -1000,
+    //         opacity: 0
+    //     })
+    // };
 
     return (
         <section

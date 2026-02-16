@@ -7,24 +7,24 @@ import { subsidiaries } from "../data/subsidiaries";
 import {
     ChevronLeft,
     ChevronRight,
-    Sparkles,
+    // Sparkles,
     ExternalLink,
     Building2,
     Globe,
     Users,
     Award,
-    MapPin,
+    // MapPin,
     Calendar,
     Briefcase,
     TrendingUp,
     DollarSign,
-    Clock,
+    // Clock,
     Zap,
     Target,
-    Heart,
-    Shield,
-    Star,
-    Cpu
+    // Heart,
+    // Shield,
+    // Star,
+    // Cpu
 } from "lucide-react";
 
 const AUTO_ROTATE_INTERVAL = 5000; // 5s
