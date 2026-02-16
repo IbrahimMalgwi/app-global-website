@@ -1,144 +1,249 @@
-// src/components/Hero.jsx
-import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+// src/components/sections/Hero.jsx
+import { useState, useEffect, useCallback, memo } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+    ChevronDown,
+    Zap,
+    Globe,
+    TrendingUp,
+    Code2,
+    Cpu,
+    Sparkles,
+    ArrowRight,
+    CheckCircle
+} from "lucide-react";
 import backgroundVideo from "../assets/videos/appglobal-background.mp4";
 import fallbackImage from "../assets/images/hero-fallback.jpg";
-import { LazyLoadImage } from "./UI/LazyLoadImage";
-import colors from "../theme/colors";
-import { typography } from "../theme/typography";
 
-// Logos
+// Logos - using native img with lazy loading
 import appGlobalTechLogo from "../assets/images/appglobal-tech.jpeg";
 import appGlobalPayLogo from "../assets/images/appglobal-pay.jpeg";
 import appGlobalShellLogo from "../assets/images/appglobal-shell.jpeg";
 
-const companies = [
+// Constants
+const COMPANIES = [
     {
+        id: 'tech',
         name: "AppGlobal Technologies",
         logo: appGlobalTechLogo,
-        description: "Leading provider of enterprise software and healthcare solutions.",
+        description: "Enterprise Software & Healthcare",
         link: "https://appglobaltechnologies.com",
+        icon: Cpu,
+        gradient: "from-blue-500/20 to-cyan-500/20",
+        iconColor: "text-blue-400"
     },
     {
+        id: 'pay',
         name: "AppGlobal Payment Solutions",
         logo: appGlobalPayLogo,
-        description: "Innovative payment solutions enabling seamless global transactions.",
+        description: "Global Payment Innovation",
         link: "https://appglobalpay.com",
+        icon: TrendingUp,
+        gradient: "from-purple-500/20 to-pink-500/20",
+        iconColor: "text-purple-400"
     },
     {
+        id: 'shell',
         name: "Globalshell Resources",
         logo: appGlobalShellLogo,
-        description: "Powering digital infrastructure, cloud, and energy services.",
+        description: "Cloud & Energy Services",
         link: "https://appglobalshell.com",
+        icon: Zap,
+        gradient: "from-amber-500/20 to-orange-500/20",
+        iconColor: "text-amber-400"
     },
 ];
 
-// Custom keyboard hook for company buttons
-const useCompanyKeyboardNav = (company) => {
-    const handleCompanyClick = useCallback(() => {
-        window.open(company.link, "_blank", "noopener,noreferrer");
-    }, [company.link]);
+const STATS = [
+    { number: "500", label: "Active Clients", suffix: "+", delay: 0.8 },
+    { number: "50", label: "Countries Served", suffix: "+", delay: 0.9 },
+    { number: "99.9", label: "Uptime SLA", suffix: "%", delay: 1.0 },
+];
 
-    const handleKeyPress = useCallback((event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            handleCompanyClick();
-        }
-    }, [handleCompanyClick]);
+const FLOATING_ICONS = [
+    { Icon: Code2, position: { x: "5%", y: "10%" }, delay: 0, rotation: 10 },
+    { Icon: Globe, position: { x: "85%", y: "15%" }, delay: 1, rotation: -5 },
+    { Icon: TrendingUp, position: { x: "10%", y: "75%" }, delay: 2, rotation: 15 },
+    { Icon: Zap, position: { x: "80%", y: "70%" }, delay: 1.5, rotation: -10 },
+];
 
-    return {
-        tabIndex: 0,
-        onKeyDown: handleKeyPress,
-        role: 'button',
-        'aria-label': `Visit ${company.name} website`
-    };
-};
+// ==================== Sub-components ====================
 
-// Company Logo Component (to avoid hook in callback)
-const CompanyLogo = ({ company, index, onHover, isHovered }) => {
-    const keyboardProps = useCompanyKeyboardNav(company);
+const StatCounter = memo(({ number, label, suffix = "+", delay }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const target = parseInt(number);
+        let timeoutId;
+        let intervalId;
+
+        const startCounter = () => {
+            intervalId = setInterval(() => {
+                setCount(prev => {
+                    if (prev >= target) {
+                        clearInterval(intervalId);
+                        return target;
+                    }
+                    return prev + Math.ceil(target / 40);
+                });
+            }, 30);
+        };
+
+        timeoutId = setTimeout(startCounter, delay * 1000);
+
+        return () => {
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
+        };
+    }, [number, delay]);
 
     return (
         <motion.div
-            className="flex flex-col items-center text-center relative group cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4 + index * 0.1, duration: 0.5 }}
-            onMouseEnter={() => onHover(index)}
-            onMouseLeave={() => onHover(null)}
+            transition={{ delay, duration: 0.6, ease: "easeOut" }}
+            className="text-center group"
         >
-            <motion.button
-                className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-lg"
-                whileHover={{ y: -2, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.open(company.link, "_blank", "noopener,noreferrer")}
-                {...keyboardProps}
-            >
-                <LazyLoadImage
-                    src={company.logo}
-                    alt={company.name}
-                    className="w-full h-full object-contain transition-all duration-300 brightness-0 invert opacity-70 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
-                />
-            </motion.button>
-
-            <p className={`mt-2 text-xs font-medium leading-tight ${colors.text.muted} max-w-[100px]`}>
-                {company.name}
+            <div className="relative">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+                    {count}{suffix}
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/0 via-purple-600/5 to-pink-600/0 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            <p className="text-sm md:text-base text-white/60 mt-2 font-medium tracking-wide">
+                {label}
             </p>
         </motion.div>
     );
-};
+});
+
+StatCounter.displayName = 'StatCounter';
+
+const CompanyCard = memo(({ company, index }) => {
+    const IconComponent = company.icon;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8 + index * 0.15, duration: 0.6 }}
+            whileHover={{ y: -8 }}
+            className="group relative h-full"
+        >
+            <div className="relative h-full overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm border border-white/10 p-6 hover:border-white/20 transition-all duration-500">
+                {/* Animated gradient background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${company.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                {/* Glass overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${company.gradient} flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all duration-300`}>
+                            <IconComponent className={`w-6 h-6 ${company.iconColor} group-hover:scale-110 transition-transform duration-300`} />
+                        </div>
+                        <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center backdrop-blur-sm group-hover:bg-white/10 transition-all duration-300">
+                            {/* Using native img with loading="lazy" instead of LazyLoadImage */}
+                            <img
+                                src={company.logo}
+                                alt={company.name}
+                                loading="lazy"
+                                className="w-8 h-8 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Body */}
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white transition-colors">
+                        {company.name}
+                    </h3>
+                    <p className="text-sm text-white/60 mb-4 flex-grow">
+                        {company.description}
+                    </p>
+
+                    {/* Footer */}
+                    <motion.button
+                        onClick={() => window.open(company.link, "_blank", "noopener,noreferrer")}
+                        whileHover={{ x: 4 }}
+                        className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 group/btn"
+                    >
+                        <span className="text-sm font-medium">Learn More</span>
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </motion.button>
+                </div>
+            </div>
+        </motion.div>
+    );
+});
+
+CompanyCard.displayName = 'CompanyCard';
+
+const FloatingIcon = memo(({ Icon, position, delay, rotation }) => (
+    <motion.div
+        className="absolute w-16 h-16 md:w-20 md:h-20"
+        style={{ left: position.x, top: position.y }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 0.6, scale: 1 }}
+        transition={{ delay, duration: 1 }}
+    >
+        <motion.div
+            className="relative w-full h-full"
+            animate={{
+                y: [0, -20, 0],
+                rotate: [0, rotation, 0],
+            }}
+            transition={{
+                duration: 5 + delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+        >
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl blur-xl" />
+            <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                <Icon className="w-8 h-8 text-purple-400/80" />
+            </div>
+        </motion.div>
+    </motion.div>
+));
+
+FloatingIcon.displayName = 'FloatingIcon';
+
+const AnimatedGrid = memo(() => (
+    <div className="absolute inset-0 overflow-hidden opacity-20">
+        <svg className="absolute w-full h-full" preserveAspectRatio="none">
+            <defs>
+                <pattern id="modern-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path
+                        d="M 60 0 L 0 0 0 60"
+                        fill="none"
+                        stroke="url(#grid-gradient)"
+                        strokeWidth="0.5"
+                    />
+                </pattern>
+                <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#A855F7" stopOpacity="0.3" />
+                    <stop offset="100%" stopColor="#EC4899" stopOpacity="0.3" />
+                </linearGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#modern-grid)" />
+        </svg>
+    </div>
+));
+
+AnimatedGrid.displayName = 'AnimatedGrid';
+
+// ==================== Main Component ====================
 
 export default function Hero() {
-    const [displayedText, setDisplayedText] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isTyping, setIsTyping] = useState(true);
-    const [hoveredCompany, setHoveredCompany] = useState(null);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const [videoError, setVideoError] = useState(false);
+    const { scrollYProgress } = useScroll();
 
-    // Typing animation effect
-    useEffect(() => {
-        let charIndex = 0;
-        setDisplayedText('');
-        setIsTyping(true);
-        let typingInterval;
-
-        const startTyping = () => {
-            typingInterval = setInterval(() => {
-                setDisplayedText((prevText) => {
-                    const nextChar = companies[currentIndex].description[charIndex];
-                    if (nextChar) {
-                        charIndex++;
-                        return prevText + nextChar;
-                    } else {
-                        clearInterval(typingInterval);
-                        setIsTyping(false);
-                        setTimeout(() => {
-                            setCurrentIndex((prev) => (prev + 1) % companies.length);
-                        }, 2500);
-                        return prevText;
-                    }
-                });
-            }, 50);
-        };
-
-        startTyping();
-
-        return () => {
-            if (typingInterval) clearInterval(typingInterval);
-        };
-    }, [currentIndex]);
-
-    // Auto-rotate companies when not hovered
-    useEffect(() => {
-        if (hoveredCompany !== null) return;
-
-        const interval = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % companies.length);
-        }, 4000);
-
-        return () => clearInterval(interval);
-    }, [hoveredCompany]);
+    const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+    const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+    const heroBlur = useTransform(scrollYProgress, [0, 0.2], [0, 8]);
 
     const handleVideoLoaded = useCallback(() => {
         setIsVideoLoaded(true);
@@ -149,15 +254,22 @@ export default function Hero() {
         setIsVideoLoaded(true);
     }, []);
 
-    const handleHoverCompany = useCallback((index) => {
-        setHoveredCompany(index);
+    const scrollToSection = useCallback((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     }, []);
 
     return (
-        <section id="home" className="min-h-screen">
-            <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-                {/* Background Video - REMOVED OVERLAY AND ADJUSTED OPACITY */}
-                <div className="absolute inset-0 w-full h-full z-0">
+        <motion.section
+            id="home"
+            style={{ opacity: heroOpacity, scale: heroScale, filter: `blur(${heroBlur}px)` }}
+            className="relative min-h-screen overflow-hidden bg-black"
+        >
+            {/* Background with parallax effect */}
+            <div className="absolute inset-0 w-full h-full">
+                {!videoError ? (
                     <video
                         autoPlay
                         muted
@@ -167,114 +279,170 @@ export default function Hero() {
                         poster={fallbackImage}
                         onLoadedData={handleVideoLoaded}
                         onError={handleVideoError}
-                        className="w-full h-full object-cover" // Removed opacity-50
+                        className="w-full h-full object-cover scale-105"
+                        style={{ filter: 'brightness(0.7)' }}
                     >
                         <source src={backgroundVideo} type="video/mp4" />
-                        Your browser does not support the video tag.
                     </video>
-
-                    {/* REMOVED GRADIENT OVERLAY */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-1" /> */}
-                </div>
-
-                {/* Video loading state */}
-                {!isVideoLoaded && !videoError && (
-                    <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-10">
-                        <motion.div
-                            className="text-white flex flex-col items-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin mb-3" />
-                            <p className="text-sm">Loading experience...</p>
-                        </motion.div>
-                    </div>
+                ) : (
+                    <div
+                        className="w-full h-full bg-cover bg-center"
+                        style={{ backgroundImage: `url(${fallbackImage})` }}
+                    />
                 )}
 
-                {/* Video error state - fallback to image */}
-                {videoError && (
-                    <div className="absolute inset-0 bg-gray-900 flex items-center justify-center z-10">
-                        <LazyLoadImage
-                            src={fallbackImage}
-                            alt="Background"
-                            className="w-full h-full object-cover" // Removed opacity
-                        />
-                        {/* REMOVED OVERLAY FOR FALLBACK IMAGE TOO */}
-                    </div>
-                )}
+                {/* Enhanced overlays */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+            </div>
 
-                <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 sm:px-6 max-w-6xl w-full min-h-screen">
-                    {/* Add subtle background to text for better readability */}
-                    <div className="flex-1 flex flex-col justify-center">
-                        <motion.h1
-                            className={`${typography.h1} mb-6 text-white drop-shadow-2xl bg-black/20 backdrop-blur-sm px-6 py-4 rounded-2xl`} // Added background for readability
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                        >
-                            Welcome to <span className={`bg-gradient-to-r ${colors.gradients.primary} bg-clip-text text-transparent`}>AppGlobal</span>
-                        </motion.h1>
+            {/* Animated elements */}
+            <AnimatedGrid />
 
-                        {/* Typing Text with Company Descriptions */}
-                        <div className="w-full max-w-3xl mx-auto mb-12 min-h-[4rem] flex items-center justify-center">
-                            <motion.p
-                                className={`${typography.body} text-white/90 drop-shadow-md px-6 py-3 bg-black/20 backdrop-blur-sm rounded-xl text-center text-lg md:text-xl`} // Added background for readability
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                                aria-live="polite"
-                            >
-                                {displayedText}
-                                <span
-                                    className={`inline-block w-0.5 h-6 md:h-8 bg-white ml-1 ${
-                                        isTyping ? 'animate-pulse' : 'animate-blink'
-                                    }`}
-                                    aria-hidden="true"
-                                />
-                            </motion.p>
+            {/* Floating icons - only show after video loads */}
+            {isVideoLoaded && FLOATING_ICONS.map((item, index) => (
+                <FloatingIcon key={index} {...item} />
+            ))}
+
+            {/* Loading state */}
+            {!isVideoLoaded && !videoError && (
+                <div className="absolute inset-0 flex items-center justify-center z-20 bg-black/50 backdrop-blur-sm">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-center"
+                    >
+                        <div className="relative">
+                            <div className="w-16 h-16 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin mx-auto mb-4" />
+                            <Sparkles className="w-6 h-6 text-purple-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" />
                         </div>
-                    </div>
+                        <p className="text-white/80 font-medium">Preparing experience...</p>
+                    </motion.div>
+                </div>
+            )}
 
-                    {/* Logos with Enhanced Effects - Positioned at the bottom */}
-                    <div className="w-full pb-8 md:pb-12">
-                        <motion.p
-                            className="text-white/80 mb-4 text-xs uppercase tracking-widest font-medium bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full inline-block" // Added background for readability
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1.2, duration: 0.7 }}
-                        >
-                            Our Companies
-                        </motion.p>
+            {/* Main content */}
+            <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto w-full">
+                    {/* Top badge */}
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="flex justify-center mb-8"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-purple-500/30">
+                            <div className="relative">
+                                <div className="w-2 h-2 rounded-full bg-purple-400 animate-ping absolute" />
+                                <div className="w-2 h-2 rounded-full bg-purple-400 relative" />
+                            </div>
+                            <span className="text-xs md:text-sm text-white/90 font-medium tracking-wide">
+                Next Generation Technology Platform
+              </span>
+                        </div>
+                    </motion.div>
 
-                        <div
-                            className="grid grid-cols-3 gap-4 md:gap-6 items-center justify-items-center py-4 px-2 bg-black/30 backdrop-blur-lg rounded-xl mx-auto max-w-xs border border-white/10" // Enhanced background
-                            role="group"
-                            aria-label="Our companies"
+                    {/* Hero heading */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="text-center mb-8"
+                    >
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-[1.2] tracking-tight">
+                            Transform Global{" "}
+                            <span className="relative inline-block">
+                <span className="relative z-10 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                  Business Operations
+                </span>
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-pink-600/20 blur-2xl opacity-50" />
+              </span>
+                        </h1>
+
+                        <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed font-light">
+                            Enterprise-grade solutions for healthcare, fintech, and energy.
+                            Trusted by industry leaders worldwide to drive digital transformation.
+                        </p>
+                    </motion.div>
+
+                    {/* CTA buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
+                    >
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => scrollToSection('services')}
+                            className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/25 transition-all duration-300 flex items-center gap-2"
                         >
-                            {companies.map((company, index) => (
-                                <CompanyLogo
-                                    key={company.name}
-                                    company={company}
-                                    index={index}
-                                    onHover={handleHoverCompany}
-                                    isHovered={hoveredCompany === index}
-                                />
+              <span className="relative z-10 flex items-center gap-2">
+                <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                Explore Solutions
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+                        </motion.button>
+
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => scrollToSection('contact')}
+                            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 hover:border-white/50 transition-all duration-300 flex items-center gap-2 group"
+                        >
+                            <CheckCircle className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                            Schedule Demo
+                        </motion.button>
+                    </motion.div>
+
+                    {/* Stats section */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="grid grid-cols-3 gap-4 md:gap-12 mb-20 max-w-3xl mx-auto"
+                    >
+                        {STATS.map((stat) => (
+                            <StatCounter key={stat.label} {...stat} />
+                        ))}
+                    </motion.div>
+
+                    {/* Companies section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1.2 }}
+                        className="mt-8"
+                    >
+                        <p className="text-xs md:text-sm text-white/50 tracking-[0.3em] text-center mb-8 uppercase">
+                            Powering Innovation Across Industries
+                        </p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                            {COMPANIES.map((company, index) => (
+                                <CompanyCard key={company.id} company={company} index={index} />
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
-                <style jsx>{`
-                    @keyframes blink {
-                        0%, 50% { opacity: 1; }
-                        51%, 100% { opacity: 0; }
-                    }
-                    .animate-blink {
-                        animation: blink 1s infinite;
-                    }
-                `}</style>
-            </section>
-        </section>
+                {/* Scroll indicator */}
+                <motion.button
+                    onClick={() => scrollToSection('about')}
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 hover:text-white/80 transition-colors duration-300 group"
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    aria-label="Scroll to next section"
+                >
+                    <div className="relative">
+                        <ChevronDown className="w-8 h-8 group-hover:scale-110 transition-transform duration-300" />
+                        <div className="absolute inset-0 bg-white/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                </motion.button>
+            </div>
+        </motion.section>
     );
 }
