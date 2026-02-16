@@ -7,7 +7,7 @@ import {
     Users,
     Globe2,
     Rocket,
-    Shield,
+    // Shield,
     Sparkles,
     ChevronRight,
     Heart,
@@ -58,30 +58,6 @@ const STATS = [
         icon: Users,
         delay: 0.5
     },
-];
-
-const VALUES = [
-    {
-        title: "Innovation First",
-        description: "Pushing boundaries with cutting-edge technology solutions",
-        icon: Rocket,
-        color: "from-purple-500 to-pink-500",
-        textColor: "text-purple-600 dark:text-purple-400"
-    },
-    {
-        title: "Global Excellence",
-        description: "Delivering world-class services across 50+ countries",
-        icon: Globe2,
-        color: "from-blue-500 to-cyan-500",
-        textColor: "text-blue-600 dark:text-blue-400"
-    },
-    {
-        title: "Security Focused",
-        description: "Enterprise-grade security in every solution we build",
-        icon: Shield,
-        color: "from-green-500 to-emerald-500",
-        textColor: "text-green-600 dark:text-green-400"
-    }
 ];
 
 // ==================== Core Values Constants ====================
@@ -169,45 +145,6 @@ const coreValues = [
         textColor: "text-amber-600 dark:text-amber-400"
     },
 ];
-
-// ==================== Sub-components ====================
-
-const ValueCard = ({ value, index }) => {
-    const Icon = value.icon;
-    const cardRef = useRef(null);
-    const isInView = useInView(cardRef, { once: true, amount: 0.3 });
-
-    return (
-        <motion.div
-            ref={cardRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="group relative"
-        >
-            <div className="relative p-6 rounded-2xl bg-white dark:bg-gradient-to-br dark:from-gray-900/90 dark:to-black/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 hover:border-purple-300 dark:hover:border-white/20 transition-all duration-500 shadow-sm hover:shadow-md">
-                {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />
-
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-7 h-7 ${value.textColor}`} />
-                </div>
-
-                {/* Content - using solid colors */}
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-white/60 text-sm leading-relaxed">
-                    {value.description}
-                </p>
-
-                {/* Decorative line */}
-                <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </div>
-        </motion.div>
-    );
-};
 
 // ==================== Core Values Sub-components ====================
 
@@ -602,21 +539,6 @@ const About = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mb-20"
                 >
-                    {/* Core Values Header */}
-                    {/*<div className="text-center mb-8">*/}
-                    {/*    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">*/}
-                    {/*        Our Core Values:{" "}*/}
-                    {/*        <span className="relative inline-block">*/}
-                    {/*            <span className="relative z-10 text-purple-600 dark:text-purple-400">*/}
-                    {/*                APPGLOBAL*/}
-                    {/*            </span>*/}
-                    {/*        </span>*/}
-                    {/*    </h3>*/}
-                    {/*    <p className="text-gray-600 dark:text-white/60 max-w-2xl mx-auto">*/}
-                    {/*        The principles that guide everything we do*/}
-                    {/*    </p>*/}
-                    {/*</div>*/}
-
                     {/* Dynamic APPGLOBAL Display */}
                     <DynamicAppGlobal currentValue={currentValue} />
 

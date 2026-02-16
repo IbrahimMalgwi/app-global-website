@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import MissionVision from "./components/MissionVision";
-import CoreValues from "./components/CoreValues";
+// import CoreValues from "./components/CoreValues";
 import Services from "./components/Services";
 import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
