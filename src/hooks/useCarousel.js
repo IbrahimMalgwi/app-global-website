@@ -4,28 +4,31 @@ export const useCarousel = (items, itemsPerView) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
-    const totalPages = Math.ceil(items.length / itemsPerView);
+    const maxIndex = Math.max(items.length - itemsPerView, 0);
+    const totalPages = maxIndex + 1;
     const autoAdvanceRef = useRef();
 
     const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) =>
-            prevIndex >= items.length - itemsPerView ? 0 : prevIndex + 1
+            prevIndex >= maxIndex ? 0 : prevIndex + 1
         );
-    }, [items.length, itemsPerView]);
+    }, [maxIndex]);
 
     const prevSlide = useCallback(() => {
         setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? items.length - itemsPerView : prevIndex - 1
+            prevIndex === 0 ? maxIndex : prevIndex - 1
         );
-    }, [items.length, itemsPerView]);
+    }, [maxIndex]);
 
     const goToSlide = useCallback((index) => {
-        setCurrentIndex(index * itemsPerView);
-    }, [itemsPerView]);
+        setCurrentIndex(Math.min(Math.max(index, 0), maxIndex));
+    }, [maxIndex]);
 
     // Touch handling for mobile
     const handleTouchStart = (e) => {
-        setTouchStart(e.targetTouches[0].clientX);
+        const touchPosition = e.targetTouches[0].clientX;
+        setTouchStart(touchPosition);
+        setTouchEnd(touchPosition);
     };
 
     const handleTouchMove = (e) => {
@@ -44,6 +47,10 @@ export const useCarousel = (items, itemsPerView) => {
 
     // Auto-advance carousel with cleanup
     useEffect(() => {
+        if (maxIndex === 0) {
+            return undefined;
+        }
+
         if (autoAdvanceRef.current) {
             clearInterval(autoAdvanceRef.current);
         }
@@ -55,7 +62,7 @@ export const useCarousel = (items, itemsPerView) => {
                 clearInterval(autoAdvanceRef.current);
             }
         };
-    }, [nextSlide]);
+    }, [maxIndex, nextSlide]);
 
     return {
         currentIndex,

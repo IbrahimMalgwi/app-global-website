@@ -1,9 +1,33 @@
-// Import path module first
-import path from "path";
-
 /** @type {import('tailwindcss').Config} */
+const dynamicColors = ["blue", "green", "indigo", "pink", "purple", "sky"];
+const dynamicColorClasses = dynamicColors.flatMap((color) => [
+    `bg-${color}-100`,
+    `bg-${color}-200`,
+    `bg-${color}-500`,
+    `text-${color}-400`,
+    `text-${color}-500`,
+    `text-${color}-600`,
+    `border-${color}-200`,
+    `border-${color}-500`,
+    `border-${color}-800`,
+    `from-${color}-50`,
+    `from-${color}-600`,
+    `to-${color}-100/50`,
+    `dark:bg-${color}-600/20`,
+    `dark:bg-${color}-900/20`,
+    `dark:bg-${color}-900/30`,
+    `dark:text-${color}-400`,
+    `dark:border-${color}-400`,
+    `dark:border-${color}-500/30`,
+    `dark:border-${color}-800`,
+    `dark:border-${color}-800/30`,
+    `dark:from-${color}-900/20`,
+    `dark:to-${color}-800/10`,
+]);
+
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    safelist: dynamicColorClasses,
     theme: {
         extend: {
             container: {
@@ -36,7 +60,7 @@ export default {
         require("@tailwindcss/forms"),
         require('tailwind-scrollbar'),
 
-        // ✅ Custom utilities plugin
+        // Custom utilities plugin
         function ({ addUtilities }) {
             const newUtilities = {
                 ".perspective-1000": {

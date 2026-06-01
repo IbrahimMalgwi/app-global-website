@@ -1,8 +1,9 @@
 // src/components/NavBar.jsx
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { navigationItems } from "../config/navigation";
 
 // Import your logo image
 import logo from "../assets/images/logo.png";
@@ -13,18 +14,6 @@ const NavBar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isHovered, setIsHovered] = useState(null);
     const { theme, toggleTheme } = useTheme();
-
-    // Memoized nav items with display names
-    const navItems = useMemo(() => [
-        { id: "home", label: "Home" },
-        { id: "about", label: "About" },
-        { id: "mission", label: "Mission " },
-        // { id: "core-values", label: "Core Values" },
-        { id: "services", label: "Services" },
-        { id: "subsidiaries", label: "Subsidiaries" },
-        { id: "team", label: "Team" },
-        { id: "contact", label: "Contact" },
-    ], []);
 
     // Scroll to section smoothly
     const scrollToSection = useCallback((id) => {
@@ -50,7 +39,7 @@ const NavBar = () => {
             const scrollPosition = window.scrollY + 120;
 
             let current = "home";
-            navItems.forEach(({ id }) => {
+            navigationItems.forEach(({ id }) => {
                 const section = document.getElementById(id);
                 if (section) {
                     const sectionTop = section.offsetTop;
@@ -81,7 +70,7 @@ const NavBar = () => {
         handleScroll();
 
         return () => window.removeEventListener("scroll", throttledScroll);
-    }, [navItems]);
+    }, []);
 
     // Reset scroll position on mount
     useEffect(() => {
@@ -167,8 +156,8 @@ const NavBar = () => {
                     </motion.div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-                        {navItems.map((item) => (
+                    <div className="hidden lg:flex items-center space-x-1 lg:space-x-2">
+                        {navigationItems.map((item) => (
                             <motion.button
                                 key={item.id}
                                 variants={itemVariants}
@@ -243,7 +232,7 @@ const NavBar = () => {
                     </div>
 
                     {/* Mobile Controls */}
-                    <div className="md:hidden flex items-center space-x-2">
+                    <div className="lg:hidden flex items-center space-x-2">
                         {/* Theme Toggle for Mobile */}
                         <motion.button
                             onClick={toggleTheme}
@@ -298,10 +287,10 @@ const NavBar = () => {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="md:hidden overflow-hidden"
+                            className="lg:hidden overflow-hidden"
                         >
                             <div className="py-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
-                                {navItems.map((item, index) => (
+                                {navigationItems.map((item, index) => (
                                     <motion.button
                                         key={item.id}
                                         variants={itemVariants}

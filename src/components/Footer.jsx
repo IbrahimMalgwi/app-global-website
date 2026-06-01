@@ -191,7 +191,7 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
                                 <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                                <span>info@appglobal.com</span>
+                                <span>info@appglobaltechnologies.com</span>
                             </div>
                         </div>
 
@@ -307,10 +307,10 @@ export default function Footer() {
                         </p>
 
                         <div className="flex gap-6 text-xs text-gray-500 dark:text-gray-600">
-                            <a href="/privacy" className="hover:text-purple-600 ...">Privacy</a>
-                            <a href="/terms" className="hover:text-purple-600 ...">Terms</a>
-                            <a href="/cookies" className="hover:text-purple-600 ...">Cookies</a>
-                            <a href="/sitemap" className="hover:text-purple-600 ...">Sitemap</a>
+                            <a href="/privacy" className="hover:text-purple-600 transition-colors">Privacy</a>
+                            <a href="/terms" className="hover:text-purple-600 transition-colors">Terms</a>
+                            <a href="/cookies" className="hover:text-purple-600 transition-colors">Cookies</a>
+                            <a href="/sitemap" className="hover:text-purple-600 transition-colors">Sitemap</a>
                         </div>
 
                         <p className="text-xs text-gray-500 dark:text-gray-600">

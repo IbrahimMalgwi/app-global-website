@@ -12,42 +12,28 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ThemeLayout from "./components/ThemeLayout";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { useEffect } from "react";
 
 function App() {
-    useEffect(() => {
-        // Disable browser auto scroll on reload
-        if ("scrollRestoration" in window.history) {
-            window.history.scrollRestoration = "manual";
-        }
-
-        // Ensure we start at the top
-        window.scrollTo(0, 0);
-
-        // Prevent any hash-based scrolling
-        if (window.location.hash) {
-            window.location.hash = "";
-        }
-    }, []);
-
     return (
-        <ThemeProvider>
-            <ThemeLayout>
-                <NavBar/>
-                <section id="home"><Hero /></section>
-                <section id="about"><About /></section>
-                <section id="mission"><MissionVision/></section>
-                {/*<section id="core-values"><CoreValues /></section>*/}
-                <section id="services"><Services /></section>
-                <section id="subsidiaries"><OurSubsidiaries /></section>
-                <section id="team"><Team /></section>
-                <section id="partners"><Partners /></section>
-                <section id="blog"><Blog /></section>
-                <section id="contact"><Contact /></section>
-                <Footer />
-            </ThemeLayout>
-        </ThemeProvider>
+        <ErrorBoundary>
+            <ThemeProvider>
+                <ThemeLayout>
+                    <NavBar />
+                    <Hero />
+                    <About />
+                    <MissionVision />
+                    <Services />
+                    <OurSubsidiaries />
+                    <Team />
+                    <Partners />
+                    <Blog />
+                    <Contact />
+                    <Footer />
+                </ThemeLayout>
+            </ThemeProvider>
+        </ErrorBoundary>
     );
 }
 

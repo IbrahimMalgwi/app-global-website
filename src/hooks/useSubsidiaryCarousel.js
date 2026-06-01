@@ -7,15 +7,21 @@ export const useSubsidiaryCarousel = (items, autoRotateInterval = 6000) => {
 
     // Auto rotate - but delay it to prevent initial issues
     useEffect(() => {
+        if (items.length === 0) {
+            return undefined;
+        }
+
+        let rotationTimer;
         const timer = setTimeout(() => {
-            const rotationTimer = setInterval(() => {
+            rotationTimer = setInterval(() => {
                 setSelectedIndex((prevIndex) => (prevIndex + 1) % items.length);
             }, autoRotateInterval);
-
-            return () => clearInterval(rotationTimer);
         }, 2000); // 2 second delay
 
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            clearInterval(rotationTimer);
+        };
     }, [items.length, autoRotateInterval]);
 
     // REMOVED the auto-scroll effect from the hook

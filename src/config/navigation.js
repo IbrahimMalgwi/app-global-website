@@ -1,6 +1,7 @@
 export const navigationItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
+    { id: "mission", label: "Mission" },
     { id: "services", label: "Services" },
     { id: "subsidiaries", label: "Subsidiaries" },
     { id: "team", label: "Team" },

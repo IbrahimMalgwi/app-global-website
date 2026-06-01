@@ -1,6 +1,6 @@
 // src/components/ThemeLayout.jsx
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 
 // ==================== Sub-components ====================
@@ -83,12 +83,7 @@ const GlowOrb = ({ position, color, delay = 0 }) => (
 
 export default function ThemeLayout({ children }) {
     const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    // Handle mounting to avoid hydration mismatch
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const { scrollYProgress } = useScroll();
 
     // Animation variants
     const pageVariants = {
@@ -114,8 +109,6 @@ export default function ThemeLayout({ children }) {
             }
         }
     };
-
-    if (!mounted) return null;
 
     return (
         <AnimatePresence mode="wait">
@@ -191,13 +184,7 @@ export default function ThemeLayout({ children }) {
                 {/* Scroll progress indicator */}
                 <motion.div
                     className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600 z-50"
-                    style={{ scaleX: 0, transformOrigin: "0%" }}
-                    animate={{
-                        scaleX: typeof window !== 'undefined'
-                            ? window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
-                            : 0
-                    }}
-                    transition={{ duration: 0.1 }}
+                    style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
                 />
             </motion.div>
         </AnimatePresence>
