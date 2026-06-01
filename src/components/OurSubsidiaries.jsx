@@ -3,10 +3,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
     ArrowUpRight,
-    Building2,
     ChevronLeft,
     ChevronRight,
-    Layers3,
     MoveRight,
     Sparkles
 } from "lucide-react";
@@ -101,7 +99,7 @@ const OurSubsidiaries = () => {
     return (
         <section
             id="subsidiaries"
-            className="relative w-full overflow-hidden bg-gray-50 py-20 dark:bg-black"
+            className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gray-50 py-20 dark:bg-black"
             onMouseEnter={stopAutoRotate}
             onMouseLeave={startAutoRotate}
         >
@@ -113,44 +111,42 @@ const OurSubsidiaries = () => {
             </div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="mb-12 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+                <div className="mb-12 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.4 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur dark:border-purple-500/30 dark:bg-white/5">
-                            <Building2 className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-700 dark:text-gray-200">
+                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white px-4 py-2 shadow-sm backdrop-blur-xl dark:border-purple-500/30 dark:bg-white/5">
+                            <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                            <span className="text-xs font-medium tracking-wide text-gray-700 md:text-sm dark:text-white/90">
                                 Our Portfolio
                             </span>
                         </div>
 
-                        <h2 className="max-w-3xl text-4xl font-bold tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                            Products built for{" "}
-                            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                                real-world impact.
+                        <h2 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                            Our{" "}
+                            <span className="relative inline-block">
+                                <span className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                    Subsidiaries
+                                </span>
+                                <motion.div
+                                    initial={{ width: 0, left: 0 }}
+                                    whileInView={{ width: "100%" }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: 0.5 }}
+                                    className="absolute bottom-0 h-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
+                                />
                             </span>
                         </h2>
-                        <p className="mt-5 max-w-2xl text-base leading-7 text-gray-600 md:text-lg dark:text-gray-400">
+                        <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-white/60">
                             Explore the companies and platforms in the AppGlobal ecosystem, each designed to solve a specific operational challenge.
                         </p>
                     </motion.div>
-
-                    <div className="hidden items-center gap-3 lg:flex">
-                        <div className="text-right">
-                            <p className="text-3xl font-bold text-gray-900 dark:text-white">{subsidiaries.length}</p>
-                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-gray-500">
-                                Solutions
-                            </p>
-                        </div>
-                        <div className="h-12 w-px bg-gray-200 dark:bg-gray-800" />
-                        <Layers3 className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-                    </div>
                 </div>
 
-                <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/90 shadow-2xl shadow-purple-900/10 backdrop-blur-xl dark:border-gray-800 dark:bg-gray-900/85">
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-xl shadow-purple-900/10 backdrop-blur-xl dark:border-gray-700 dark:bg-gray-800/90">
                     <div className="grid lg:grid-cols-[320px_1fr]">
                         <aside className="border-b border-gray-200 bg-gray-50/80 p-4 lg:border-b-0 lg:border-r dark:border-gray-800 dark:bg-black/20">
                             <div className="mb-3 flex items-center justify-between px-2">
@@ -172,7 +168,7 @@ const OurSubsidiaries = () => {
                                             key={`${subsidiary.name}-${index}`}
                                             type="button"
                                             onClick={() => handleSelect(index)}
-                                            className={`group relative min-w-[220px] overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 lg:w-full ${
+                                            className={`group relative min-w-[220px] overflow-hidden rounded-xl border px-4 py-4 text-left transition-all duration-300 lg:w-full ${
                                                 isSelected
                                                     ? "border-purple-200 bg-white shadow-md dark:border-purple-500/40 dark:bg-white/10"
                                                     : "border-transparent hover:border-gray-200 hover:bg-white/70 dark:hover:border-gray-700 dark:hover:bg-white/5"
@@ -280,7 +276,7 @@ const OurSubsidiaries = () => {
                                         href={selectedSubsidiary.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group inline-flex items-center gap-3 rounded-xl bg-gray-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-purple-600 dark:bg-white dark:text-gray-900 dark:hover:bg-purple-500 dark:hover:text-white"
+                                        className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-purple-500/50"
                                     >
                                         Explore solution
                                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
