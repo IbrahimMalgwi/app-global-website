@@ -5,10 +5,7 @@ import {
     Mail,
     Phone,
     MapPin,
-    Facebook,
-    Twitter,
     Linkedin,
-    Instagram,
     ChevronRight,
     Send,
     Globe,
@@ -20,16 +17,17 @@ import { AnimatedBackground } from "./UI/AnimatedBackground";
 
 // ==================== Sub-components ====================
 
-const SocialIcon = ({ icon: Icon, href, color = "purple" }) => (
+const SocialIcon = ({ icon: Icon, href, color = "red", label }) => (
     <motion.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={label}
         className={`relative w-10 h-10 rounded-lg bg-${color}-100 dark:bg-${color}-900/30 flex items-center justify-center group overflow-hidden`}
         whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
     >
-        <div className={`absolute inset-0 bg-gradient-to-r from-${color}-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+        <div className={`absolute inset-0 bg-gradient-to-r from-${color}-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
         <Icon className={`relative z-10 w-5 h-5 text-${color}-600 dark:text-${color}-400 group-hover:text-white transition-colors duration-300`} />
     </motion.a>
 );
@@ -41,9 +39,9 @@ const FooterLink = ({ children, href }) => (
     >
         <a
             href={href}
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300 group"
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors duration-300 group"
         >
-            <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-purple-600 dark:text-purple-400" />
+            <ChevronRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-red-600 dark:text-red-400" />
             <span>{children}</span>
         </a>
     </motion.li>
@@ -56,6 +54,9 @@ const NewsletterForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email) {
+            const subject = encodeURIComponent("Newsletter subscription request");
+            const body = encodeURIComponent(`Please add ${email} to the AppGlobal newsletter list.`);
+            window.location.href = `mailto:info@appglobaltechnologies.com?subject=${subject}&body=${body}`;
             setIsSubmitted(true);
             setEmail("");
             setTimeout(() => setIsSubmitted(false), 3000);
@@ -65,26 +66,26 @@ const NewsletterForm = () => {
     return (
         <form onSubmit={handleSubmit} className="mt-4">
             <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-0 group-focus-within:opacity-20 blur transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-lg opacity-0 group-focus-within:opacity-20 blur transition-opacity duration-300" />
                 <div className="relative flex">
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your email"
-                        className="flex-1 px-4 py-2 rounded-l-lg bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors duration-300"
+                        className="flex-1 px-4 py-2 rounded-l-lg bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors duration-300"
                         required
                     />
                     <button
                         type="submit"
-                        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-gradient-to-r dark:from-purple-600 dark:to-pink-600 text-white rounded-r-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                        className="px-4 py-2 bg-red-600 hover:bg-red-700 dark:bg-gradient-to-r dark:from-red-600 dark:to-red-600 text-white rounded-r-lg hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300"
                     >
                         {isSubmitted ? <Heart className="w-5 h-5" /> : <Send className="w-5 h-5" />}
                     </button>
                 </div>
             </div>
             {isSubmitted && (
-                <p className="text-xs text-green-600 dark:text-green-400 mt-2">Thanks for subscribing!</p>
+                <p className="text-xs text-green-600 dark:text-green-400 mt-2">Email draft opened for subscription.</p>
             )}
         </form>
     );
@@ -110,28 +111,37 @@ export default function Footer() {
     };
 
     const solutions = [
-        { name: "GlobalCare EHR", href: "#" },
-        { name: "GlobalCare LIS", href: "#" },
-        { name: "Telemedicine", href: "#" },
-        { name: "AppGlobal Pay", href: "#" },
-        { name: "Globalshell Resources", href: "#" },
-        { name: "GlobalCare Pharmacy", href: "#" },
+        { name: "GlobalCare EHR", href: "#services" },
+        { name: "Laboratory Information System", href: "#services" },
+        { name: "Telemedicine", href: "#services" },
+        { name: "AppGlobal Pay", href: "#subsidiaries" },
+        { name: "GlobalShell Resources", href: "#subsidiaries" },
+        { name: "Cloud & Web Hosting", href: "#services" },
     ];
 
     const company = [
         { name: "About Us", href: "#about" },
         { name: "Our Team", href: "#team" },
-        { name: "Careers", href: "#" },
+        { name: "Careers", href: "#contact" },
         { name: "Partners", href: "#partners" },
         { name: "News", href: "#blog" },
     ];
 
     const support = [
-        { name: "Documentation", href: "#" },
-        { name: "Help Center", href: "#" },
+        { name: "Documentation", href: "#contact" },
+        { name: "Help Center", href: "#contact" },
         { name: "Contact Us", href: "#contact" },
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms of Service", href: "#" },
+        { name: "Privacy Questions", href: "#contact" },
+        { name: "Service Terms", href: "#contact" },
+    ];
+
+    const socialLinks = [
+        {
+            icon: Linkedin,
+            href: "https://www.linkedin.com/company/appglobal-technologies-limited/",
+            color: "blue",
+            label: "LinkedIn"
+        },
     ];
 
     return (
@@ -144,14 +154,14 @@ export default function Footer() {
 
             {/* Decorative elements - adjusted for light mode */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-100 dark:bg-purple-600/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-100 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-100 dark:bg-red-600/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-100 dark:bg-red-600/10 rounded-full blur-3xl" />
 
                 {/* Grid pattern - lighter for light mode */}
                 <svg className="absolute inset-0 w-full h-full opacity-5 dark:opacity-10" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="footer-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-purple-300 dark:text-purple-400" />
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-red-300 dark:text-red-400" />
                         </pattern>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#footer-grid)" />
@@ -170,7 +180,7 @@ export default function Footer() {
                         className="space-y-4"
                     >
                         <h3 className="text-2xl font-bold">
-                            <span className="text-purple-600 dark:text-purple-400">
+                            <span className="text-red-600 dark:text-red-400">
                                 AppGlobal Group
                             </span>
                         </h3>
@@ -182,25 +192,24 @@ export default function Footer() {
                         {/* Contact Info - using solid colors */}
                         <div className="space-y-2 text-sm">
                             <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                                <MapPin className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                <MapPin className="w-4 h-4 text-red-600 dark:text-red-400" />
                                 <span>Victoria Island, Lagos, Nigeria</span>
                             </div>
                             <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                                <Phone className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                <Phone className="w-4 h-4 text-red-600 dark:text-red-400" />
                                 <span>+234 806 211 4900</span>
                             </div>
                             <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                                <Mail className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                <Mail className="w-4 h-4 text-red-600 dark:text-red-400" />
                                 <span>info@appglobaltechnologies.com</span>
                             </div>
                         </div>
 
                         {/* Social Icons */}
                         <div className="flex gap-3 pt-2">
-                            <SocialIcon icon={Facebook} href="#" color="blue" />
-                            <SocialIcon icon={Twitter} href="#" color="sky" />
-                            <SocialIcon icon={Linkedin} href="#" color="blue" />
-                            <SocialIcon icon={Instagram} href="#" color="pink" />
+                            {socialLinks.map((social) => (
+                                <SocialIcon key={social.label} {...social} />
+                            ))}
                         </div>
                     </motion.div>
 
@@ -212,7 +221,7 @@ export default function Footer() {
                         animate={isInView ? "visible" : "hidden"}
                     >
                         <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Globe className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <Globe className="w-5 h-5 text-red-600 dark:text-red-400" />
                             Solutions
                         </h4>
                         <ul className="space-y-3">
@@ -232,7 +241,7 @@ export default function Footer() {
                         animate={isInView ? "visible" : "hidden"}
                     >
                         <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <Award className="w-5 h-5 text-red-600 dark:text-red-400" />
                             Company
                         </h4>
                         <ul className="space-y-3">
@@ -252,7 +261,7 @@ export default function Footer() {
                         animate={isInView ? "visible" : "hidden"}
                     >
                         <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Shield className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <Shield className="w-5 h-5 text-red-600 dark:text-red-400" />
                             Support
                         </h4>
                         <ul className="space-y-3 mb-6">
@@ -281,16 +290,16 @@ export default function Footer() {
                     className="flex flex-wrap justify-center gap-4 mb-8"
                 >
                     <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-gray-700">
-                        <Shield className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                        <span className="text-xs text-gray-700 dark:text-gray-400">ISO 27001 Certified</span>
+                        <Shield className="w-4 h-4 text-red-600 dark:text-red-400" />
+                        <span className="text-xs text-gray-700 dark:text-gray-400">Security-first delivery</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-gray-700">
-                        <Award className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                        <span className="text-xs text-gray-700 dark:text-gray-400">PCI DSS Compliant</span>
+                        <Award className="w-4 h-4 text-red-600 dark:text-red-400" />
+                        <span className="text-xs text-gray-700 dark:text-gray-400">Payment-aware workflows</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-gray-700">
-                        <Globe className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                        <span className="text-xs text-gray-700 dark:text-gray-400">GDPR Ready</span>
+                        <Globe className="w-4 h-4 text-red-600 dark:text-red-400" />
+                        <span className="text-xs text-gray-700 dark:text-gray-400">Privacy-minded operations</span>
                     </div>
                 </motion.div>
 
@@ -307,14 +316,13 @@ export default function Footer() {
                         </p>
 
                         <div className="flex gap-6 text-xs text-gray-500 dark:text-gray-600">
-                            <a href="/privacy" className="hover:text-purple-600 transition-colors">Privacy</a>
-                            <a href="/terms" className="hover:text-purple-600 transition-colors">Terms</a>
-                            <a href="/cookies" className="hover:text-purple-600 transition-colors">Cookies</a>
-                            <a href="/sitemap" className="hover:text-purple-600 transition-colors">Sitemap</a>
+                            <a href="#contact" className="hover:text-red-600 transition-colors">Privacy Questions</a>
+                            <a href="#contact" className="hover:text-red-600 transition-colors">Terms Requests</a>
+                            <a href="#contact" className="hover:text-red-600 transition-colors">Support</a>
                         </div>
 
                         <p className="text-xs text-gray-500 dark:text-gray-600">
-                            Made with <Heart className="inline w-3 h-3 text-pink-500" /> in Nigeria
+                            Made with <Heart className="inline w-3 h-3 text-red-500" /> in Nigeria
                         </p>
                     </div>
                 </motion.div>

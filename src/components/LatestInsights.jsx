@@ -56,8 +56,8 @@ const insights = [
 const CategoryBadge = ({ category, featured = false }) => (
     <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
         featured
-            ? 'bg-purple-600 text-white'
-            : 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
+            ? 'bg-red-600 text-white'
+            : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
     }`}>
         {category}
     </div>
@@ -95,7 +95,7 @@ const InsightCard = ({ post, index }) => {
             <div className="relative h-full">
                 {/* Glow effect */}
                 <motion.div
-                    className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"
+                    className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"
                     animate={isHovered ? { scale: [1, 1.02, 1] } : {}}
                     transition={{ duration: 2, repeat: Infinity }}
                 />
@@ -147,7 +147,7 @@ const InsightCard = ({ post, index }) => {
                         />
 
                         {/* Title */}
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-3 mb-2 line-clamp-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mt-3 mb-2 line-clamp-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300">
                             {post.title}
                         </h3>
 
@@ -164,7 +164,7 @@ const InsightCard = ({ post, index }) => {
                             </div>
 
                             <motion.button
-                                className="inline-flex items-center gap-1 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors group/btn"
+                                className="inline-flex items-center gap-1 text-sm font-medium text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors group/btn"
                                 whileHover={{ x: 2 }}
                             >
                                 Read More
@@ -175,7 +175,7 @@ const InsightCard = ({ post, index }) => {
 
                     {/* Hover gradient line */}
                     <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600"
+                        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-600 to-red-600"
                         initial={{ scaleX: 0 }}
                         animate={isHovered ? { scaleX: 1 } : { scaleX: 0 }}
                         transition={{ duration: 0.3 }}
@@ -204,14 +204,14 @@ export default function LatestInsights() {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-40 left-20 w-72 h-72 bg-purple-200 dark:bg-purple-600/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-40 right-20 w-72 h-72 bg-pink-200 dark:bg-pink-600/5 rounded-full blur-3xl" />
+                <div className="absolute top-40 left-20 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-40 right-20 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(8)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/20 dark:bg-red-400/10 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -243,9 +243,9 @@ export default function LatestInsights() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <BookOpen className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <BookOpen className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             Thought Leadership
                         </span>
@@ -255,14 +255,14 @@ export default function LatestInsights() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Latest{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 text-purple-600 dark:text-purple-400">
+                            <span className="relative z-10 text-red-600 dark:text-red-400">
                                 Insights
                             </span>
                             <motion.div
                                 initial={{ width: 0, left: 0 }}
                                 animate={isInView ? { width: "100%" } : { width: 0 }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute bottom-0 h-1 bg-purple-600 dark:bg-purple-400 rounded-full"
+                                className="absolute bottom-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
                             />
                         </span>
                     </h2>
@@ -280,15 +280,15 @@ export default function LatestInsights() {
                     className="flex flex-wrap justify-center gap-4 mb-12"
                 >
                     <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
-                        <BookOpen className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <BookOpen className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-sm text-gray-700 dark:text-gray-300">50+ Articles</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
-                        <Calendar className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Calendar className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-sm text-gray-700 dark:text-gray-300">Weekly Updates</span>
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700">
-                        <User className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <User className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-sm text-gray-700 dark:text-gray-300">Industry Experts</span>
                     </div>
                 </motion.div>
@@ -308,12 +308,12 @@ export default function LatestInsights() {
                     className="text-center mt-12"
                 >
                     <motion.a
-                        href="/blog"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                        href="#contact"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <span>View All Articles</span>
+                        <span>Request More Insights</span>
                         <Share2 className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                     </motion.a>
                 </motion.div>

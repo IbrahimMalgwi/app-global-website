@@ -7,8 +7,8 @@ export const IconCard = ({
                              icon,
                              gradient,
                              blurGradient,
-                             darkGradient = "from-purple-700 to-indigo-800", // Default dark gradient
-                             darkBlurGradient = "from-purple-900 to-indigo-900", // Default dark blur gradient
+                             darkGradient = "from-red-700 to-indigo-800", // Default dark gradient
+                             darkBlurGradient = "from-red-900 to-indigo-900", // Default dark blur gradient
                              className = ""
                          }) => {
     return (

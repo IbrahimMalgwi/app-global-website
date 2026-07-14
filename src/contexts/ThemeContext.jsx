@@ -6,7 +6,7 @@ const ThemeContext = createContext();
 export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem("theme");
-        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const systemPrefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
 
         return savedTheme === "light" || savedTheme === "dark"
             ? savedTheme

@@ -8,7 +8,7 @@ export const ServiceCard = ({
                                 title,
                                 description,
                                 features = [],
-                                gradient = "from-purple-500 to-pink-500",
+                                gradient = "from-red-500 to-red-500",
                                 className = ''
                             }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -110,7 +110,7 @@ export const ServiceCard = ({
                                         exit={{ scale: 0, opacity: 0 }}
                                         className="absolute -top-2 -right-2"
                                     >
-                                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -165,7 +165,7 @@ export const ServiceCard = ({
                     {features.length > 0 && (
                         <motion.button
                             onClick={() => setIsExpanded(!isExpanded)}
-                            className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors duration-300 group/btn"
+                            className="inline-flex items-center gap-1 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-300 group/btn"
                             whileHover={{ x: 4 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -222,5 +222,5 @@ export const ServiceCard = ({
 // Default props
 ServiceCard.defaultProps = {
     features: [],
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-red-500 to-red-500"
 };

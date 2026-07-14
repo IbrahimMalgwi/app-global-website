@@ -27,7 +27,7 @@ export const services = [
         icon: HeartPulse,
         title: "GlobalCare EHR",
         description: "Smart Records. Better Care. Everywhere. Streamlined hospital management system that simplifies healthcare operations and improves patient care delivery.",
-        gradient: "from-purple-500 to-pink-500",
+        gradient: "from-red-500 to-red-500",
         features: [
             "Electronic Health Records",
             "Patient Management",
@@ -55,7 +55,7 @@ export const services = [
         icon: FlaskConical,
         title: "Laboratory Information System (LIS)",
         description: "A comprehensive Laboratory Information System (LIS) that streamlines lab operations, enhances data management, and improves patient care through efficient test processing and reporting.",
-        gradient: "from-green-500 to-emerald-500",
+        gradient: "from-green-500 to-amber-500",
         features: [
             "Test Management",
             "Result Reporting",
@@ -97,7 +97,7 @@ export const services = [
         icon: Package,
         title: "X-Global Inventory, Accounting & ERP System",
         description: "A comprehensive ERP system that integrates inventory management, accounting, and other business processes to streamline operations, improve efficiency, and enhance decision-making.",
-        gradient: "from-indigo-500 to-purple-500",
+        gradient: "from-indigo-500 to-red-500",
         features: [
             "Inventory Management",
             "Financial Accounting",
@@ -111,7 +111,7 @@ export const services = [
         icon: Users,
         title: "X-Global Human Resources & Payroll System",
         description: "A robust Human Resources and Payroll System that simplifies employee management, payroll processing, and compliance, enabling HR teams to focus on strategic initiatives and employee engagement.",
-        gradient: "from-pink-500 to-rose-500",
+        gradient: "from-red-500 to-rose-500",
         features: [
             "Employee Database",
             "Payroll Processing",
@@ -153,7 +153,7 @@ export const services = [
         icon: Network,
         title: "Networking",
         description: "Comprehensive networking infrastructure solutions for reliable and secure connectivity across organizations.",
-        gradient: "from-violet-500 to-purple-500",
+        gradient: "from-violet-500 to-red-500",
         features: [
             "Network Design",
             "Cabling & Infrastructure",
@@ -165,9 +165,9 @@ export const services = [
     {
         id: 11,
         icon: Wallet,
-        title: "App Global Pay",
+        title: "AppGlobal Pay",
         description: "Secure and efficient global payment processing solutions for seamless financial transactions worldwide.",
-        gradient: "from-emerald-500 to-teal-500",
+        gradient: "from-amber-500 to-teal-500",
         features: [
             "Payment Processing",
             "Multi-currency Support",
@@ -180,13 +180,13 @@ export const services = [
         id: 12,
         icon: Globe2,
         title: "GlobalShell Resources",
-        description: "Comprehensive resource management and optimization solutions for business efficiency and growth.",
-        gradient: "from-fuchsia-500 to-pink-500",
+        description: "Cloud, energy, and infrastructure services that help organizations modernize operations with reliable digital foundations.",
+        gradient: "from-fuchsia-500 to-red-500",
         features: [
-            "Resource Planning",
-            "Asset Management",
-            "Workforce Optimization",
-            "Cost Tracking",
+            "Cloud Infrastructure",
+            "Energy Operations",
+            "Infrastructure Support",
+            "Operational Monitoring",
             "Performance Analytics"
         ]
     },

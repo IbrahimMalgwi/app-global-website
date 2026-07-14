@@ -1,8 +1,8 @@
 // src/components/UI/GradientCard.jsx
 export const GradientCard = ({ color, number, title, subtitle }) => {
     const colorClasses = {
-        purple: 'from-purple-500 to-pink-500 dark:from-purple-600 dark:to-pink-600',
-        pink: 'from-pink-500 to-red-500 dark:from-pink-600 dark:to-red-600',
+        red: 'from-red-600 to-red-500 dark:from-red-500 dark:to-red-400',
+        amber: 'from-amber-500 to-red-500 dark:from-amber-400 dark:to-red-500',
         indigo: 'from-indigo-500 to-blue-500 dark:from-indigo-600 dark:to-blue-600'
     };
 

@@ -12,7 +12,7 @@ const FormInput = ({ icon: Icon, label, name, type = "text", value, onChange, pl
             {label} {required && <span className="text-red-500">*</span>}
         </label>
         <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-lg opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
             <div className="relative flex items-center">
                 <Icon className="absolute left-3 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <input
@@ -23,7 +23,7 @@ const FormInput = ({ icon: Icon, label, name, type = "text", value, onChange, pl
                     onChange={onChange}
                     placeholder={placeholder}
                     required={required}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-red-500 dark:focus:border-red-400 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white"
                 />
             </div>
         </div>
@@ -36,7 +36,7 @@ const FormTextarea = ({ icon: Icon, label, name, value, onChange, placeholder, r
             {label} {required && <span className="text-red-500">*</span>}
         </label>
         <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-lg opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
             <div className="relative flex">
                 <Icon className="absolute left-3 top-3 w-5 h-5 text-gray-400 dark:text-gray-500" />
                 <textarea
@@ -47,14 +47,14 @@ const FormTextarea = ({ icon: Icon, label, name, value, onChange, placeholder, r
                     placeholder={placeholder}
                     rows={rows}
                     required={required}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white resize-none"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-red-500 dark:focus:border-red-400 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white resize-none"
                 />
             </div>
         </div>
     </div>
 );
 
-const ContactInfoCard = ({ icon: Icon, title, children, color = "purple", delay = 0 }) => {
+const ContactInfoCard = ({ icon: Icon, title, children, color = "red", delay = 0 }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -69,7 +69,7 @@ const ContactInfoCard = ({ icon: Icon, title, children, color = "purple", delay 
         >
             {/* Glow effect */}
             <motion.div
-                className={`absolute -inset-1 bg-gradient-to-r from-${color}-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}
+                className={`absolute -inset-1 bg-gradient-to-r from-${color}-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}
                 animate={isHovered ? { scale: [1, 1.1, 1] } : {}}
                 transition={{ duration: 0.3 }}
             />
@@ -118,14 +118,14 @@ const SuccessModal = ({ isOpen, onClose }) => (
                             <CheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
                         </motion.div>
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                            Message Sent!
+                            Email Draft Opened
                         </h3>
                         <p className="text-gray-600 dark:text-gray-400 mb-6">
-                            Thank you for reaching out. We'll get back to you within 24 hours.
+                            Your email client should now have a prepared message for AppGlobal. Please review and send it from there.
                         </p>
                         <button
                             onClick={onClose}
-                            className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
+                            className="px-6 py-3 bg-gradient-to-r from-red-600 to-red-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300"
                         >
                             Close
                         </button>
@@ -186,10 +186,19 @@ export default function Contact() {
 
         setIsSubmitting(true);
 
-        // Simulate API call
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            console.log("Form submitted:", formData);
+            const subject = encodeURIComponent(formData.subject || "Website contact request");
+            const body = encodeURIComponent(
+                [
+                    `Name: ${formData.firstName} ${formData.lastName}`,
+                    `Email: ${formData.email}`,
+                    `Phone: ${formData.phone || "Not provided"}`,
+                    "",
+                    formData.message
+                ].join("\n")
+            );
+
+            window.location.href = `mailto:info@appglobaltechnologies.com?subject=${subject}&body=${body}`;
             setShowSuccess(true);
             setFormData({
                 firstName: "",
@@ -223,14 +232,14 @@ export default function Contact() {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/5 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(8)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/20 dark:bg-red-400/10 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -264,9 +273,9 @@ export default function Contact() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             Get In Touch
                         </span>
@@ -276,7 +285,7 @@ export default function Contact() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Let's{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            <span className="relative z-10 bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                                 Connect
                             </span>
                             <motion.div
@@ -284,7 +293,7 @@ export default function Contact() {
                                 whileInView={{ width: "100%" }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute bottom-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
+                                className="absolute bottom-0 h-1 bg-gradient-to-r from-red-600 to-red-600 rounded-full"
                             />
                         </span>
                     </h2>
@@ -309,7 +318,7 @@ export default function Contact() {
                             </h3>
 
                             <div className="space-y-4">
-                                <ContactInfoCard icon={MapPin} title="Address" color="purple" delay={0.1}>
+                                <ContactInfoCard icon={MapPin} title="Address" color="red" delay={0.1}>
                                     <p>Plot 1668B Oyin Jolayemi Street</p>
                                     <p>Victoria Island, Lagos</p>
                                     <p>Nigeria</p>
@@ -320,7 +329,7 @@ export default function Contact() {
                                     <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">24/7 Support</p>
                                 </ContactInfoCard>
 
-                                <ContactInfoCard icon={Mail} title="Email" color="pink" delay={0.3}>
+                                <ContactInfoCard icon={Mail} title="Email" color="red" delay={0.3}>
                                     <p>info@appglobaltechnologies.com</p>
                                     <p>support@appglobaltechnologies.com</p>
                                 </ContactInfoCard>
@@ -345,7 +354,7 @@ export default function Contact() {
                                 transition={{ duration: 0.5, delay: 0.3 }}
                                 className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700 text-center"
                             >
-                                <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">24/7</span>
+                                <span className="text-2xl font-bold text-red-600 dark:text-red-400">24/7</span>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Support</p>
                             </motion.div>
                             <motion.div
@@ -355,7 +364,7 @@ export default function Contact() {
                                 transition={{ duration: 0.5, delay: 0.4 }}
                                 className="p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700 text-center"
                             >
-                                <span className="text-2xl font-bold text-pink-600 dark:text-pink-400">&lt;24h</span>
+                                <span className="text-2xl font-bold text-red-600 dark:text-red-400">&lt;24h</span>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">Response</p>
                             </motion.div>
                         </div>
@@ -368,7 +377,7 @@ export default function Contact() {
                             transition={{ duration: 0.6, delay: 0.5 }}
                             className="relative rounded-xl overflow-hidden shadow-lg h-48 group"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.723554465959!2d3.4236904114451043!3d6.429549424219285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52e38ebfced%3A0x4e1ee7813081e3f1!2s1668b%20Oyin%20Jolayemi%20St%2C%20Victoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1755854275405!5m2!1sen!2sng"
                                 width="100%"
@@ -393,7 +402,7 @@ export default function Contact() {
                     >
                         <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden">
                             {/* Form Header */}
-                            <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6">
+                            <div className="bg-gradient-to-r from-red-600 to-red-600 p-6">
                                 <div className="flex items-center gap-3">
                                     <MessageSquare className="w-6 h-6 text-white" />
                                     <h3 className="text-xl font-bold text-white">Send us a message</h3>
@@ -487,12 +496,12 @@ export default function Contact() {
                                     className="relative w-full group overflow-hidden"
                                 >
                                     <motion.div
-                                        className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
+                                        className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600"
                                         initial={{ x: '-100%' }}
                                         whileHover={{ x: 0 }}
                                         transition={{ duration: 0.3 }}
                                     />
-                                    <div className="relative z-10 inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <div className="relative z-10 inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-gradient-to-r from-red-600 to-red-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                                         {isSubmitting ? (
                                             <>
                                                 <motion.div
@@ -512,7 +521,7 @@ export default function Contact() {
                                 </button>
 
                                 <p className="text-xs text-center text-gray-500 dark:text-gray-400">
-                                    By submitting this form, you agree to our privacy policy and terms of service.
+                                    This opens your email client so you can review and send the message directly.
                                 </p>
                             </form>
                         </div>

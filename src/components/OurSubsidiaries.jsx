@@ -106,8 +106,8 @@ const OurSubsidiaries = () => {
             <AnimatedBackground variant="gradient" density="medium" />
 
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -right-32 top-12 h-80 w-80 rounded-full bg-purple-300/30 blur-3xl dark:bg-purple-700/10" />
-                <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-pink-300/20 blur-3xl dark:bg-pink-700/10" />
+                <div className="absolute -right-32 top-12 h-80 w-80 rounded-full bg-red-300/30 blur-3xl dark:bg-red-700/10" />
+                <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-red-300/20 blur-3xl dark:bg-red-700/10" />
             </div>
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -118,8 +118,8 @@ const OurSubsidiaries = () => {
                         viewport={{ once: true, amount: 0.4 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white px-4 py-2 shadow-sm backdrop-blur-xl dark:border-purple-500/30 dark:bg-white/5">
-                            <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-red-200 bg-white px-4 py-2 shadow-sm backdrop-blur-xl dark:border-red-500/30 dark:bg-white/5">
+                            <Sparkles className="h-4 w-4 text-red-600 dark:text-red-400" />
                             <span className="text-xs font-medium tracking-wide text-gray-700 md:text-sm dark:text-white/90">
                                 Our Portfolio
                             </span>
@@ -128,7 +128,7 @@ const OurSubsidiaries = () => {
                         <h2 className="text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                             Our{" "}
                             <span className="relative inline-block">
-                                <span className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                                <span className="relative z-10 bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                                     Subsidiaries
                                 </span>
                                 <motion.div
@@ -136,7 +136,7 @@ const OurSubsidiaries = () => {
                                     whileInView={{ width: "100%" }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: 0.5 }}
-                                    className="absolute bottom-0 h-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600"
+                                    className="absolute bottom-0 h-1 rounded-full bg-gradient-to-r from-red-600 to-red-600"
                                 />
                             </span>
                         </h2>
@@ -146,14 +146,14 @@ const OurSubsidiaries = () => {
                     </motion.div>
                 </div>
 
-                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-xl shadow-purple-900/10 backdrop-blur-xl dark:border-gray-700 dark:bg-gray-800/90">
+                <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-xl shadow-red-900/10 backdrop-blur-xl dark:border-gray-700 dark:bg-gray-800/90">
                     <div className="grid lg:grid-cols-[320px_1fr]">
                         <aside className="border-b border-gray-200 bg-gray-50/80 p-4 lg:border-b-0 lg:border-r dark:border-gray-800 dark:bg-black/20">
                             <div className="mb-3 flex items-center justify-between px-2">
                                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-500">
                                     Browse solutions
                                 </span>
-                                <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">
+                                <span className="text-xs font-semibold text-red-600 dark:text-red-400">
                                     {String(selectedIndex + 1).padStart(2, "0")} / {String(subsidiaries.length).padStart(2, "0")}
                                 </span>
                             </div>
@@ -170,14 +170,14 @@ const OurSubsidiaries = () => {
                                             onClick={() => handleSelect(index)}
                                             className={`group relative min-w-[220px] overflow-hidden rounded-xl border px-4 py-4 text-left transition-all duration-300 lg:w-full ${
                                                 isSelected
-                                                    ? "border-purple-200 bg-white shadow-md dark:border-purple-500/40 dark:bg-white/10"
+                                                    ? "border-red-200 bg-white shadow-md dark:border-red-500/40 dark:bg-white/10"
                                                     : "border-transparent hover:border-gray-200 hover:bg-white/70 dark:hover:border-gray-700 dark:hover:bg-white/5"
                                             }`}
                                         >
                                             {isSelected && (
                                                 <motion.div
                                                     layoutId="active-subsidiary"
-                                                    className="absolute bottom-0 left-0 top-0 w-1 bg-gradient-to-b from-purple-600 to-pink-500"
+                                                    className="absolute bottom-0 left-0 top-0 w-1 bg-gradient-to-b from-red-600 to-red-500"
                                                 />
                                             )}
                                             <div className="flex items-center gap-3">
@@ -206,7 +206,7 @@ const OurSubsidiaries = () => {
                                     <button
                                         type="button"
                                         onClick={handlePrevious}
-                                        className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:border-purple-300 hover:text-purple-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                                        className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition hover:border-red-300 hover:text-red-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
                                         aria-label="Previous subsidiary"
                                     >
                                         <ChevronLeft className="h-4 w-4" />
@@ -214,7 +214,7 @@ const OurSubsidiaries = () => {
                                     <button
                                         type="button"
                                         onClick={handleNext}
-                                        className="flex h-9 w-9 items-center justify-center rounded-full bg-purple-600 text-white transition hover:bg-purple-700"
+                                        className="flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-white transition hover:bg-red-700"
                                         aria-label="Next subsidiary"
                                     >
                                         <ChevronRight className="h-4 w-4" />
@@ -243,7 +243,7 @@ const OurSubsidiaries = () => {
                                         exit={{ opacity: 0, y: -12 }}
                                         transition={{ duration: 0.35 }}
                                     >
-                                        <div className="mb-8 flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-purple-400">
+                                        <div className="mb-8 flex items-center gap-2 text-sm font-semibold text-red-600 dark:text-red-400">
                                             <Sparkles className="h-4 w-4" />
                                             Featured solution
                                         </div>
@@ -276,7 +276,7 @@ const OurSubsidiaries = () => {
                                         href={selectedSubsidiary.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-purple-500/50"
+                                        className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-red-600 to-red-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:shadow-red-500/50"
                                     >
                                         Explore solution
                                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -322,8 +322,8 @@ const OurSubsidiaries = () => {
                             onClick={() => handleSelect(index)}
                             className={`h-1.5 rounded-full transition-all duration-300 ${
                                 index === selectedIndex
-                                    ? "w-10 bg-purple-600"
-                                    : "w-4 bg-gray-300 hover:bg-purple-300 dark:bg-gray-700 dark:hover:bg-purple-700"
+                                    ? "w-10 bg-red-600"
+                                    : "w-4 bg-gray-300 hover:bg-red-300 dark:bg-gray-700 dark:hover:bg-red-700"
                             }`}
                             aria-label={`Show ${subsidiary.name}`}
                         />

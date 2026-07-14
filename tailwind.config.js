@@ -1,5 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-const dynamicColors = ["blue", "green", "indigo", "pink", "purple", "sky"];
+const dynamicColors = [
+    "amber",
+    "blue",
+    "cyan",
+    "emerald",
+    "fuchsia",
+    "green",
+    "indigo",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "teal",
+    "violet",
+];
 const dynamicColorClasses = dynamicColors.flatMap((color) => [
     `bg-${color}-100`,
     `bg-${color}-200`,

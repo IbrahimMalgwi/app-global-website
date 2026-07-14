@@ -13,24 +13,24 @@ const MISSION_VISION_DATA = [
         title: 'Our Mission',
         description: 'To achieve the reputation of a quality, high standard & reliable solution Provider in the ICT industry, with 100% customer satisfaction, at all time.',
         icon: Target,
-        gradient: 'from-purple-500 to-indigo-500',
-        lightBg: 'bg-gradient-to-br from-purple-50 to-indigo-50',
-        iconBg: 'bg-purple-100 dark:bg-purple-900/30',
-        iconColor: 'text-purple-600 dark:text-purple-400',
-        borderColor: 'border-purple-200 dark:border-purple-500/30',
-        accentColor: 'purple'
+        gradient: 'from-red-500 to-indigo-500',
+        lightBg: 'bg-gradient-to-br from-red-50 to-indigo-50',
+        iconBg: 'bg-red-100 dark:bg-red-900/30',
+        iconColor: 'text-red-600 dark:text-red-400',
+        borderColor: 'border-red-200 dark:border-red-500/30',
+        accentColor: 'red'
     },
     {
         id: 'vision',
         title: 'Our Vision',
         description: 'To become a leading Technology solution provider in Africa and beyond. Empowering businesses through innovative technology solutions that transform industries.',
         icon: Eye,
-        gradient: 'from-pink-500 to-purple-500',
-        lightBg: 'bg-gradient-to-br from-pink-50 to-purple-50',
-        iconBg: 'bg-pink-100 dark:bg-pink-900/30',
-        iconColor: 'text-pink-600 dark:text-pink-400',
-        borderColor: 'border-pink-200 dark:border-pink-500/30',
-        accentColor: 'pink'
+        gradient: 'from-red-500 to-red-500',
+        lightBg: 'bg-gradient-to-br from-red-50 to-red-50',
+        iconBg: 'bg-red-100 dark:bg-red-900/30',
+        iconColor: 'text-red-600 dark:text-red-400',
+        borderColor: 'border-red-200 dark:border-red-500/30',
+        accentColor: 'red'
     }
 ];
 
@@ -139,14 +139,14 @@ const MissionVision = () => {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-40 left-20 w-64 h-64 bg-purple-200 dark:bg-purple-600/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-40 right-20 w-64 h-64 bg-pink-200 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute top-40 left-20 w-64 h-64 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-40 right-20 w-64 h-64 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(6)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/30 dark:bg-purple-400/20 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/30 dark:bg-red-400/20 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -180,9 +180,9 @@ const MissionVision = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
               Our Purpose & Direction
             </span>
@@ -192,26 +192,26 @@ const MissionVision = () => {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                         Our{" "}
                         <span className="relative inline-block">
-              <span className="relative z-10 text-purple-600 dark:text-purple-400">
+              <span className="relative z-10 text-red-600 dark:text-red-400">
                 Mission
               </span>
               <motion.div
                   initial={{ width: 0 }}
                   animate={isHeaderInView ? { width: "100%" } : {}}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-2 left-0 h-1 bg-purple-600 dark:bg-purple-400 rounded-full"
+                  className="absolute -bottom-2 left-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
               />
             </span>
                         {" "}&{" "}
                         <span className="relative inline-block">
-              <span className="relative z-10 text-pink-600 dark:text-pink-400">
+              <span className="relative z-10 text-red-600 dark:text-red-400">
                 Vision
               </span>
               <motion.div
                   initial={{ width: 0 }}
                   animate={isHeaderInView ? { width: "100%" } : {}}
                   transition={{ duration: 0.8, delay: 0.7 }}
-                  className="absolute -bottom-2 left-0 h-1 bg-pink-600 dark:bg-pink-400 rounded-full"
+                  className="absolute -bottom-2 left-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
               />
             </span>
                     </h2>

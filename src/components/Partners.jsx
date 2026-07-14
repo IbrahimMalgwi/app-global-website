@@ -38,15 +38,15 @@ const partners = [
 const categories = ["All", "Technology", "Cloud", "Healthcare", "Strategic"];
 
 const stats = [
-    { icon: Award, value: "50+", label: "Global Partners", color: "purple" },
-    { icon: Globe, value: "15+", label: "Countries", color: "pink" },
+    { icon: Award, value: "50+", label: "Global Partners", color: "red" },
+    { icon: Globe, value: "15+", label: "Countries", color: "red" },
     { icon: Star, value: "98%", label: "Satisfaction", color: "blue" },
     { icon: TrendingUp, value: "500+", label: "Projects", color: "green" },
 ];
 
 // ==================== Sub-components ====================
 
-const StatCard = ({ icon: Icon, value, label, color = "purple" }) => (
+const StatCard = ({ icon: Icon, value, label, color = "red" }) => (
     <motion.div
         className={`flex items-center gap-4 p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-${color}-200 dark:border-${color}-800/30 shadow-lg`}
         whileHover={{ y: -4, scale: 1.02 }}
@@ -79,7 +79,7 @@ const PartnerLogo = ({ partner, index }) => {
         >
             {/* Glow effect */}
             <motion.div
-                className={`absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}
+                className={`absolute -inset-2 bg-gradient-to-r from-red-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}
                 animate={isHovered ? { scale: [1, 1.1, 1] } : {}}
                 transition={{ duration: 0.3 }}
             />
@@ -90,7 +90,7 @@ const PartnerLogo = ({ partner, index }) => {
                 <div className="absolute top-2 right-2">
                     <span className={`text-xs font-medium px-2 py-1 rounded-full ${
                         partner.tier === "Strategic"
-                            ? "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400"
+                            ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                             : "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
                     }`}>
                         {partner.tier}
@@ -118,7 +118,7 @@ const PartnerLogo = ({ partner, index }) => {
                     initial={{ y: "100%" }}
                     animate={isHovered ? { y: 0 } : { y: "100%" }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-purple-600 to-pink-600 p-3 text-center"
+                    className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-red-600 to-red-600 p-3 text-center"
                 >
                     <span className="text-sm font-medium text-white">{partner.category}</span>
                 </motion.div>
@@ -145,7 +145,7 @@ const CategoryFilter = ({ categories, activeCategory, onCategoryChange }) => (
                 onClick={() => onCategoryChange(category)}
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                     activeCategory === category
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
+                        ? "bg-gradient-to-r from-red-600 to-red-600 text-white shadow-lg"
                         : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -178,14 +178,14 @@ export default function Partners() {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/5 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(8)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/20 dark:bg-red-400/10 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -219,9 +219,9 @@ export default function Partners() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             Trusted Partners
                         </span>
@@ -231,7 +231,7 @@ export default function Partners() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Our{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            <span className="relative z-10 bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                                 Partners
                             </span>
                             <motion.div
@@ -239,7 +239,7 @@ export default function Partners() {
                                 whileInView={{ width: "100%" }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute bottom-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
+                                className="absolute bottom-0 h-1 bg-gradient-to-r from-red-600 to-red-600 rounded-full"
                             />
                         </span>
                     </h2>
@@ -293,11 +293,11 @@ export default function Partners() {
                 >
                     <div className="inline-flex items-center gap-8 p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
                         <div className="flex items-center gap-3">
-                            <Heart className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                            <Heart className="w-5 h-5 text-red-600 dark:text-red-400" />
                             <span className="text-gray-700 dark:text-gray-300">Join our partner network</span>
                         </div>
                         <motion.button
-                            className="px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                            className="px-6 py-2 bg-gradient-to-r from-red-600 to-red-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >

@@ -11,7 +11,7 @@ const CategoryBadge = ({ category, isActive, onClick }) => (
         onClick={onClick}
         className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
             isActive
-                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
+                ? "bg-gradient-to-r from-red-600 to-red-600 text-white shadow-lg"
                 : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
         }`}
         whileHover={{ scale: 1.05 }}
@@ -29,16 +29,16 @@ const ContactCard = ({ icon: Icon, title, description, action, link }) => (
         transition={{ duration: 0.5 }}
         className="relative group"
     >
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300" />
         <div className="relative p-6 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className={`p-3 rounded-lg bg-purple-100 dark:bg-purple-900/30 w-fit mb-4`}>
-                <Icon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className={`p-3 rounded-lg bg-red-100 dark:bg-red-900/30 w-fit mb-4`}>
+                <Icon className="w-6 h-6 text-red-600 dark:text-red-400" />
             </div>
             <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{title}</h4>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{description}</p>
             <a
                 href={link}
-                className="inline-flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors text-sm font-medium"
             >
                 {action}
                 <ArrowRight className="w-4 h-4" />
@@ -65,7 +65,7 @@ export default function FAQ() {
         },
         {
             question: "How secure is AppGlobal Pay for financial transactions?",
-            answer: "AppGlobal Pay uses enterprise-grade encryption, multi-factor authentication, and complies with international financial security standards including PCI DSS to ensure your transactions are completely secure. We also employ real-time fraud detection and monitoring systems to protect against unauthorized activities.",
+            answer: "AppGlobal Pay is designed with encryption, authentication controls, and payment-aware security practices. Specific compliance requirements are confirmed during project onboarding so controls can be matched to each deployment.",
             category: "Fintech"
         },
         {
@@ -85,7 +85,7 @@ export default function FAQ() {
         },
         {
             question: "What security certifications do you have?",
-            answer: "We maintain ISO 27001, SOC 2 Type II, HIPAA, and GDPR compliance certifications. Our systems undergo regular third-party security audits and penetration testing to ensure the highest level of data protection.",
+            answer: "Our delivery approach is designed around recognized security, privacy, and healthcare data protection practices. Project-specific compliance requirements are reviewed during onboarding so the right controls, documentation, and audit support can be agreed before deployment.",
             category: "Security"
         },
         {
@@ -140,14 +140,14 @@ export default function FAQ() {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/5 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(6)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/20 dark:bg-red-400/10 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -181,9 +181,9 @@ export default function FAQ() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <HelpCircle className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <HelpCircle className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             Got Questions?
                         </span>
@@ -193,7 +193,7 @@ export default function FAQ() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Frequently Asked{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                            <span className="relative z-10 bg-gradient-to-r from-red-600 to-red-600 bg-clip-text text-transparent">
                                 Questions
                             </span>
                             <motion.div
@@ -201,7 +201,7 @@ export default function FAQ() {
                                 whileInView={{ width: "100%" }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute bottom-0 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
+                                className="absolute bottom-0 h-1 bg-gradient-to-r from-red-600 to-red-600 rounded-full"
                             />
                         </span>
                     </h2>
@@ -220,7 +220,7 @@ export default function FAQ() {
                     className="max-w-xl mx-auto mb-8"
                 >
                     <div className="relative group">
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-xl opacity-0 group-focus-within:opacity-30 blur transition-opacity duration-300" />
                         <div className="relative flex items-center">
                             <Search className="absolute left-4 w-5 h-5 text-gray-400 dark:text-gray-500" />
                             <input
@@ -228,7 +228,7 @@ export default function FAQ() {
                                 placeholder="Search FAQs..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-purple-500 dark:focus:border-purple-400 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white"
+                                className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm focus:border-red-500 dark:focus:border-red-400 focus:ring-2 focus:ring-red-200 dark:focus:ring-red-900/30 transition-all duration-300 outline-none text-gray-900 dark:text-white"
                             />
                         </div>
                     </div>
@@ -274,7 +274,7 @@ export default function FAQ() {
                                         className="relative group"
                                     >
                                         {/* Glow effect */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-0 group-hover:opacity-10 blur transition-opacity duration-300" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-xl opacity-0 group-hover:opacity-10 blur transition-opacity duration-300" />
 
                                         {/* FAQ Item */}
                                         <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
@@ -287,16 +287,16 @@ export default function FAQ() {
                                                         {faq.question}
                                                     </h3>
                                                     {/* Category tag */}
-                                                    <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                                                    <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
                                                         {faq.category}
                                                     </span>
                                                 </div>
                                                 <motion.div
                                                     animate={{ rotate: openIndex === i ? 180 : 0 }}
                                                     transition={{ duration: 0.3 }}
-                                                    className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center"
+                                                    className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
                                                 >
-                                                    <ChevronDown className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                                    <ChevronDown className="w-5 h-5 text-red-600 dark:text-red-400" />
                                                 </motion.div>
                                             </button>
 
@@ -348,9 +348,9 @@ export default function FAQ() {
                     className="mt-16"
                 >
                     <div className="relative group max-w-3xl mx-auto">
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-opacity duration-500" />
                         <div className="relative p-8 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl text-center">
-                            <Sparkles className="w-12 h-12 text-purple-600 dark:text-purple-400 mx-auto mb-4" />
+                            <Sparkles className="w-12 h-12 text-red-600 dark:text-red-400 mx-auto mb-4" />
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                                 Still have questions?
                             </h3>
@@ -360,7 +360,7 @@ export default function FAQ() {
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a
                                     href="#contact"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300"
                                 >
                                     <Mail className="w-4 h-4" />
                                     Contact Support
@@ -390,15 +390,15 @@ export default function FAQ() {
                         icon={MessageCircle}
                         title="Live Chat"
                         description="Chat with our support team in real-time"
-                        action="Start conversation"
-                        link="#"
+                        action="Contact us"
+                        link="#contact"
                     />
                     <ContactCard
                         icon={HelpCircle}
                         title="Documentation"
                         description="Browse our detailed documentation and guides"
-                        action="View docs"
-                        link="#"
+                        action="Request docs"
+                        link="#contact"
                     />
                 </div>
             </div>

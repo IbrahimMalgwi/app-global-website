@@ -8,7 +8,9 @@ import Services from "./components/Services";
 import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
-import Blog from "./components/Blog";
+import LatestInsights from "./components/LatestInsights";
+import Newsletter from "./components/Blog";
+import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ThemeLayout from "./components/ThemeLayout";
@@ -28,7 +30,9 @@ function App() {
                     <OurSubsidiaries />
                     <Team />
                     <Partners />
-                    <Blog />
+                    <LatestInsights />
+                    <Newsletter />
+                    <FAQ />
                     <Contact />
                     <Footer />
                 </ThemeLayout>

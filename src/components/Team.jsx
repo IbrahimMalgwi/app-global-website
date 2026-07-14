@@ -40,7 +40,7 @@ const getActualImage = (imagePath) => {
 
 // ================= SUB-COMPONENTS =================
 
-const StatCard = ({ icon: Icon, value, label, color = "purple" }) => (
+const StatCard = ({ icon: Icon, value, label, color = "red" }) => (
     <motion.div
         className={`flex items-center gap-3 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-${color}-200 dark:border-${color}-800/30 shadow-sm`}
         whileHover={{ y: -4, scale: 1.02 }}
@@ -56,7 +56,7 @@ const StatCard = ({ icon: Icon, value, label, color = "purple" }) => (
     </motion.div>
 );
 
-const AchievementBadge = ({ text, color = "purple" }) => (
+const AchievementBadge = ({ text, color = "red" }) => (
     <motion.span
         className={`inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full bg-${color}-100 dark:bg-${color}-900/30 text-${color}-600 dark:text-${color}-400 border border-${color}-200 dark:border-${color}-800`}
         whileHover={{ scale: 1.1, y: -2 }}
@@ -139,14 +139,14 @@ export default function Team() {
 
                 {/* Decorative elements */}
                 <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/5 rounded-full blur-3xl" />
-                    <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/5 rounded-full blur-3xl" />
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
+                    <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/5 rounded-full blur-3xl" />
 
                     {/* Floating particles */}
                     {[...Array(6)].map((_, i) => (
                         <motion.div
                             key={i}
-                            className="absolute w-1 h-1 bg-purple-400/20 dark:bg-purple-400/10 rounded-full"
+                            className="absolute w-1 h-1 bg-red-400/20 dark:bg-red-400/10 rounded-full"
                             initial={{
                                 x: Math.random() * 100 + '%',
                                 y: Math.random() * 100 + '%',
@@ -173,8 +173,8 @@ export default function Team() {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-12"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm">
-                            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm">
+                            <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                             <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                                 Meet Our Leadership
                             </span>
@@ -191,7 +191,7 @@ export default function Team() {
                             className="relative group perspective"
                         >
                             {/* Gradient border */}
-                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-50 group-hover:opacity-100 blur transition-all duration-500" />
+                            <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-600 rounded-3xl opacity-50 group-hover:opacity-100 blur transition-all duration-500" />
 
                             {/* Image container */}
                             <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 transform-gpu transition-all duration-500 group-hover:scale-[1.02] group-hover:rotateY-5">
@@ -207,14 +207,14 @@ export default function Team() {
                                 {/* Achievement badges on image */}
                                 <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
                                     {ceoAchievements.slice(0, 2).map((achievement, i) => (
-                                        <AchievementBadge key={i} text={achievement} color="purple" />
+                                        <AchievementBadge key={i} text={achievement} color="red" />
                                     ))}
                                 </div>
                             </div>
 
                             {/* Decorative quote mark */}
-                            <div className="absolute -top-4 -right-4 w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                                <Quote className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+                            <div className="absolute -top-4 -right-4 w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                                <Quote className="w-8 h-8 text-red-600 dark:text-red-400" />
                             </div>
                         </motion.div>
 
@@ -231,7 +231,7 @@ export default function Team() {
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-2">
                                     {ceo.name}
                                 </h1>
-                                <h2 className="text-xl md:text-2xl text-purple-600 dark:text-purple-400 font-medium mb-2">
+                                <h2 className="text-xl md:text-2xl text-red-600 dark:text-red-400 font-medium mb-2">
                                     {ceo.title}
                                 </h2>
                                 <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -241,8 +241,8 @@ export default function Team() {
 
                             {/* Quick stats */}
                             <div className="grid grid-cols-2 gap-3">
-                                <StatCard icon={Briefcase} value="20+" label="Years Experience" color="purple" />
-                                <StatCard icon={Users} value="200+" label="Team Members" color="pink" />
+                                <StatCard icon={Briefcase} value="20+" label="Years Experience" color="red" />
+                                <StatCard icon={Users} value="200+" label="Team Members" color="red" />
                                 <StatCard icon={Globe} value="15+" label="Countries" color="blue" />
                                 <StatCard icon={Award} value="25+" label="Awards" color="green" />
                             </div>
@@ -255,7 +255,7 @@ export default function Team() {
                                         onClick={() => setActiveTab(tab)}
                                         className={`px-4 py-2 text-sm font-medium capitalize transition-all duration-300 relative
                                             ${activeTab === tab
-                                            ? 'text-purple-600 dark:text-purple-400'
+                                            ? 'text-red-600 dark:text-red-400'
                                             : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                                         }`}
                                     >
@@ -263,7 +263,7 @@ export default function Team() {
                                         {activeTab === tab && (
                                             <motion.div
                                                 layoutId="activeTab"
-                                                className="absolute bottom-[-2px] left-0 right-0 h-0.5 bg-purple-600 dark:bg-purple-400"
+                                                className="absolute bottom-[-2px] left-0 right-0 h-0.5 bg-red-600 dark:bg-red-400"
                                                 transition={{ duration: 0.3 }}
                                             />
                                         )}
@@ -315,7 +315,7 @@ export default function Team() {
                                                     transition={{ delay: i * 0.1 }}
                                                     className="flex items-center gap-3 p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg"
                                                 >
-                                                    <Award className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                                    <Award className="w-5 h-5 text-red-600 dark:text-red-400" />
                                                     <span className="text-gray-700 dark:text-gray-300">{achievement}</span>
                                                 </motion.div>
                                             ))}
@@ -329,9 +329,9 @@ export default function Team() {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: -20 }}
                                             transition={{ duration: 0.3 }}
-                                            className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl"
+                                            className="p-6 bg-gradient-to-br from-red-50 to-red-50 dark:from-red-900/20 dark:to-red-900/20 rounded-xl"
                                         >
-                                            <Quote className="w-8 h-8 text-purple-600 dark:text-purple-400 mb-4" />
+                                            <Quote className="w-8 h-8 text-red-600 dark:text-red-400 mb-4" />
                                             <p className="text-xl text-gray-800 dark:text-gray-200 italic">
                                                 "To build a legacy of innovation that transforms industries and empowers the next generation of technology leaders."
                                             </p>
@@ -348,12 +348,12 @@ export default function Team() {
                                         href={ceo.socials.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
+                                        className="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
                                         whileHover={{ scale: 1.1 }}
                                         whileTap={{ scale: 0.95 }}
                                         aria-label="LinkedIn"
                                     >
-                                        <Linkedin className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                        <Linkedin className="w-5 h-5 text-red-600 dark:text-red-400" />
                                     </motion.a>
                                 )}
                                 {ceo.socials?.twitter && (
@@ -399,8 +399,8 @@ export default function Team() {
                         transition={{ duration: 0.5 }}
                         className="text-center mb-16"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-4">
-                            <Users className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-4">
+                            <Users className="w-4 h-4 text-red-600 dark:text-red-400" />
                             <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                                 Leadership Team
                             </span>
@@ -425,16 +425,16 @@ export default function Team() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="text-center mt-16"
                     >
-                        <div className="inline-flex flex-col items-center p-8 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl border border-purple-200 dark:border-purple-800/30">
-                            <Users className="w-12 h-12 text-purple-600 dark:text-purple-400 mb-4" />
+                        <div className="inline-flex flex-col items-center p-8 bg-gradient-to-br from-red-50 to-red-50 dark:from-red-900/20 dark:to-red-900/20 rounded-2xl border border-red-200 dark:border-red-800/30">
+                            <Users className="w-12 h-12 text-red-600 dark:text-red-400 mb-4" />
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                                 Join Our Team
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
                                 We're always looking for talented individuals to join our growing family
                             </p>
-                            <ThemedButton onClick={() => window.location.href = '/careers'}>
-                                View Open Positions
+                            <ThemedButton onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                                Contact Our Team
                             </ThemedButton>
                         </div>
                     </motion.div>

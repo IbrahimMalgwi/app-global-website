@@ -61,14 +61,14 @@ const Services = () => {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-40 right-20 w-72 h-72 bg-purple-200 dark:bg-purple-600/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-40 left-20 w-72 h-72 bg-pink-200 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute top-40 right-20 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-40 left-20 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(6)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/30 dark:bg-purple-400/20 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/30 dark:bg-red-400/20 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -101,9 +101,9 @@ const Services = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             What We Offer
                         </span>
@@ -113,14 +113,14 @@ const Services = () => {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Our{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 text-purple-600 dark:text-purple-400">
+                            <span className="relative z-10 text-red-600 dark:text-red-400">
                                 Services
                             </span>
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: "100%" }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute -bottom-2 left-0 h-1 bg-purple-600 dark:bg-purple-400 rounded-full"
+                                className="absolute -bottom-2 left-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
                             />
                         </span>
                     </h2>
@@ -141,8 +141,8 @@ const Services = () => {
                             whileTap={{ scale: 0.95 }}
                             aria-label="Previous services"
                         >
-                            <ChevronLeft className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
-                            <div className="absolute inset-0 rounded-full bg-purple-600/20 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <ChevronLeft className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300" />
+                            <div className="absolute inset-0 rounded-full bg-red-600/20 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.button>
 
                         <motion.button
@@ -152,8 +152,8 @@ const Services = () => {
                             whileTap={{ scale: 0.95 }}
                             aria-label="Next services"
                         >
-                            <ChevronRight className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300" />
-                            <div className="absolute inset-0 rounded-full bg-purple-600/20 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <ChevronRight className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300" />
+                            <div className="absolute inset-0 rounded-full bg-red-600/20 blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.button>
                     </div>
 
@@ -209,8 +209,8 @@ const Services = () => {
                                     className={`
                                         w-3 h-3 rounded-full transition-all duration-300 cursor-pointer
                                         ${index === visibleIndex
-                                        ? 'bg-purple-600 dark:bg-purple-400'
-                                        : 'bg-gray-300 dark:bg-gray-700 hover:bg-purple-400 dark:hover:bg-purple-600'
+                                        ? 'bg-red-600 dark:bg-red-400'
+                                        : 'bg-gray-300 dark:bg-gray-700 hover:bg-red-400 dark:hover:bg-red-600'
                                     }
                                     `}
                                     animate={index === visibleIndex ? {
@@ -224,7 +224,7 @@ const Services = () => {
                                 />
                                 {index === visibleIndex && (
                                     <motion.div
-                                        className="absolute inset-0 rounded-full bg-purple-600/30 blur"
+                                        className="absolute inset-0 rounded-full bg-red-600/30 blur"
                                         initial={{ scale: 1 }}
                                         animate={{ scale: [1, 1.5, 1] }}
                                         transition={{
@@ -255,11 +255,11 @@ const Services = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="group relative inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                        className="group relative inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300"
                     >
                         <span>Discuss Your Project</span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        <div className="absolute inset-0 rounded-xl bg-purple-600 blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+                        <div className="absolute inset-0 rounded-xl bg-red-600 blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
                     </motion.button>
                 </motion.div>
             </div>

@@ -34,7 +34,7 @@ export const TeamMemberCard = ({ member, delay }) => {
                                         }}
                                     />
                                 </div>
-                                <h3 className="font-semibold text-xl text-center bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                                <h3 className="font-semibold text-xl text-center bg-gradient-to-r from-indigo-600 to-red-600 bg-clip-text text-transparent mb-2">
                                     {member.name}
                                 </h3>
                                 <p className={`text-sm text-center ${colors.text.muted} font-medium`}>{member.role}</p>
@@ -51,7 +51,7 @@ export const TeamMemberCard = ({ member, delay }) => {
                     <div className="absolute inset-0 w-full h-full" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
                         <ThemedCard className="h-full flex flex-col p-6 justify-center">
                             {/* No image on back side */}
-                            <h3 className="font-semibold text-xl text-center bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                            <h3 className="font-semibold text-xl text-center bg-gradient-to-r from-indigo-600 to-red-600 bg-clip-text text-transparent mb-2">
                                 {member.name}
                             </h3>
                             <p className={`text-sm text-center mb-4 ${colors.text.muted} font-medium`}>{member.role}</p>

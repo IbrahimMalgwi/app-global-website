@@ -1,23 +1,23 @@
 // src/theme/colors.js
 const colors = {
     gradients: {
-        primary: "from-purple-600 to-pink-600",
-        secondary: "from-purple-400 to-pink-400",
-        background: "from-indigo-50 via-purple-50 to-pink-50",
+        primary: "from-red-700 to-red-500",
+        secondary: "from-red-500 to-amber-500",
+        background: "from-white via-red-50 to-amber-50",
     },
-    circles: { // Add this new section for the circles
-        purple: "bg-purple-200",
-        indigo: "bg-indigo-200",
-        pink: "bg-pink-200",
-        blue: "bg-blue-200"
+    circles: {
+        primary: "bg-red-200",
+        secondary: "bg-amber-200",
+        tertiary: "bg-indigo-200",
+        support: "bg-blue-200"
     },
     text: {
         primary: "text-gray-800 dark:text-gray-200",
         muted: "text-gray-600 dark:text-gray-400",
         accent: {
-            purple: "text-purple-600",
-            pink: "text-pink-600",
-            indigo: "text-indigo-600"
+            primary: "text-red-600",
+            secondary: "text-amber-600",
+            tertiary: "text-indigo-600"
         }
     },
     background: {

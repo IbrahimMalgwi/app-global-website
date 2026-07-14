@@ -30,7 +30,7 @@ const STATS = [
         number: "50+",
         title: "Projects",
         subtitle: "Successfully Delivered",
-        color: "purple",
+        color: "red",
         icon: Rocket,
         delay: 0.2
     },
@@ -38,7 +38,7 @@ const STATS = [
         number: "15+",
         title: "Partners",
         subtitle: "Global Collaborations",
-        color: "pink",
+        color: "red",
         icon: Globe2,
         delay: 0.3
     },
@@ -68,9 +68,9 @@ const coreValues = [
         title: "Accountability",
         description: "We are honest, transparent, and ethical in all business engagements.",
         icon: Target,
-        color: "from-purple-500 to-pink-500",
-        bgColor: "bg-purple-100 dark:bg-purple-900/30",
-        textColor: "text-purple-600 dark:text-purple-400"
+        color: "from-red-500 to-red-500",
+        bgColor: "bg-red-100 dark:bg-red-900/30",
+        textColor: "text-red-600 dark:text-red-400"
     },
     {
         letter: "P",
@@ -86,7 +86,7 @@ const coreValues = [
         title: "Productivity",
         description: "Quality experience for our customers, local community, and our team.",
         icon: Award,
-        color: "from-green-500 to-emerald-500",
+        color: "from-green-500 to-amber-500",
         bgColor: "bg-green-100 dark:bg-green-900/30",
         textColor: "text-green-600 dark:text-green-400"
     },
@@ -113,7 +113,7 @@ const coreValues = [
         title: "Outcome",
         description: "We thrive by finding innovative solutions to problems using available resources.",
         icon: Compass,
-        color: "from-indigo-500 to-purple-500",
+        color: "from-indigo-500 to-red-500",
         bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
         textColor: "text-indigo-600 dark:text-indigo-400"
     },
@@ -122,9 +122,9 @@ const coreValues = [
         title: "Mentorship",
         description: "Provide technology and business mentorship to talented youth irrespective of background.",
         icon: Heart,
-        color: "from-pink-500 to-rose-500",
-        bgColor: "bg-pink-100 dark:bg-pink-900/30",
-        textColor: "text-pink-600 dark:text-pink-400"
+        color: "from-red-500 to-rose-500",
+        bgColor: "bg-red-100 dark:bg-red-900/30",
+        textColor: "text-red-600 dark:text-red-400"
     },
     {
         letter: "A",
@@ -285,7 +285,7 @@ const LetterCube = ({ value, isActive, onClick }) => {
                 className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300
           ${isActive
                     ? `bg-gradient-to-r ${value.color} text-white shadow-lg scale-110`
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500/50'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-500/50'
                 }`}
                 animate={isActive ? { rotate: [0, 5, -5, 0] } : {}}
                 transition={{ duration: 0.5 }}
@@ -299,7 +299,7 @@ const LetterCube = ({ value, isActive, onClick }) => {
                         animate={{ scale: 1 }}
                         className="absolute -top-1 -right-1 w-4 h-4 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center"
                     >
-                        <Icon className="w-2 h-2 text-purple-600 dark:text-purple-400" />
+                        <Icon className="w-2 h-2 text-red-600 dark:text-red-400" />
                     </motion.div>
                 )}
             </motion.div>
@@ -351,8 +351,8 @@ const About = () => {
 
             {/* Decorative elements - adjusted for light mode */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
 
                 {/* Animated grid lines */}
                 <svg className="absolute w-full h-full opacity-10 dark:opacity-20" preserveAspectRatio="none">
@@ -382,8 +382,8 @@ const About = () => {
                     className="text-center mb-16"
                 >
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6">
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6">
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
               Driving Digital Transformation
             </span>
@@ -392,13 +392,13 @@ const About = () => {
                     {/* Heading - using solid colors */}
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
                         About{" "}
-                        <span className="relative inline-block text-purple-600 dark:text-purple-400">
+                        <span className="relative inline-block text-red-600 dark:text-red-400">
               Us
               <motion.div
                   initial={{ width: 0 }}
                   animate={isInView ? { width: "100%" } : {}}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="absolute -bottom-2 left-0 h-1 bg-purple-600 dark:bg-purple-400 rounded-full"
+                  className="absolute -bottom-2 left-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
               />
             </span>
                     </h2>
@@ -425,7 +425,7 @@ const About = () => {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="inline-block mb-6"
                                 >
-                  <span className="text-2xl md:text-3xl font-bold text-purple-600 dark:text-purple-400">
+                  <span className="text-2xl md:text-3xl font-bold text-red-600 dark:text-red-400">
                     APPGLOBAL TECHNOLOGIES LIMITED
                   </span>
                                 </motion.div>
@@ -459,7 +459,7 @@ const About = () => {
                                                 transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                                                 className="flex items-center gap-2"
                                             >
-                                                <div className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-purple-400" />
+                                                <div className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-400" />
                                                 <span className="text-sm text-gray-600 dark:text-white/70">{point}</span>
                                             </motion.div>
                                         ))}
@@ -482,7 +482,7 @@ const About = () => {
                         <Card className="overflow-hidden bg-transparent border-0">
                             <div className="relative group">
                                 {/* Gradient border */}
-                                <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 to-pink-400 dark:from-purple-600 dark:to-pink-600 rounded-2xl opacity-50 group-hover:opacity-100 blur transition-all duration-500" />
+                                <div className="absolute -inset-1 bg-gradient-to-r from-red-400 to-red-400 dark:from-red-600 dark:to-red-600 rounded-2xl opacity-50 group-hover:opacity-100 blur transition-all duration-500" />
 
                                 {/* Image container */}
                                 <div className="relative rounded-xl overflow-hidden">
@@ -507,7 +507,7 @@ const About = () => {
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
-                                    className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-xl"
+                                    className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-red-500 to-red-500 rounded-2xl flex items-center justify-center shadow-xl"
                                 >
                                     <Star className="w-8 h-8 text-white" />
                                 </motion.div>
@@ -698,11 +698,11 @@ const About = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="group relative inline-flex items-center gap-2 px-8 py-4 bg-purple-600 hover:bg-purple-700 dark:bg-gradient-to-r dark:from-purple-600 dark:to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                        className="group relative inline-flex items-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 dark:bg-gradient-to-r dark:from-red-600 dark:to-red-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-red-500/50 transition-all duration-300"
                     >
                         <span>Start Your Journey</span>
                         <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                        <div className="absolute inset-0 rounded-xl bg-purple-600 dark:bg-gradient-to-r dark:from-purple-600 dark:to-pink-600 blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+                        <div className="absolute inset-0 rounded-xl bg-red-600 dark:bg-gradient-to-r dark:from-red-600 dark:to-red-600 blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
                     </motion.button>
                 </motion.div>
             </motion.div>

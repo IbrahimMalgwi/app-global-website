@@ -24,9 +24,9 @@ const coreValues = [
         title: "Accountability",
         description: "We are honest, transparent, and ethical in all business engagements.",
         icon: Target,
-        color: "from-purple-500 to-pink-500",
-        bgColor: "bg-purple-100 dark:bg-purple-900/30",
-        textColor: "text-purple-600 dark:text-purple-400"
+        color: "from-red-500 to-red-500",
+        bgColor: "bg-red-100 dark:bg-red-900/30",
+        textColor: "text-red-600 dark:text-red-400"
     },
     {
         letter: "P",
@@ -42,7 +42,7 @@ const coreValues = [
         title: "Productivity",
         description: "Quality experience for our customers, local community, and our team.",
         icon: Award,
-        color: "from-green-500 to-emerald-500",
+        color: "from-green-500 to-amber-500",
         bgColor: "bg-green-100 dark:bg-green-900/30",
         textColor: "text-green-600 dark:text-green-400"
     },
@@ -69,7 +69,7 @@ const coreValues = [
         title: "Outcome",
         description: "We thrive by finding innovative solutions to problems using available resources.",
         icon: Compass,
-        color: "from-indigo-500 to-purple-500",
+        color: "from-indigo-500 to-red-500",
         bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
         textColor: "text-indigo-600 dark:text-indigo-400"
     },
@@ -78,9 +78,9 @@ const coreValues = [
         title: "Mentorship",
         description: "Provide technology and business mentorship to talented youth irrespective of background.",
         icon: Heart,
-        color: "from-pink-500 to-rose-500",
-        bgColor: "bg-pink-100 dark:bg-pink-900/30",
-        textColor: "text-pink-600 dark:text-pink-400"
+        color: "from-red-500 to-rose-500",
+        bgColor: "bg-red-100 dark:bg-red-900/30",
+        textColor: "text-red-600 dark:text-red-400"
     },
     {
         letter: "A",
@@ -255,7 +255,7 @@ const LetterCube = ({ value, isActive, onClick }) => {
                 className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300
           ${isActive
                     ? `bg-gradient-to-r ${value.color} text-white shadow-lg scale-110`
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500/50'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-red-300 dark:hover:border-red-500/50'
                 }`}
                 animate={isActive ? { rotate: [0, 5, -5, 0] } : {}}
                 transition={{ duration: 0.5 }}
@@ -269,7 +269,7 @@ const LetterCube = ({ value, isActive, onClick }) => {
                         animate={{ scale: 1 }}
                         className="absolute -top-1 -right-1 w-4 h-4 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center"
                     >
-                        <Icon className="w-2 h-2 text-purple-600 dark:text-purple-400" />
+                        <Icon className="w-2 h-2 text-red-600 dark:text-red-400" />
                     </motion.div>
                 )}
             </motion.div>
@@ -308,14 +308,14 @@ const CoreValues = () => {
 
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200 dark:bg-purple-600/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-20 right-10 w-72 h-72 bg-pink-200 dark:bg-pink-600/10 rounded-full blur-3xl" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-20 right-10 w-72 h-72 bg-red-200 dark:bg-red-600/10 rounded-full blur-3xl" />
 
                 {/* Floating particles */}
                 {[...Array(8)].map((_, i) => (
                     <motion.div
                         key={i}
-                        className="absolute w-1 h-1 bg-purple-400/30 dark:bg-purple-400/20 rounded-full"
+                        className="absolute w-1 h-1 bg-red-400/30 dark:bg-red-400/20 rounded-full"
                         initial={{
                             x: Math.random() * 100 + '%',
                             y: Math.random() * 100 + '%',
@@ -348,9 +348,9 @@ const CoreValues = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-purple-200 dark:border-purple-500/30 shadow-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 backdrop-blur-xl rounded-full border border-red-200 dark:border-red-500/30 shadow-sm mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-red-600 dark:text-red-400" />
                         <span className="text-xs md:text-sm text-gray-700 dark:text-white/90 font-medium tracking-wide">
                             Our Guiding Principles
                         </span>
@@ -360,14 +360,14 @@ const CoreValues = () => {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                         Core{" "}
                         <span className="relative inline-block">
-                            <span className="relative z-10 text-purple-600 dark:text-purple-400">
+                            <span className="relative z-10 text-red-600 dark:text-red-400">
                                 Values
                             </span>
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: "100%" }}
                                 transition={{ duration: 0.8, delay: 0.5 }}
-                                className="absolute -bottom-2 left-0 h-1 bg-purple-600 dark:bg-purple-400 rounded-full"
+                                className="absolute -bottom-2 left-0 h-1 bg-red-600 dark:bg-red-400 rounded-full"
                             />
                         </span>
                     </h2>
@@ -515,7 +515,7 @@ const CoreValues = () => {
                     <span className="text-xs text-gray-500 dark:text-white/40 uppercase tracking-wider">
                         Explore Services
                     </span>
-                    <ArrowDown className="w-5 h-5 text-purple-500 dark:text-purple-400" />
+                    <ArrowDown className="w-5 h-5 text-red-500 dark:text-red-400" />
                 </motion.div>
             </motion.div>
         </section>

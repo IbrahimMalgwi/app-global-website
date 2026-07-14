@@ -123,10 +123,11 @@ const NavBar = () => {
             variants={navVariants}
             className={`fixed w-full top-0 z-50 transition-all duration-300 ${
                 isScrolled
-                    ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
-                    : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm'
+                    ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-md shadow-md'
+                    : 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-sm'
             }`}
         >
+            <div className="h-1 w-full bg-red-600" />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
@@ -143,7 +144,7 @@ const NavBar = () => {
                                 className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                             />
                             <motion.div
-                                className="absolute -inset-2 bg-purple-600/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                className="absolute -inset-2 bg-red-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                 animate={{
                                     scale: [1, 1.2, 1],
                                 }}
@@ -165,10 +166,10 @@ const NavBar = () => {
                                 onHoverEnd={() => setIsHovered(null)}
                                 onClick={() => scrollToSection(item.id)}
                                 className={`
-                                    relative px-3 lg:px-4 py-2 rounded-lg font-medium transition-all duration-300
+                                    relative px-3 lg:px-4 py-2 font-semibold transition-all duration-300
                                     ${activeSection === item.id
-                                    ? 'text-purple-600 dark:text-purple-400'
-                                    : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400'
+                                    ? 'text-red-700 dark:text-red-400'
+                                    : 'text-gray-700 dark:text-gray-300 hover:text-red-700 dark:hover:text-red-400'
                                 }
                                 `}
                             >
@@ -180,7 +181,7 @@ const NavBar = () => {
                                 {activeSection === item.id && (
                                     <motion.div
                                         layoutId="activeNav"
-                                        className="absolute inset-0 bg-purple-100 dark:bg-purple-900/30 rounded-lg"
+                                        className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-600"
                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                     />
                                 )}
@@ -191,7 +192,7 @@ const NavBar = () => {
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="absolute inset-0 bg-gray-100 dark:bg-gray-800 rounded-lg"
+                                        className="absolute bottom-0 left-3 right-3 h-0.5 bg-red-200 dark:bg-red-900"
                                     />
                                 )}
                             </motion.button>
@@ -206,7 +207,7 @@ const NavBar = () => {
                             whileTap={{ scale: 0.95 }}
                             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                         >
-                            <div className="absolute inset-0 bg-purple-600/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-red-500/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             {theme === "dark" ? <Sun size={20} className="relative z-10" /> : <Moon size={20} className="relative z-10" />}
                         </motion.button>
 
@@ -214,7 +215,7 @@ const NavBar = () => {
                         <motion.button
                             variants={itemVariants}
                             onClick={() => scrollToSection("contact")}
-                            className="relative ml-2 px-5 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+                            className="relative ml-2 px-5 py-2 rounded-sm bg-red-600 hover:bg-red-700 text-white font-semibold shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -223,7 +224,7 @@ const NavBar = () => {
                                 <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                             </span>
                             <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
+                                className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500"
                                 initial={{ x: '-100%' }}
                                 whileHover={{ x: 0 }}
                                 transition={{ duration: 0.3 }}
@@ -299,7 +300,7 @@ const NavBar = () => {
                                         className={`
                                             block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300
                                             ${activeSection === item.id
-                                            ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
+                                            ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
                                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                                         }
                                         `}
@@ -312,7 +313,7 @@ const NavBar = () => {
                                 <motion.button
                                     variants={itemVariants}
                                     onClick={() => scrollToSection("contact")}
-                                    className="w-full mt-4 px-4 py-3 bg-purple-600 text-white font-medium rounded-lg shadow-lg hover:bg-purple-700 transition-colors duration-300 flex items-center justify-center gap-2"
+                                    className="w-full mt-4 px-4 py-3 bg-red-600 text-white font-semibold rounded-sm shadow-lg hover:bg-red-700 transition-colors duration-300 flex items-center justify-center gap-2"
                                 >
                                     Get Started
                                     <Sparkles className="w-4 h-4" />
@@ -325,7 +326,7 @@ const NavBar = () => {
 
             {/* Progress bar */}
             <motion.div
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600"
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-amber-500"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: activeSection === "home" ? 0 : 1 }}
                 transition={{ duration: 0.3 }}

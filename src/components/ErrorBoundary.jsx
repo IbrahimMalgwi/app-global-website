@@ -150,7 +150,7 @@ class ErrorBoundary extends Component {
                                         Need help?{' '}
                                         <a
                                             href="mailto:support@appglobal.com"
-                                            className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors font-medium"
+                                            className="inline-flex items-center gap-1 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors font-medium"
                                         >
                                             Contact Support
                                             <Mail className="w-3 h-3" />
@@ -173,7 +173,7 @@ class ErrorBoundary extends Component {
                                     href={item.href}
                                     className="text-center p-3 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-800 transition-colors group"
                                 >
-                                    <span className="text-xs text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                                    <span className="text-xs text-gray-600 dark:text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
                                         {item.label}
                                     </span>
                                 </a>

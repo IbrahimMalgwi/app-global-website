@@ -11,8 +11,9 @@ export const navigationItems = [
 ];
 
 export const subsidiaryNavigation = [
-    { id: "globalcare", label: "GlobalCare EMR" },
-    { id: "appglobalpay", label: "AppGlobal Pay" },
-    { id: "globalshell", label: "GlobalShell" }
+    { id: "globalcare-ehr", label: "GlobalCare EHR" },
+    { id: "globalcare-telemedicine", label: "GlobalCare Telemedicine" },
+    { id: "appglobal-pay", label: "AppGlobal Pay" },
+    { id: "globalshell-resources", label: "GlobalShell Resources" }
 ];
 
