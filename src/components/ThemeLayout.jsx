@@ -50,7 +50,7 @@ export default function ThemeLayout({ children }) {
             >
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute inset-0 bg-white dark:bg-gray-950" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.06),transparent_36%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.14),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.08),transparent_36%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(58,115,180,0.10),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(106,150,200,0.08),transparent_36%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(58,115,180,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(74,128,190,0.10),transparent_36%)]" />
                 </div>
 
                 <GridPattern />
@@ -77,7 +77,7 @@ export default function ThemeLayout({ children }) {
 
                 {/* Scroll progress indicator */}
                 <motion.div
-                    className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 to-amber-500 z-50"
+                    className="fixed bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-brand to-brand-light z-50"
                     style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
                 />
             </motion.div>

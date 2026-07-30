@@ -8,8 +8,8 @@ import Services from "./components/Services";
 import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
-import LatestInsights from "./components/LatestInsights";
-import Newsletter from "./components/Blog";
+// import LatestInsights from "./components/LatestInsights";
+// import Newsletter from "./components/Blog";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -26,12 +26,12 @@ function App() {
                     <Hero />
                     <About />
                     <MissionVision />
-                    <Services />
                     <OurSubsidiaries />
+                    <Services />
                     <Team />
                     <Partners />
-                    <LatestInsights />
-                    <Newsletter />
+                    {/*<LatestInsights />*/}
+                    {/*<Newsletter />*/}
                     <FAQ />
                     <Contact />
                     <Footer />
