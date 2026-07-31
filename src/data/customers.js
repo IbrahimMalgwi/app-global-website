@@ -8,31 +8,31 @@ import yaba from "../assets/images/fnph.png";
 
 export const customers = [
     {
-        name: "Ebute",
+        name: "Federal Medical Center Ebute",
         logo: ebute,
     },
     {
-        name: "Ikorodu",
+        name: "General Hospital Ikorodu",
         logo: ikorodu,
     },
     {
-        name: "Inewi",
+        name: "Nnamdi Azikiwe University Teaching Hospital Inewi",
         logo: inewi,
     },
     {
-        name: "National Hospital",
+        name: "National Hospital Abuja",
         logo: national,
     },
     {
-        name: "EKSUTH",
+        name: "Ekiti State University Teaching Hospital Ekiti",
         logo: eksuth,
     },
     {
-        name: "FMC Gusau",
+        name: "Federal Medical Center Gusau",
         logo: fmcgusau,
     },
     {
-        name: "Yaba",
+        name: "Federal Neuro-Psychiatric Hospital Yaba",
         logo: yaba,
     },
 ];

@@ -5,8 +5,8 @@ export const navigationItems = [
     { id: "subsidiaries", label: "Subsidiaries" },
     { id: "services", label: "Services" },
     { id: "team", label: "Team" },
+    { id: "customers", label: "Customers" },
     { id: "partners", label: "Partners" },
-    // { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" }
 ];
 

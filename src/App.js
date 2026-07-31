@@ -28,8 +28,8 @@ function App() {
                     <OurSubsidiaries />
                     <Services />
                     <Team />
-                    <Partners />
                     <Customers />
+                    <Partners />
                     <FAQ />
                     <Contact />
                     <Footer />
