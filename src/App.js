@@ -8,8 +8,7 @@ import Services from "./components/Services";
 import OurSubsidiaries from "./components/OurSubsidiaries";
 import Team from "./components/Team";
 import Partners from "./components/Partners";
-// import LatestInsights from "./components/LatestInsights";
-// import Newsletter from "./components/Blog";
+import Customers from "./components/Customers";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -30,8 +29,7 @@ function App() {
                     <Services />
                     <Team />
                     <Partners />
-                    {/*<LatestInsights />*/}
-                    {/*<Newsletter />*/}
+                    <Customers />
                     <FAQ />
                     <Contact />
                     <Footer />

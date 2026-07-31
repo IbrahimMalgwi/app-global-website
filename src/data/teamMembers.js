@@ -36,14 +36,6 @@ export const executiveTeam = [
         socials: { linkedin: "#" },
     },
     {
-        name: "UMAR AMINU",
-        role: "Business Analyst",
-        image: "../assets/images/umar.png",
-        bio: "Experienced and Results-Driven Managing Director | Fintech Leader | Strategic Innovator Dynamic and accomplished Managing Director with extensive experience and a proven track record in the fintech sector. Known for driving revenue growth, enhancing profitability, and successfully delivering high-impact, award-winning projects. A strategic thinker with exceptional leadership, communication, and execution skills, consistently aligning business goals with technological innovations to achieve measurable success.\n" +
-            "Holds both Bachelor's and Master's degrees in Computer Science, and is a certified Microsoft SQL Server Database Developer / Data Analyst. A graduate of a prestigious Leadership Development Program, with a solid foundation in both technical expertise and executive management.\n" +
-            "A proud Fellow of the Nigeria Computer Society (FNCS) and Member of the Computer Professionals of Nigeria (MCPN), with a deep commitment to professional excellence and industry development.",
-        socials: { linkedin: "#" },
-    },{
         name: "ABDULLAHI YUNUSA",
         role: "Chief Technology Officer AppGlobal Technologies",
         image: "../assets/images/abdul.png",
@@ -114,14 +106,11 @@ export const executiveTeam = [
         socials: { linkedin: "#" },
     },
     {
-        name: "Bar. Fadiat",
+        name: "Bar. Faidat",
         role: "Chief Compliance Officer AppGlobal Payment",
-        image: "../assets/images//adeboyin.png",
+        image: "../assets/images/faidat.png",
         bio: " commitment to continuous improvement and technical excellence makes him a valuable asset in driving digital transformation.",
         socials: { linkedin: "#" },
     },
-
-
-
 
 ];
