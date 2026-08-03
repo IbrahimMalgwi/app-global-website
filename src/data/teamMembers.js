@@ -87,20 +87,20 @@ He holds an HND in Computer Science from Kaduna Polytechnic, obtained in 2018.`,
         },
     },
     {
-        name: "Yusuff Saliu Adediran",
+        name: "Yusuf Saliu Adediran",
         role: "Chief Technology Strategist",
         image: yusufImage,
         bio: `A seasoned technology executive with over 10 years of experience in the fintech industry.
 
 Currently serving as Chief Technology Officer at AppGlobal Payments Limited in Lagos, Nigeria, he leads cross-functional teams in delivering secure, scalable, and customer-focused digital financial solutions.
 
-With a strong foundation in Java, PL/SQL, Spring Boot, and REST APIs, Yusuff specializes in building high-performance backend systems and enterprise-grade architectures.
+With a strong foundation in Java, PL/SQL, Spring Boot, and REST APIs, Yusuf specializes in building high-performance backend systems and enterprise-grade architectures.
 
 His hands-on leadership style connects technical vision with strategic execution, supporting product innovation and business growth.
 
 He holds an HND in Computer Science and a Postgraduate Diploma from the National Open University of Nigeria.
 
-Yusuff is passionate about driving digital transformation in Africa's financial services sector through technology, compliance, and customer-centred design.`,
+Yusuf is passionate about driving digital transformation in Africa's financial services sector through technology, compliance, and customer-centred design.`,
         socials: {
             linkedin: "#",
         },
