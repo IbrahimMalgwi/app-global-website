@@ -1,115 +1,206 @@
 // src/data/teamMembers.js
 
+// ================= IMAGE IMPORTS =================
+import ceoImage from "../assets/images/ceo.jpeg";
+import toyinboImage from "../assets/images/toyinbo.jpeg";
+import peterImage from "../assets/images/peter.jpeg";
+import abdulImage from "../assets/images/abdul.png";
+import yusufImage from "../assets/images/yusuf.jpeg";
+import umarImage from "../assets/images/aminu.jpeg";
+import islamiatImage from "../assets/images/adeboyin.png";
+import fatobaImage from "../assets/images/fatoba.png";
+import samImage from "../assets/images/sam.jpeg";
+import adeboyinImage from "../assets/images/adeboyin.png";
+import faidatImage from "../assets/images/faidat.png";
+
 // ================= CEO DATA =================
 export const ceo = {
     name: "Habib Yunusa",
     title: "ENG",
     role: "Chairman & Chief Executive",
-    image: "../assets/images/ceo.jpeg",
-    bio: `Habib Yunusa is the Chief Executive Officer of AppGlobal Technologies. 
-    He has been in the ICT sector for over 15 years with vast knowledge in Computing. 
-    Former faculty at NIIT, Certified Oracle DBA, and an experienced programmer. 
-    He has developed numerous application software and successfully delivered 
-    several ICT projects for both government and private sectors.
-    
-    He attended Informatics Institution, Singapore where he obtained 
-    an International Advanced Diploma in Computing.`,
-    socials: { linkedin: "https://linkedin.com/in/habib-yunusa" },
+    image: ceoImage,
+    bio: `Habib Yunusa is the Chief Executive Officer of AppGlobal Technologies.
+
+He has been in the ICT sector for over 15 years with vast knowledge in computing. He is a former faculty member at NIIT, a Certified Oracle DBA, and an experienced programmer.
+
+He has developed numerous software applications and successfully delivered several ICT projects for government and private-sector organizations.
+
+He attended Informatics Institution, Singapore, where he obtained an International Advanced Diploma in Computing.`,
+    socials: {
+        linkedin: "https://linkedin.com/in/habib-yunusa",
+    },
 };
 
 // ================= EXECUTIVE TEAM DATA =================
 export const executiveTeam = [
     {
         name: "TOYINBO ABDULJELIL",
-        role: "Managing Director AppGlobal Technologies",
-        image: "../assets/images/team.png",
-        bio: "The Chief Operating Officer of AppGlobal Technologies Limited, and his area of expertise and experience cut across Management policy both Human capital and company project managing. I am knowledgeable in ICT as well, which has been relevant for over 5 years. Area of expertise includes Computer Networking, Maintenance, Web Development and Data Analyst among which are; CSS, HTML, and Software such as; Microsoft Suite, Adobe Suite, Dreamweaver (CS3, CS4 and CS5). Power BI\n" +
-            "He holds a HND Public Administration (Nuhu Bamali Polytechnic, Zaria) 2012, Diploma in Computer Networking & Maintenance, Diploma in Web Design & Development and Diploma in Data Science & Data Analytics",
-        socials: { linkedin: "#" },
+        role: "Managing Director, AppGlobal Technologies",
+        image: toyinboImage,
+        bio: `The Chief Operating Officer of AppGlobal Technologies Limited, with expertise and experience across management policy, human capital management, and company project management.
+
+He is knowledgeable in ICT, with over five years of relevant experience. His areas of expertise include computer networking, maintenance, web development, and data analysis, including CSS, HTML, Microsoft Suite, Adobe Suite, Dreamweaver, and Power BI.
+
+He holds an HND in Public Administration from Nuhu Bamali Polytechnic, Zaria, obtained in 2012. He also holds diplomas in Computer Networking and Maintenance, Web Design and Development, Data Science, and Data Analytics.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
-        name: "Mr. Peter Oodo ",
-        role: "Chief Executive Officer AppGlobal Payment",
-        image: "../assets/images/peter.jpeg",
-        bio: " Peter Oodo is a results-driven executive and product leader with over 20 years of experience building and scaling merchant payment solutions for Payment Service Providers across Nigeria’s fintech landscape. As Chief Executive Officer of AppGlobal Payments Limited, Peter is responsible for setting the company’s product vision, defining long-term strategy, and driving merchant acquisition and growth. Under his leadership, AppGlobal is focused on delivering reliable, secure, and scalable payment infrastructure that empowers merchants, agents, and financial institutions to transact seamlessly.  Peter has a strong track record of leading cross-functional teams comprising Product Managers, Backend Engineers, and Frontend Developers to deliver complex, high-impact payment products. He successfully spearheaded the design and launch of a functional Terminal Management System (TMS) and collection platform which streamlined POS terminal deployment, real-time monitoring, configuration, and merchant support — significantly improving operational efficiency and service delivery for PSSPs, PTSP’s for merchant networks and POS Agents.     His core areas of expertise include product strategy, roadmap development, market entry planning, and competitive analysis. Peter combines deep technical understanding with commercial insight to build products that solve real merchant pain points while meeting regulatory and operational requirements. Peter holds a Higher Diploma in Computer Engineering from Obafemi Awolowo University, Osun State, (UNIFECS) and a Diploma in Computer Desktop Publishing with a professional training with the Institute of Data Processing Management of Nigeria. Prior to founding and leading AppGlobal, Peter held strategic product and leadership positions at several leading IT and financial services organizations, including Paymaster Limited, Cellulant Nigeria, Byte-works Embedded Systems Ltd, Reedpriceman Eclectics Technologies Ltd, SwiftLink NZ Global Services Limited  Across these roles, he contributed to the deployment of enterprise payment systems, merchant onboarding platforms, and digital financial service solutions serving millions of end-users. Peter is passionate about financial inclusion, merchant empowerment, and building technology that enables businesses to grow. He continues to champion innovation at AppGlobal by aligning product development with market needs, compliance standards, and customer experience.",
-        socials: { linkedin: "#" },
+        name: "Mr. Peter Oodo",
+        role: "Chief Executive Officer, AppGlobal Payments",
+        image: peterImage,
+        bio: `Peter Oodo is a results-driven executive and product leader with over 20 years of experience building and scaling merchant payment solutions for payment service providers across Nigeria's fintech landscape.
+
+As Chief Executive Officer of AppGlobal Payments Limited, Peter is responsible for setting the company's product vision, defining long-term strategy, and driving merchant acquisition and growth.
+
+Under his leadership, AppGlobal is focused on delivering reliable, secure, and scalable payment infrastructure that empowers merchants, agents, and financial institutions to transact seamlessly.
+
+Peter has a strong track record of leading cross-functional teams comprising product managers, backend engineers, and frontend developers to deliver complex, high-impact payment products.
+
+He successfully spearheaded the design and launch of a functional Terminal Management System and collection platform that streamlined POS terminal deployment, real-time monitoring, configuration, and merchant support.
+
+His core areas of expertise include product strategy, roadmap development, market-entry planning, and competitive analysis.
+
+Peter holds a Higher Diploma in Computer Engineering from Obafemi Awolowo University, Osun State, and a Diploma in Computer Desktop Publishing. He has also completed professional training with the Institute of Data Processing Management of Nigeria.
+
+Before leading AppGlobal Payments, Peter held strategic product and leadership positions at Paymaster Limited, Cellulant Nigeria, Byteworks Embedded Systems Limited, Reedpriceman Eclectics Technologies Limited, and SwiftLink NZ Global Services Limited.
+
+Peter is passionate about financial inclusion, merchant empowerment, and building technology that enables businesses to grow.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "ABDULLAHI YUNUSA",
-        role: "Chief Technology Officer AppGlobal Technologies",
-        image: "../assets/images/abdul.png",
-        bio: "The Chief Technology Officer of AppGlobal Technologies Limited, He has worked as an IT Manager with over 5 years' experience in ICT field.  and his area of expertise is Database Management. He has been delivering ICT solutions to several organizations for over 8 years.\n" +
-            "His area of expertise includes Computing and Programming Languages, among which are; Oracle APEX, C++, PHP, CSS, HTML, and Java Script and Software such as; Microsoft Suite, Adobe Suite, Dreamweaver (CS3, CS4 and CS5), and MySQL\n" +
-            "He holds HND in Computer Science (Kaduna Polytechnic), 2018",
-        socials: { linkedin: "#" },
+        role: "Chief Technology Officer, AppGlobal Technologies",
+        image: abdulImage,
+        bio: `The Chief Technology Officer of AppGlobal Technologies Limited, with experience as an IT Manager and more than five years of experience in the ICT field.
+
+His primary area of expertise is database management. He has delivered ICT solutions to several organizations for over eight years.
+
+His technical expertise includes Oracle APEX, C++, PHP, CSS, HTML, JavaScript, MySQL, Microsoft Suite, Adobe Suite, and Dreamweaver.
+
+He holds an HND in Computer Science from Kaduna Polytechnic, obtained in 2018.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "Yusuff Saliu Adediran",
         role: "Chief Technology Strategist",
-        image: "../assets/images/yusuf.jpeg",
-        bio: "A seasoned technology executive with over 10 years of experience in the fintech industry. Currently serving as the Chief Technology Officer (CTO) in AppGlobal Payment Limited Lagos, Nigeria, he leads cross-functional teams in delivering secure, scalable, and customer-focused digital financial solutions.\n" +
-            "With a solid foundation in Java, PL/SQL, Spring Boot, and REST APIs, Yusuff specializes in building high-performance backend systems and enterprise-grade architectures. His hands-on leadership style bridges technical vision with strategic execution, enabling product innovation and business growth.\n" +
-            "He holds an HND in Computer Science and a Postgraduate Diploma from the National Open University of Nigeria (NOUN), reflecting his commitment to continuous learning and professional development.\n" +
-            "Yusuff is passionate about driving digital transformation in Africa's financial services sector through technology, compliance, and customer-centric design.",
-        socials: { linkedin: "#" },
+        image: yusufImage,
+        bio: `A seasoned technology executive with over 10 years of experience in the fintech industry.
+
+Currently serving as Chief Technology Officer at AppGlobal Payments Limited in Lagos, Nigeria, he leads cross-functional teams in delivering secure, scalable, and customer-focused digital financial solutions.
+
+With a strong foundation in Java, PL/SQL, Spring Boot, and REST APIs, Yusuff specializes in building high-performance backend systems and enterprise-grade architectures.
+
+His hands-on leadership style connects technical vision with strategic execution, supporting product innovation and business growth.
+
+He holds an HND in Computer Science and a Postgraduate Diploma from the National Open University of Nigeria.
+
+Yusuff is passionate about driving digital transformation in Africa's financial services sector through technology, compliance, and customer-centred design.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "UMAR AMINU",
         role: "Business Analyst",
-        image: "../assets/images/umar.png",
-        bio: "Experienced and Results-Driven Managing Director | Fintech Leader | Strategic Innovator Dynamic and accomplished Managing Director with extensive experience and a proven track record in the fintech sector. Known for driving revenue growth, enhancing profitability, and successfully delivering high-impact, award-winning projects. A strategic thinker with exceptional leadership, communication, and execution skills, consistently aligning business goals with technological innovations to achieve measurable success.\n" +
-            "Holds both Bachelor's and Master's degrees in Computer Science, and is a certified Microsoft SQL Server Database Developer / Data Analyst. A graduate of a prestigious Leadership Development Program, with a solid foundation in both technical expertise and executive management.\n" +
-            "A proud Fellow of the Nigeria Computer Society (FNCS) and Member of the Computer Professionals of Nigeria (MCPN), with a deep commitment to professional excellence and industry development.",
-        socials: { linkedin: "#" },
+        image: umarImage,
+        bio: `An experienced and results-driven fintech leader and strategic innovator with a strong record of driving revenue growth, improving profitability, and delivering high-impact projects.
+
+He is a strategic thinker with strong leadership, communication, and execution skills, consistently aligning business objectives with technological innovation.
+
+He holds bachelor's and master's degrees in Computer Science and is a certified Microsoft SQL Server Database Developer and Data Analyst.
+
+He is also a graduate of a leadership development programme, a Fellow of the Nigeria Computer Society, and a member of the Computer Professionals Registration Council of Nigeria.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
-        name: "Mrs Islamiat Habib",
+        name: "Mrs. Islamiat Habib",
         role: "Head of Business",
-        image: "../assets/images/adeboyin.png",
-        bio: "Financial Manager with 5+ years experience. Expertise in accounting, tax coordination, and financial reporting.",
-        socials: { linkedin: "#" },
+        image: islamiatImage,
+        bio: `A financial manager with over five years of experience in accounting, tax coordination, financial reporting, and business operations.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "TEMITOPE FATOBA",
         role: "Head, Business Support",
-        image: "../assets/images/fatoba.png",
-        bio: "Has a BSc. and MBA, is a result-driven, innovative, and detail-oriented professional with over a decade of experience in the financial services industry, working with international and Tier 1 commercial banks in Nigeria. \n" +
-            "Temitope is skilled at building and maintaining strong client relationships, as well as leading cross-functional teams to enhance operational efficiency and client satisfaction. \n" +
-            "Temitope has consistently demonstrated leadership, managing high-performing teams, achieving top regulatory audit ratings, and significantly growing customer bases. His experience spans roles from General Transactions Officer and Clearing Representative to Assistant Branch Manager and Branch Manager, as well as consultancy positions where he provided financial advisory services and conducted operational audits. His career accomplishments reflect his commitment to excellence. \n" +
-            "He holds a Master of Business Administration (MBA) from the Lagos Business School, Pan-Atlantic University, and a Bachelor of Science in Biochemistry from Olabisi Onabanjo University. Additionally, Temitope also has intermediate proficiency in French.",
-        socials: { linkedin: "#" },
+        image: fatobaImage,
+        bio: `Temitope Fatoba is a results-driven, innovative, and detail-oriented professional with over a decade of experience in the financial services industry.
+
+He has worked with international and Tier 1 commercial banks in Nigeria and is skilled in building strong client relationships and leading cross-functional teams.
+
+His experience covers roles including General Transactions Officer, Clearing Representative, Assistant Branch Manager, Branch Manager, and financial consultant.
+
+He holds a Master of Business Administration from Lagos Business School, Pan-Atlantic University, and a Bachelor of Science in Biochemistry from Olabisi Onabanjo University.
+
+He also has intermediate proficiency in French.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "Momodu Isah Mohammed",
-        role: "Business Support Lead/ HOP (NW/NE/NC)",
-        image: "../assets/images/abdul.png",
-        bio: " He is the Business Support Lead/ HOP (NW/NE/NC) of AppGlobal Technologies Ltd. He has worked as an IT Manager with over 5 years' experience in ICT field.\n" +
-            "His area of expertise includes ICT for over 18 years with core experience on telecoms Networking, power, fiber optics amongst others. He has executed several projects on telecoms & Automation for both Banks, government and private sectors He Holds HND. Mechanical Engineering (Power/Plant Option) from Federal Polytechnic Kaduna. Oracle Certify OCA&OCP 10g database, Digital marketing Skill, PGD-Mechatronic Engineering",
-        socials: { linkedin: "#" },
+        role: "Business Support Lead / HOP, NW/NE/NC",
+        image: abdulImage,
+        bio: `He is the Business Support Lead and Head of Operations for the North-West, North-East, and North-Central regions at AppGlobal Technologies Limited.
+
+He has over 18 years of ICT experience, with expertise in telecommunications networking, power systems, fibre optics, and automation.
+
+He has executed several telecommunications and automation projects for banks, government institutions, and private-sector organizations.
+
+He holds an HND in Mechanical Engineering, Power and Plant Option, from Federal Polytechnic Kaduna.
+
+He is also Oracle OCA and OCP 10g Database certified and has training in digital marketing and mechatronic engineering.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "SAMUEL AYODELE BELLO",
-        role: "Business Support Lead/ HOP (SW/SS/SE)",
-        image: "../assets/images/sam.jpeg",
-        bio: "He is the Business Support Lead/ HOP (SW/SS/SE) of AppGlobal Technologies Ltd. He has worked as an IT Manager with over 5 years' experience in ICT field.\n" +
-            "His area of expertise and experience in Project Manager for 8 years and has managed several projects on Software Applications Development and Deployment for both government and private sectors. \n" +
-            "With adequate experience in the application of both Waterfall and Agile Project Management methodologies, Business Analysis, Scrum Master, Product Management, Data Analytics, and AI Prompt Engineering.\n" +
-            "He Holds MBA in Project Management (ACU), BSc. Ed. Human Kinetics (LORRIN), National Diploma in Accounting (NASPOLY)",
-        socials: { linkedin: "#" },
+        role: "Business Support Lead / HOP, SW/SS/SE",
+        image: samImage,
+        bio: `He is the Business Support Lead and Head of Operations for the South-West, South-South, and South-East regions at AppGlobal Technologies Limited.
+
+He has over eight years of project management experience and has managed software application development and deployment projects for government and private-sector organizations.
+
+His expertise includes Waterfall and Agile project management, business analysis, Scrum, product management, data analytics, and AI prompt engineering.
+
+He holds an MBA in Project Management, a Bachelor of Science in Human Kinetics, and a National Diploma in Accounting.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
         name: "ADETUNJI ADEBOYIN MOTUNRAYO",
         role: "Chief Financial Officer",
-        image: "../assets/images/adeboyin.png",
-        bio: "Financial Manager with 5+ years experience. Expertise in accounting, tax coordination, and financial reporting.",
-        socials: { linkedin: "#" },
+        image: adeboyinImage,
+        bio: `A financial manager with over five years of experience in accounting, tax coordination, financial reporting, budgeting, and financial administration.`,
+        socials: {
+            linkedin: "#",
+        },
     },
     {
-        name: "Bar. Faidat",
-        role: "Chief Compliance Officer AppGlobal Payment",
-        image: "../assets/images/faidat.png",
-        bio: " commitment to continuous improvement and technical excellence makes him a valuable asset in driving digital transformation.",
-        socials: { linkedin: "#" },
-    },
+        name: "Barr. Faidat Raji",
+        role: "Chief Compliance Officer, AppGlobal Payments",
+        image: faidatImage,
+        bio: `Miss Faidat Raji is a legal and compliance professional with extensive experience in regulatory compliance, financial crime prevention, corporate governance, and risk management within the payments and financial services sector. As the Chief Compliance Officer at AppGlobal Payments Limited—a licensed Payment Solution Service Provider (PSSP), Payment Terminal Service Provider (PTSP), and Super-Agent, she leads the design and implementation of compliance frameworks that support business growth while ensuring adherence to regulatory requirements and industry standards.
 
+Her expertise spans regulatory engagement, Anti-Money Laundering and Counter-Terrorism Financing (AML/CFT) compliance, Know Your Customer (KYC) and Customer Due Diligence (CDD), enterprise risk management, internal controls, corporate governance, policy development, compliance monitoring, and regulatory reporting. She works closely with executive leadership, regulators, and business teams to build compliance programs that are practical, scalable, and aligned with strategic objectives.
+
+Faidat Raji holds a Bachelor of Laws (LL.B.) from Osun State University, a Barrister-at-Law (B.L.) qualification from the Nigerian Law School, and She is a member of the Compliance Institute of Nigeria (CIN). Throughout her career, she has remained committed to fostering a culture of integrity, strengthening governance frameworks, and enabling innovation through effective compliance and risk management.
+
+She believes that compliance is more than a regulatory obligation, It is a strategic business enabler that builds trust, safeguards financial systems, and creates a foundation for sustainable growth in today's rapidly evolving digital payments ecosystem..`,
+        socials: {
+            linkedin: "#",
+        },
+    },
 ];
+
