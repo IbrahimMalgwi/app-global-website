@@ -10,6 +10,7 @@ import {
     Twitter,
     Users,
 } from "lucide-react";
+import Image from "next/image";
 
 import { AnimatedBackground } from "./UI/AnimatedBackground";
 import { TeamMemberCard } from "./UI/TeamMemberCard";
@@ -24,7 +25,6 @@ export default function Team() {
     const bioRef = useRef(null);
     const sectionRef = useRef(null);
 
-    // Split bio into paragraphs for better rendering
     const bioParagraphs = ceo.bio
         .split(/\n\s*\n/)
         .map((p) => p.trim())
@@ -42,15 +42,12 @@ export default function Team() {
         []
     );
 
-    // Check if bio content overflows the collapsed height
     useEffect(() => {
         const checkOverflow = () => {
             if (bioRef.current) {
                 const el = bioRef.current;
-                // Collapsed max-height is 6rem (96px)
-                const isOverflowing = el.scrollHeight > 96;
+                const isOverflowing = el.scrollHeight > 96; // 6rem
                 setShowToggle(isOverflowing);
-                // If not overflowing, ensure we are in collapsed state
                 if (!isOverflowing) {
                     setIsExpanded(false);
                 }
@@ -63,11 +60,7 @@ export default function Team() {
     }, [bioParagraphs]);
 
     const imageVariants = {
-        hidden: {
-            opacity: 0,
-            scale: 0.8,
-            rotateY: -15,
-        },
+        hidden: { opacity: 0, scale: 0.8, rotateY: -15 },
         visible: {
             opacity: 1,
             scale: 1,
@@ -82,17 +75,11 @@ export default function Team() {
     };
 
     const contentVariants = {
-        hidden: {
-            opacity: 0,
-            x: 50,
-        },
+        hidden: { opacity: 0, x: 50 },
         visible: {
             opacity: 1,
             x: 0,
-            transition: {
-                duration: 0.6,
-                delay: 0.3,
-            },
+            transition: { duration: 0.6, delay: 0.3 },
         },
     };
 
@@ -149,7 +136,7 @@ export default function Team() {
                     </motion.div>
 
                     <div className="grid items-center gap-12 lg:grid-cols-2">
-                        {/* CEO image */}
+                        {/* CEO image – now using next/image */}
                         <motion.div
                             variants={imageVariants}
                             initial="hidden"
@@ -159,10 +146,13 @@ export default function Team() {
                         >
                             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-red-600 to-red-500 opacity-50 blur transition-all duration-500 group-hover:opacity-100" />
                             <div className="relative overflow-hidden rounded-2xl bg-white transition-all duration-500 group-hover:scale-[1.02] dark:bg-gray-800">
-                                <img
+                                <Image
                                     src={ceo.image}
                                     alt={ceo.name}
+                                    width={800}
+                                    height={600}
                                     className="h-auto w-full object-cover"
+                                    priority
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                             </div>
@@ -210,7 +200,7 @@ export default function Team() {
                                         </p>
                                     ))}
                                 </div>
-                                {/* Fade gradient at bottom when collapsed */}
+                                {/* Fade gradient when collapsed */}
                                 {!isExpanded && showToggle && (
                                     <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent dark:from-gray-900 pointer-events-none" />
                                 )}
@@ -312,10 +302,7 @@ export default function Team() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{
-                            duration: 0.5,
-                            delay: 0.3,
-                        }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
                         className="mt-16 text-center"
                     >
                         <div className="inline-flex flex-col items-center rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 to-white p-8 dark:border-red-800/30 dark:from-red-900/20 dark:to-red-950/20">
