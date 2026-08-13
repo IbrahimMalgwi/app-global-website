@@ -7,7 +7,7 @@ import peterImage from "../assets/images/peter.jpeg";
 import abdulImage from "../assets/images/abdul.png";
 import yusufImage from "../assets/images/yusuf.jpeg";
 import umarImage from "../assets/images/aminu.jpeg";
-import islamiatImage from "../assets/images/adeboyin.png";
+import islamiatImage from "../assets/images/islamiat.jpeg";
 import fatobaImage from "../assets/images/fatoba.png";
 import samImage from "../assets/images/sam.jpeg";
 import adeboyinImage from "../assets/images/adeboyin.png";
