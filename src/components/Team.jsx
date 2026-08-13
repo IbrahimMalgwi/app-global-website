@@ -10,14 +10,11 @@ import {
     Twitter,
     Users,
 } from "lucide-react";
-import Image from "next/image";
 
 import { AnimatedBackground } from "./UI/AnimatedBackground";
 import { TeamMemberCard } from "./UI/TeamMemberCard";
 import { ThemedButton } from "./UI/ThemedButton";
 import { ceo, executiveTeam } from "../data/teamMembers";
-
-// ================= MAIN TEAM COMPONENT =================
 
 export default function Team() {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -46,7 +43,7 @@ export default function Team() {
         const checkOverflow = () => {
             if (bioRef.current) {
                 const el = bioRef.current;
-                const isOverflowing = el.scrollHeight > 96; // 6rem
+                const isOverflowing = el.scrollHeight > 96; // 6rem ≈ 6 lines
                 setShowToggle(isOverflowing);
                 if (!isOverflowing) {
                     setIsExpanded(false);
@@ -93,7 +90,6 @@ export default function Team() {
             >
                 <AnimatedBackground variant="gradient" density="low" />
 
-                {/* Decorative elements */}
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-red-200 blur-3xl dark:bg-red-600/5" />
                     <div className="absolute bottom-20 right-10 h-72 w-72 rounded-full bg-red-200 blur-3xl dark:bg-red-600/5" />
@@ -120,7 +116,6 @@ export default function Team() {
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 md:px-6">
-                    {/* Section badge */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -136,7 +131,7 @@ export default function Team() {
                     </motion.div>
 
                     <div className="grid items-center gap-12 lg:grid-cols-2">
-                        {/* CEO image – now using next/image */}
+                        {/* CEO image */}
                         <motion.div
                             variants={imageVariants}
                             initial="hidden"
@@ -146,13 +141,10 @@ export default function Team() {
                         >
                             <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-red-600 to-red-500 opacity-50 blur transition-all duration-500 group-hover:opacity-100" />
                             <div className="relative overflow-hidden rounded-2xl bg-white transition-all duration-500 group-hover:scale-[1.02] dark:bg-gray-800">
-                                <Image
+                                <img
                                     src={ceo.image}
                                     alt={ceo.name}
-                                    width={800}
-                                    height={600}
                                     className="h-auto w-full object-cover"
-                                    priority
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                             </div>
@@ -161,7 +153,7 @@ export default function Team() {
                             </div>
                         </motion.div>
 
-                        {/* CEO information */}
+                        {/* CEO info */}
                         <motion.div
                             variants={contentVariants}
                             initial="hidden"
@@ -183,7 +175,7 @@ export default function Team() {
                                 </p>
                             </div>
 
-                            {/* Bio with overflow toggle */}
+                            {/* Bio with toggle */}
                             <div className="relative">
                                 <div
                                     ref={bioRef}
@@ -200,7 +192,6 @@ export default function Team() {
                                         </p>
                                     ))}
                                 </div>
-                                {/* Fade gradient when collapsed */}
                                 {!isExpanded && showToggle && (
                                     <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent dark:from-gray-900 pointer-events-none" />
                                 )}
@@ -297,7 +288,6 @@ export default function Team() {
                         {teamMembers}
                     </div>
 
-                    {/* Join the team CTA */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
