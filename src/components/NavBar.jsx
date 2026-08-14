@@ -1,6 +1,6 @@
 // src/components/NavBar.jsx
 import React, { useState, useEffect, useCallback } from "react";
-import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigationItems } from "../config/navigation";
@@ -210,26 +210,6 @@ const NavBar = () => {
                             <div className="absolute inset-0 bg-red-500/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             {theme === "dark" ? <Sun size={20} className="relative z-10" /> : <Moon size={20} className="relative z-10" />}
                         </motion.button>
-
-                        {/* Get Started Button */}
-                        <motion.button
-                            variants={itemVariants}
-                            onClick={() => scrollToSection("contact")}
-                            className="relative ml-2 px-5 py-2 rounded-sm bg-red-600 hover:bg-red-700 text-white font-semibold shadow-sm hover:shadow-lg transition-all duration-300 group overflow-hidden"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <span className="relative z-10 flex items-center gap-2">
-                                Get Started
-                                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-                            </span>
-                            <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-red-600 to-amber-500"
-                                initial={{ x: '-100%' }}
-                                whileHover={{ x: 0 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.button>
                     </div>
 
                     {/* Mobile Controls */}
@@ -308,16 +288,6 @@ const NavBar = () => {
                                         {item.label}
                                     </motion.button>
                                 ))}
-
-                                {/* Mobile Get Started */}
-                                <motion.button
-                                    variants={itemVariants}
-                                    onClick={() => scrollToSection("contact")}
-                                    className="w-full mt-4 px-4 py-3 bg-red-600 text-white font-semibold rounded-sm shadow-lg hover:bg-red-700 transition-colors duration-300 flex items-center justify-center gap-2"
-                                >
-                                    Get Started
-                                    <Sparkles className="w-4 h-4" />
-                                </motion.button>
                             </div>
                         </motion.div>
                     )}
