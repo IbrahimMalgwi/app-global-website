@@ -121,10 +121,12 @@ He is also a graduate of a leadership development programme, a Fellow of the Nig
         },
     },
     {
-        name: "Mrs. Islamiat Habib",
-        role: "Head of Business",
+        name: "Mrs. Islamiyat Adeleke",
+        role: "Head of Customer Support, AppGlobal Technologies Ltd.",
         image: islamiatImage,
-        bio: `A financial manager with over five years of experience in accounting, tax coordination, financial reporting, and business operations.`,
+        bio: `Islamiyat Adeleke is a customer experience and support professional with experience in healthcare technology, digital solutions, and client relationship management. As Head of Customer Support at AppGlobal Technologies Ltd., she leads customer support operations, working closely with clients and internal teams to resolve issues, improve service delivery, and build strong customer relationships.
+
+With strong communication, problem-solving, and people-management skills, she takes a customer-first approach to delivering efficient and positive customer experiences. She is also an event compère and public speaker with a passion for communication and meaningful engagement.`,
         socials: {
             linkedin: "#",
         },
